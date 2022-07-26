@@ -41,6 +41,9 @@ SHARED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'rest_framework',
+    'drf_yasg',
 )
 
 
@@ -51,6 +54,9 @@ TENANT_APPS = [
     'django.contrib.admin',
     'django.contrib.sessions',
     'django.contrib.messages',
+
+    'rest_framework',
+    'drf_yasg',
 ]
 
 INSTALLED_APPS = list(SHARED_APPS) + [
