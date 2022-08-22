@@ -16,7 +16,7 @@ Your DATABASE_ENGINE setting needs to be changed to
             # Tenant Engine
             'ENGINE': 'django_tenants.postgresql_backend',
             # set database name
-            'NAME': 'bbi_ecomm',
+            'NAME': 'bbi_ecomm_master',
             # set your user details
             'USER': 'postgres',
             'PASSWORD': 'your_password',

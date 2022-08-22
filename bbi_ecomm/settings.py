@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -106,10 +109,10 @@ DATABASES = {
             # Tenant Engine
             'ENGINE': 'django_tenants.postgresql_backend',
             # set database name
-            'NAME': 'bbi_ecomm_api',
+            'NAME': os.getenv('DB_NAME'),
             # set your user details
-            'USER': 'postgres',
-            'PASSWORD': ',.?',
+            'USER': os.getenv('DB_USR'),
+            'PASSWORD': os.getenv('DB_PWD'),
             'HOST': 'localhost',
             'POST': '5432'
     }
