@@ -37,6 +37,7 @@ ALLOWED_HOSTS = []
 SHARED_APPS = (
     'django_tenants',  # mandatory
     'tenant',  # you must list the app where your tenant model resides in
+    'user',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -51,6 +52,7 @@ SHARED_APPS = (
 
 
 TENANT_APPS = [
+    'user',
     # The following Django contrib apps must be in TENANT_APPS
     'django.contrib.contenttypes',
     'django.contrib.auth',
