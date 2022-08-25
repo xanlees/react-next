@@ -19,20 +19,17 @@ class MyObtainTokenPairView(TokenObtainPairView):
 class UserView(APIView):
 
     def get(self, request, *args, **kwargs):
-
-        queryset = User.objects.all()
-        user_serializer = UserSerializer(queryset, many=True)
+        pk = self.kwargs.get('pk')
+        if pk:
+            queryset = User.objects.get(pk=pk)
+            if not queryset:
+                return Response(
+                    {"res": "User id does not exists"},
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+            user_serializer = UserSerializer()
+        else:
+            queryset = User.objects.all()
+            user_serializer = UserSerializer(queryset, many=True)
 
         return Response(user_serializer.data, status=status.HTTP_200_OK)
-
-    def get(self, request, pk):
-
-        queryset = User.objects.get(pk=pk)
-        if not queryset:
-            return Response(
-                {"res": "User id does not exists"},
-                status=status.HTTP_400_BAD_REQUEST
-            )
-        serializer = UserSerializer(queryset)
-
-        return Response(serializer.data, status=status.HTTP_200_OK)
