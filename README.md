@@ -51,7 +51,7 @@ Make migrations and Apply to database
     # create migrations files (every new django app)
     python manage.py makemigrations
     python manage.py makemigrations tenant
-    python manage.py makemigrations bbi_exchnage
+    python manage.py makemigrations bbi_exchange
     python manage.py makemigrations product
     # Apply migrations
     python manage.py migrate
