@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 from datetime import timedelta
+from django.utils.translation import gettext_lazy as _
 
 load_dotenv()
 
@@ -38,8 +39,12 @@ ALLOWED_HOSTS = []
 SHARED_APPS = (
     'django_tenants',  # mandatory
     'tenant',  # you must list the app where your tenant model resides in
+
     'user',
-    'corsheaders',
+    'product',
+    'bbi_exchange',
+    'rate',
+    
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -50,12 +55,17 @@ SHARED_APPS = (
 
     'rest_framework',
     'drf_yasg',
+    'corsheaders',
+    'parler',
+    'djmoney',
 )
 
 
 TENANT_APPS = [
     'user',
-    'corsheaders',
+    'product',
+    'rate',
+
     # The following Django contrib apps must be in TENANT_APPS
     'django.contrib.contenttypes',
     'django.contrib.auth',
@@ -65,6 +75,9 @@ TENANT_APPS = [
 
     'rest_framework',
     'drf_yasg',
+    'corsheaders',
+    'parler',
+    'djmoney',
 ]
 
 INSTALLED_APPS = list(SHARED_APPS) + [
@@ -153,7 +166,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 
@@ -199,3 +212,34 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=600),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale/'),
+)
+
+
+
+LANGUAGES = [
+   ('la', _('Lao')),
+   ('en', _('English')),
+
+]
+
+PARLER_LANGUAGES = {
+    None: (
+        {'code': 'en',},
+        {'code': 'la',},
+    ),
+    'default': {
+        'fallbacks': ['en'],      
+        'hide_untranslated': False,   # Default
+    }
+}
+
+CURRENCIES = ('USD', 'LAK', 'THB')
+
+EXCHANGE_BACKEND = 'bbi_exchange.backends.BBIBackend'
+
+BBI_EXCHANGE_URL = "http://localhost:8000/api/v1/bbi_exchange/1"
+
+BBI_EXCHANGE_KEY = ""

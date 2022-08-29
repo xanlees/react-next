@@ -1,6 +1,9 @@
 # Environments
 .env
-.venv
+venv
 
 # ignore migration folder
 migrations/
+
+# ignore cache folder
+__pycache__/

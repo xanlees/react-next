@@ -25,7 +25,7 @@ schema_view = get_schema_view(
    openapi.Info(
       title="Bamboo BI Ecommerce API",
       default_version='v1',
-      description="Test description",
+      description="Headless Ecommerce",
       terms_of_service="https://www.google.com/policies/terms/",
       contact=openapi.Contact(email="info@bamboobi.la"),
       license=openapi.License(name="BSD License"),
@@ -38,7 +38,10 @@ schema_view = get_schema_view(
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('api/tenant/', include('tenant.urls')),
+    path('api/v1/tenant/', include('tenant.urls')),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    path('api/user/', include('user.urls')),
+    path('api/v1/user/', include('user.urls')),
+    path('api/v1/product/', include("product.urls")),
+    path('api/v1/bbi_exchange/',include("bbi_exchange.urls")),
+    path('api/v1/rate/',include("rate.urls")),
 ]

@@ -30,7 +30,16 @@ Make migrations and Apply to database
     # create migrations files
     python manage.py makemigrations
     # Apply migrations
-    python manage.py migrate_schemas
+    python manage.py migrate
+
+To set up Lao language, make folder in project directory:
+
+    mkdir locale/
+    mkdir locale/la/
+
+    python manage.py makemessages -l la -i venv
+    python manage.py compilemessages -l la
+    python manage.py migrate
 
 Setup Initial User, Tenant and Admin
         
