@@ -85,6 +85,7 @@ Setup Initial User, Tenant and Admin
         paid until:2022-12-31
         on trial:False
         is active: True
+        domain:localhost
         
     # Create the Administrator
     python manage.py create_tenant_superuser
