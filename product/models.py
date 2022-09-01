@@ -12,7 +12,7 @@ class Product(TranslatableModel):
         description = models.TextField(_("Description"), blank=True)
     )
     price = MoneyField(max_digits=14, decimal_places=2, default_currency='LAK')
-    user = models.ForeignKey(User, on_delete= models.CASCADE,related_name='product',null=True)
+    user = models.ForeignKey(User, on_delete= models.CASCADE,related_name='product')
     updated_on = models.DateTimeField(auto_now= True)
     created_on = models.DateTimeField(auto_now_add=True)
 

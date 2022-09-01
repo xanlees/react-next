@@ -10,11 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-from pathlib import Path
 import os
-from dotenv import load_dotenv
 from datetime import timedelta
+from pathlib import Path
+
 from django.utils.translation import gettext_lazy as _
+from dotenv import load_dotenv
 
 load_dotenv()
 
@@ -58,6 +59,7 @@ SHARED_APPS = (
     'corsheaders',
     'parler',
     'djmoney',
+    'djmoney.contrib.exchange',
 )
 
 
@@ -78,6 +80,7 @@ TENANT_APPS = [
     'corsheaders',
     'parler',
     'djmoney',
+    'djmoney.contrib.exchange',
 ]
 
 INSTALLED_APPS = list(SHARED_APPS) + [
@@ -235,6 +238,8 @@ PARLER_LANGUAGES = {
         'hide_untranslated': False,   # Default
     }
 }
+# TRANSLATE_MIXIN = 
+
 
 CURRENCIES = ('USD', 'LAK', 'THB')
 

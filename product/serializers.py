@@ -1,10 +1,12 @@
-from .models import Product
-from .mixings import TranslatedSerializerMixin
-from parler_rest.serializers import TranslatableModelSerializer
 from parler_rest.fields import TranslatedFieldsField
+from parler_rest.serializers import TranslatableModelSerializer
+from product.mixings import TranslatedSerializerMixin
+from product.models import Product
+from .currency_mixings import ConvertSerializerMixin 
 
-class ProductSerializer(TranslatedSerializerMixin, TranslatableModelSerializer):
+
+class ProductSerializer(TranslatedSerializerMixin, ConvertSerializerMixin, TranslatableModelSerializer):
     translations = TranslatedFieldsField(shared_model=Product)
     class Meta:
         model = Product
-        fields = ('translations', 'user', 'price', 'created_on', 'updated_on')
+        fields =  ('id', 'translations', 'user', 'price', 'price_currency', 'created_on', 'updated_on')

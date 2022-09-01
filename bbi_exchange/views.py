@@ -1,8 +1,8 @@
-from rest_framework.generics import RetrieveAPIView
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import  RetrieveAPIView
 
-from .serializations import BBISerializer
 from .models import BBI_exchange
+from .serializations import BBISerializer
+
 
 class ExchangeRetrieveAPIView(RetrieveAPIView):
     """This endpoint list all of the available todos from the database"""
