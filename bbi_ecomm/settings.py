@@ -45,6 +45,7 @@ SHARED_APPS = (
     'product',
     'bbi_exchange',
     'rate',
+    'common',
     
 
     'django.contrib.admin',
@@ -67,6 +68,7 @@ TENANT_APPS = [
     'user',
     'product',
     'rate',
+    'common',
 
     # The following Django contrib apps must be in TENANT_APPS
     'django.contrib.contenttypes',
@@ -238,8 +240,7 @@ PARLER_LANGUAGES = {
         'hide_untranslated': False,   # Default
     }
 }
-# TRANSLATE_MIXIN = 
-
+TRANSLATE_MIXIN = 'common.translate.mixings.TranslatedSerializerMixin'
 
 CURRENCIES = ('USD', 'LAK', 'THB')
 
@@ -248,3 +249,5 @@ EXCHANGE_BACKEND = 'bbi_exchange.backends.BBIBackend'
 BBI_EXCHANGE_URL = "http://localhost:8000/api/v1/bbi_exchange/1"
 
 BBI_EXCHANGE_KEY = ""
+
+CURRENCY_MIXIN = 'common.currency.mixings.ConvertSerializerMixin'

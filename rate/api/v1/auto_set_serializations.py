@@ -1,7 +1,8 @@
-from rest_framework import serializers
-from django.utils.module_loading import import_string
 from django.conf import settings
+from django.utils.module_loading import import_string
 from djmoney.contrib.exchange.models import Rate
+from rest_framework import serializers
+
 
 class AutoSetSerializer(serializers.ModelSerializer):
     class Meta:

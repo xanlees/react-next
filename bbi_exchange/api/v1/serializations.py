@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import BBI_exchange
+from bbi_exchange.models import BBI_exchange
 
 
 class BBISerializer(serializers.ModelSerializer):

@@ -37,10 +37,10 @@ schema_view = get_schema_view(
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('api/v1/tenant/', include('tenant.urls')),
+    path('', include('tenant.api.v1.urls')),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    path('api/v1/user/', include('user.urls')),
-    path('api/v1/product/', include("product.urls")),
-    path('api/v1/bbi_exchange/',include("bbi_exchange.urls")),
-    path('api/v1/rate/',include("rate.urls")),
+    path('', include('user.api.v1.urls')),
+    path('', include("product.api.v1.urls")),
+    path('',include("bbi_exchange.api.v1.urls")),
+    path('',include("rate.api.v1.urls")),
 ]

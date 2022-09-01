@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework import status
 
 from .serializers import TenantSerializer
-from .models import Tenant
+from tenant.models import Tenant
 
 
 class TenantView(APIView):

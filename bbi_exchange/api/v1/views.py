@@ -1,6 +1,6 @@
 from rest_framework.generics import  RetrieveAPIView
 
-from .models import BBI_exchange
+from bbi_exchange.models import BBI_exchange
 from .serializations import BBISerializer
 
 

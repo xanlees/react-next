@@ -1,7 +1,7 @@
 from django.urls import path
 
-from bbi_exchange.api import views
+from . import views
 
 urlpatterns = [
-    path("<pk>",views.ExchangeRetrieveAPIView.as_view(),name="bbi_exchange"),
+    path("api/v1/bbi_exchange/<pk>",views.ExchangeRetrieveAPIView.as_view(),name="bbi_exchange"),
 ]
