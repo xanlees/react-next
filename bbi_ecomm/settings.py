@@ -241,6 +241,7 @@ PARLER_LANGUAGES = {
     }
 }
 TRANSLATE_MIXIN = 'common.translate.mixings.TranslatedSerializerMixin'
+TRANSLATE_FIELD = 'common.translate.field.DRFTranslatedFieldsField'
 
 CURRENCIES = ('USD', 'LAK', 'THB')
 
