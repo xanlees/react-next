@@ -6,6 +6,7 @@ from django_tenants.test.cases import TenantTestCase
 from django_tenants.test.client import TenantClient
 from rest_framework import status
 from faker import Faker
+import json
 
 class TestSetUp(APITestCase, TenantTestCase):
     @classmethod
@@ -17,10 +18,16 @@ class TestSetUp(APITestCase, TenantTestCase):
         return tenant
 
     def setUp(self):
+        self.fake = Faker()
         self.client = TenantClient(self.tenant)
         self.product_url = reverse('product')
         self.product_data =  {
-            "translations": "{\"en\":{\"title\":\"Nike\",\"description\":\"AirForce\"}}",
+            "translations": json.dumps({
+                "en":{
+                    "name": self.fake.name(),
+                    "description": self.fake.paragraph()
+                }
+            }),
             "user": 1,
             "price": 100000
         }
@@ -29,9 +36,6 @@ class TestSetUp(APITestCase, TenantTestCase):
 
     def register(self, client):
         register_url = reverse('auth_register')
-
-        self.fake = Faker()
-
         user_data = {
             'username': self.fake.first_name(),
             'password': self.fake.password(),

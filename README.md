@@ -55,6 +55,7 @@ Make migrations and Apply to database
     python manage.py makemigrations product
     # Apply migrations
     python manage.py migrate
+    python manage.py migrate easy_thumbnails
 
 To set up Lao language, it is required gettext library:
 

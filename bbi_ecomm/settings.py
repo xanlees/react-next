@@ -61,6 +61,9 @@ SHARED_APPS = (
     'parler',
     'djmoney',
     'djmoney.contrib.exchange',
+    'sorl.thumbnail',
+    'sorl_thumbnail_serializer'
+
 )
 
 
@@ -83,6 +86,9 @@ TENANT_APPS = [
     'parler',
     'djmoney',
     'djmoney.contrib.exchange',
+    'sorl.thumbnail',
+    'sorl_thumbnail_serializer'
+ 
 ]
 
 INSTALLED_APPS = list(SHARED_APPS) + [
@@ -187,6 +193,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -252,3 +260,8 @@ BBI_EXCHANGE_URL = "http://localhost:8000/api/v1/bbi_exchange/1"
 BBI_EXCHANGE_KEY = ""
 
 CURRENCY_MIXIN = 'common.currency.mixings.ConvertSerializerMixin'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+THUMBNAIL_FORCE_OVERWRITE = True

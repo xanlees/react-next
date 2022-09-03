@@ -10,3 +10,6 @@ __pycache__/
 
 # ignore vscode setting
 .vscode/
+
+# ignore media folder
+media/
