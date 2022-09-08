@@ -6,6 +6,8 @@ from djmoney.models.fields import MoneyField
 from parler.models import TranslatableModel, TranslatedFields
 from sorl.thumbnail import ImageField
 from enumchoicefield import ChoiceEnum, EnumChoiceField
+from django_cleanup.signals import cleanup_pre_delete
+from sorl.thumbnail import delete
 
 
 class Audience(ChoiceEnum):
@@ -37,3 +39,9 @@ class Product(TranslatableModel):
     def __str__(self):
         return self.title
 
+
+
+def sorl_delete(**kwargs):
+    delete(kwargs['file'])
+
+cleanup_pre_delete.connect(sorl_delete)
