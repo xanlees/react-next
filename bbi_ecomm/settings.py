@@ -10,11 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-from pathlib import Path
 import os
-from dotenv import load_dotenv
 from datetime import timedelta
+from pathlib import Path
+
 from django.utils.translation import gettext_lazy as _
+from dotenv import load_dotenv
 
 load_dotenv()
 
@@ -44,6 +45,7 @@ SHARED_APPS = (
     'product',
     'bbi_exchange',
     'rate',
+    'common',
     'stock',
     
 
@@ -59,6 +61,10 @@ SHARED_APPS = (
     'corsheaders',
     'parler',
     'djmoney',
+    'djmoney.contrib.exchange',
+    'sorl.thumbnail',
+    'sorl_thumbnail_serializer'
+
 )
 
 
@@ -66,6 +72,7 @@ TENANT_APPS = [
     'user',
     'product',
     'rate',
+    'common',
     'stock',
 
     # The following Django contrib apps must be in TENANT_APPS
@@ -80,6 +87,10 @@ TENANT_APPS = [
     'corsheaders',
     'parler',
     'djmoney',
+    'djmoney.contrib.exchange',
+    'sorl.thumbnail',
+    'sorl_thumbnail_serializer'
+ 
 ]
 
 INSTALLED_APPS = list(SHARED_APPS) + [
@@ -184,6 +195,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -237,6 +250,8 @@ PARLER_LANGUAGES = {
         'hide_untranslated': False,   # Default
     }
 }
+TRANSLATE_MIXIN = 'common.translate.mixings.TranslatedSerializerMixin'
+TRANSLATE_FIELD = 'common.translate.field.DRFTranslatedFieldsField'
 
 CURRENCIES = ('USD', 'LAK', 'THB')
 
@@ -245,3 +260,10 @@ EXCHANGE_BACKEND = 'bbi_exchange.backends.BBIBackend'
 BBI_EXCHANGE_URL = "http://localhost:8000/api/v1/bbi_exchange/1"
 
 BBI_EXCHANGE_KEY = ""
+
+CURRENCY_MIXIN = 'common.currency.mixings.ConvertSerializerMixin'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+THUMBNAIL_FORCE_OVERWRITE = True

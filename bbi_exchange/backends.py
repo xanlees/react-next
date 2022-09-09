@@ -1,6 +1,7 @@
-from djmoney.contrib.exchange.backends.base import SimpleExchangeBackend
-from django.core.exceptions import ImproperlyConfigured
 from django.conf import settings
+from django.core.exceptions import ImproperlyConfigured
+from djmoney.contrib.exchange.backends.base import SimpleExchangeBackend
+
 
 class BBIBackend(SimpleExchangeBackend):
     name = "BBI_Backend"

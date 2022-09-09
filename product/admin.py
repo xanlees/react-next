@@ -1,17 +1,22 @@
 from django.contrib import admin
 from parler.admin import TranslatableAdmin
+from sorl.thumbnail.admin import AdminImageMixin
+
 from .models import Product
 
-class PostAdmin(TranslatableAdmin):
-    list_display = ('title', 'description', 'price')
+
+class ProductAdmin(TranslatableAdmin, AdminImageMixin):
+    list_display = ('title', 'description', 'slug', 'price', 'image')
     fieldsets = (
         (None, {
-            'fields': ('title', 'description', 'price'),
+            'fields': ('title', 'description', 'slug', 'price', 'image'),
         }),
     )
+    def get_prepopulated_fields(self, request, obj=None):
+        return {"slug": ("title",)}
 
     def save_model(self, request, obj, form, change):
-        obj.author_id = request.user.id
+        obj.user_id = request.user.id
         super().save_model(request, obj, form, change)
 
-admin.site.register(Product, PostAdmin)
+admin.site.register(Product, ProductAdmin)

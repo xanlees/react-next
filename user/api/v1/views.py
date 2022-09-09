@@ -16,7 +16,15 @@ class MyObtainTokenPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
 
-class UserView(APIView):
+class ListUserView(APIView):
+
+    def get(self, request, *args, **kwargs):
+        queryset = User.objects.all()
+        user_serializer = UserSerializer(queryset, many=True)
+
+        return Response(user_serializer.data, status=status.HTTP_200_OK)
+
+class RetrieveUserView(APIView):
 
     def get(self, request, *args, **kwargs):
         pk = self.kwargs.get('pk')
@@ -27,9 +35,6 @@ class UserView(APIView):
                     {"res": "User id does not exists"},
                     status=status.HTTP_400_BAD_REQUEST
                 )
-            user_serializer = UserSerializer()
-        else:
-            queryset = User.objects.all()
-            user_serializer = UserSerializer(queryset, many=True)
+            user_serializer = UserSerializer(queryset)
 
         return Response(user_serializer.data, status=status.HTTP_200_OK)

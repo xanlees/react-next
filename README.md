@@ -55,6 +55,7 @@ Make migrations and Apply to database
     python manage.py makemigrations product
     # Apply migrations
     python manage.py migrate
+    python manage.py migrate easy_thumbnails
 
 To set up Lao language, it is required gettext library:
 
@@ -85,6 +86,7 @@ Setup Initial User, Tenant and Admin
         paid until:2022-12-31
         on trial:False
         is active: True
+        domain:localhost
         
     # Create the Administrator
     python manage.py create_tenant_superuser
