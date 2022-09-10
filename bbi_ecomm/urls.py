@@ -47,4 +47,8 @@ urlpatterns = [
     path('', include("bbi_exchange.api.v1.urls"), name='bbi_exchange'),
     path('', include("rate.api.v1.urls"), name='rate'),
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] 
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+

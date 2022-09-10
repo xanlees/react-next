@@ -1,24 +1,41 @@
-FROM python:3.8.13-alpine3.16
-ENV PYTHONUNBUFFERED 1
-# Creating working directory
-RUN mkdir /code
-WORKDIR /code
-# Copying requirements
-COPY . .
-RUN apk add --no-cache --virtual .build-deps \
-    ca-certificates gcc postgresql-dev linux-headers musl-dev \
-    libffi-dev jpeg-dev zlib-dev gettext\
-    && pip install -r requirements.txt \
-    && find /usr/local \
-        \( -type d -a -name test -o -name tests \) \
-        -o \( -type f -a -name '*.pyc' -o -name '*.pyo' \) \
-        -exec rm -rf '{}' + \
-    && runDeps="$( \
-        scanelf --needed --nobanner --recursive /usr/local \
-                | awk '{ gsub(/,/, "\nso:", $2); print "so:" $2 }' \
-                | sort -u \
-                | xargs -r apk info --installed \
-                | sort -u \
-    )" \
-    && apk add --virtual .rundeps $runDeps \
-    && apk del .build-deps
+ARG PYTHON_VERSION=3.9.4-alpine3.13
+
+FROM python:${PYTHON_VERSION} as builder
+ENV PYTHONUNBUFFERED=1
+
+WORKDIR /wheels
+
+RUN apk add --update --no-cache \
+    alpine-sdk \
+    postgresql-dev \
+    gettext \
+    jpeg-dev \
+    zlib-dev
+
+COPY requirements.txt .
+RUN pip wheel -r requirements.txt --disable-pip-version-check
+
+FROM python:${PYTHON_VERSION}
+ENV PYTHONUNBUFFERED=1
+
+RUN apk add --update --no-cache \
+    libpq \
+    postgresql-client
+
+COPY --from=builder /wheels /wheels
+RUN pip install \
+        --no-cache-dir \
+        --disable-pip-version-check \
+        -r /wheels/requirements.txt \
+        -f /wheels \
+    && rm -rf /wheels
+
+WORKDIR /app
+
+COPY . ./
+RUN python manage.py collectstatic --no-input
+
+ENV DJANGO_SETTINGS_MODULE='bbi_ecomm.settings'
+EXPOSE 8000
+
+CMD ["uvicorn", "--host", "0.0.0.0", "bbi_ecomm.asgi:application"]
