@@ -49,13 +49,13 @@ Your DATABASE_ENGINE setting needs to be changed to
 Make migrations and Apply to database
 
     # create migrations files (every new django app)
-    python manage.py makemigrations
-    python manage.py makemigrations tenant
-    python manage.py makemigrations bbi_exchange
-    python manage.py makemigrations product
+    python3 manage.py makemigrations
+    python3 manage.py makemigrations tenant
+    python3 manage.py makemigrations bbi_exchange
+    python3 manage.py makemigrations product
     # Apply migrations
-    python manage.py migrate
-    python manage.py migrate easy_thumbnails
+    python3 manage.py migrate
+    python3 manage.py migrate easy_thumbnails
 
 To set up Lao language, it is required gettext library:
 
@@ -70,16 +70,16 @@ For Mac:
 then, make folder in project directory:
 
 
-    python manage.py makemessages -l la -i venv
-    python manage.py compilemessages -l la
-    python manage.py migrate
+    python3 manage.py makemessages -l la -i venv
+    python3 manage.py compilemessages -l la
+    python3 manage.py migrate
 
 Setup Initial User, Tenant and Admin
         
     # create first user
-    python manage.py createsuperuser
+    python3 manage.py createsuperuser
     # Create the Public Schema
-    python manage.py create_tenant
+    python3 manage.py create_tenant
         # example
         schema name: public
         user: 1

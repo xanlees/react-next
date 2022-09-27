@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-05 02:56+0000\n"
+"POT-Creation-Date: 2022-09-25 16:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,26 +17,26 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: bbi_ecomm/settings.py:223
+#: bbi_ecomm/settings.py:238
 msgid "Lao"
 msgstr ""
 
-#: bbi_ecomm/settings.py:224
+#: bbi_ecomm/settings.py:239
 msgid "English"
 msgstr ""
 
 #: product/models.py:11
-msgid "Title"
+msgid "title"
 msgstr ""
 
 #: product/models.py:12
 msgid "Description"
 msgstr ""
 
-#: product/models.py:21
+#: product/models.py:26
 msgid "Product"
 msgstr ""
 
-#: product/models.py:22
+#: product/models.py:27
 msgid "Products"
 msgstr ""
