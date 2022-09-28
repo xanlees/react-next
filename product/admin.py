@@ -6,10 +6,10 @@ from .models import Product
 
 
 class ProductAdmin(TranslatableAdmin, AdminImageMixin):
-    list_display = ('title', 'description', 'slug', 'price', 'image')
+    list_display = ('title', 'description', 'slug', 'price', 'image', 'audience')
     fieldsets = (
         (None, {
-            'fields': ('title', 'description', 'slug', 'price', 'image'),
+            'fields': ('title', 'description', 'slug', 'price', 'image', 'audience'),
         }),
     )
     def get_prepopulated_fields(self, request, obj=None):

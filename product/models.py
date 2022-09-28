@@ -1,9 +1,19 @@
+from email.policy import default
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import gettext as _
 from djmoney.models.fields import MoneyField
 from parler.models import TranslatableModel, TranslatedFields
 from sorl.thumbnail import ImageField
+from enumchoicefield import ChoiceEnum, EnumChoiceField
+from django_cleanup.signals import cleanup_pre_delete
+from sorl.thumbnail import delete
+
+
+class Audience(ChoiceEnum):
+    Public = "Public"
+    Preview = "Preview"
+    Archive = "Archive"
 
 
 class Product(TranslatableModel):
@@ -18,6 +28,7 @@ class Product(TranslatableModel):
     image = ImageField(verbose_name='Image', upload_to='uploads/', blank=True)
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='product')
+    audience = EnumChoiceField(Audience, default=Audience.Public)
     updated_on = models.DateTimeField(auto_now=True)
     created_on = models.DateTimeField(auto_now_add=True)
 
@@ -28,3 +39,10 @@ class Product(TranslatableModel):
 
     def __str__(self):
         return self.title
+
+
+
+def sorl_delete(**kwargs):
+    delete(kwargs['file'])
+
+cleanup_pre_delete.connect(sorl_delete)

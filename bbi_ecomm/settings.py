@@ -48,7 +48,6 @@ SHARED_APPS = (
     'common',
     'stock',
     
-
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -63,10 +62,11 @@ SHARED_APPS = (
     'djmoney',
     'djmoney.contrib.exchange',
     'sorl.thumbnail',
-    'sorl_thumbnail_serializer'
+    'sorl_thumbnail_serializer',
+
+    'django_cleanup.apps.CleanupConfig',
 
 )
-
 
 TENANT_APPS = [
     'user',
@@ -89,7 +89,9 @@ TENANT_APPS = [
     'djmoney',
     'djmoney.contrib.exchange',
     'sorl.thumbnail',
-    'sorl_thumbnail_serializer'
+    'sorl_thumbnail_serializer',
+
+    'django_cleanup.apps.CleanupConfig',
  
 ]
 
@@ -195,7 +197,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -207,7 +209,6 @@ TENANT_MODEL = "tenant.Tenant"
 TENANT_DOMAIN_MODEL = "tenant.Domain"
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8080",
     "http://localhost:3000",
     "http://localhost:6006",
 ]

@@ -93,3 +93,23 @@ Setup Initial User, Tenant and Admin
         # example
         Enter Tenant Schema ('?' to list schemas):  public
     python manage.py runserver
+
+For Checking before deploy
+    
+    # API/ Unit Test
+    python manage.py test
+        
+    # Deploy checklist
+    python manage.py check --deploy
+
+    # Check Style
+    pip install flake8
+    flake8 martor_demo/ --max-line-length=127
+
+To run by using Docker 
+    
+    # Build Docker images
+    docker build . --network=host
+
+    #R Run Docker container
+    docker run -p 8000:8000 #image_id --network=host
