@@ -37,7 +37,7 @@ Article.defaultProps = {
 };
 
 Login.defaultProps = {
-  url: "http://shop.localhost:8000/api/v1/login/",
+  url: "http://localhost:8000/api/v1/login/",
 };
 
 const getBody = promisify(bodyParser.urlencoded());

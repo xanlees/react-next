@@ -27,6 +27,7 @@
     "@storybook/react": "^6.5.12",
     "eslint": "8.23.0",
     "eslint-config-next": "12.2.5",
+    "nextjs-cors": "^2.1.1",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-preset-env": "^7.8.2",
     "storybook-axios": "^1.0.1",
