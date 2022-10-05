@@ -5,7 +5,7 @@ import { BiTimeFive } from "react-icons/bi";
 const Card = ({ lottery }) => {
   return (
     <>
-      <div className=" w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3 xl:w-1/5 transition ease-in-out hover:scale-110 duration-700 cursor-pointer mb-5 mt-3">
+      <div className="w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3 xl:w-1/3 transitin ease-in-out hover:scale-110 duration-700 cursor-pointer mb-5 mt-3">
         <div className="max-w-sm rounded overflow-hidden shadow-lg bg-gray-100">
           <div className="flex-inline items-center">
             <div className="flex items-center">

@@ -29,17 +29,17 @@ function Sidebar() {
   return (
     <div
       className={`sticky top-0 z-50 transition-all ${
-        scrollY > 15 ? "bg-yellow-400" : "bg-white"
+        scrollY > 15 ? "bg-white-400" : "bg-white"
       } dark:bg-black`}
     >
       <Disclosure as="nav">
-        <Disclosure.Button className="absolute top-4 right-4 inline-flex items-center peer justify-center rounded-md p-2 text-white hover:bg-sky-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white group">
+        <Disclosure.Button className="absolute top-4 right-4 inline-flex items-center peer justify-center rounded-md p-2 md:hidden bg-sky-400 text-white hover:bg-sky-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white group">
           <GiHamburgerMenu
             className="block md:hidden h-6 w-6"
             aria-hidden="true"
           />
         </Disclosure.Button>
-        <Hamburger onClick={() => setOpenNav((val) => !val)} />
+
         <div className="p-6 w-1/2 h-screen  bg-sky-600 z-20 fixed top-0 -left-96 lg:left-0 lg:w-60  peer-focus:left-0 peer:transition ease-out delay-150 duration-200">
           <div className="flex flex-col justify-start item-center">
             <h1 className="text-3xl text-center cursor-pointer font-bold text-white border-b border-gray-100 pb-4 w-full m-2">
