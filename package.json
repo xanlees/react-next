@@ -17,8 +17,7 @@
     "prop-types": "^15.8.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "react-redux": "^7.2.9",
-    "react-registry": "^0.5.0"
+    "react-redux": "^7.2.9"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^6.5.12",
