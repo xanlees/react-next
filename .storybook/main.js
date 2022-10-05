@@ -1,7 +1,7 @@
 module.exports = {
     "stories": [
       // Paths to the story files
-      "../components/**/*.@(js|jsx|mdx)",
+      "../components/**/*.stories.@(js|jsx|mdx)",
       "../layouts/**/*.stories.@(js|jsx|mdx)",
     ],
     "addons": [

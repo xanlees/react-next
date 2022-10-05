@@ -17,6 +17,9 @@ const Home = (props) => {
   }
   return (
     <div>
+      
+      <Article {...props} />
+      <Login method="post" {...props} />
       <div style={{ textAlign: "center" }}>
         <h1>Visible : {visible?"on":"off"}</h1>
         <button onClick={onUpdate}>Toggle</button> &nbsp;
@@ -26,8 +29,6 @@ const Home = (props) => {
         <button type="submit">submit</button>
       </form>
       <p>{props.message}</p>
-      <Article {...props} />
-      <Login method="post" {...props} />
     </div>
   );
 };
