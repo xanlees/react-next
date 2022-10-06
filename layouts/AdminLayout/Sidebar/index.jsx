@@ -51,32 +51,17 @@ function Sidebar() {
               <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-sky-400 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
                 <AiOutlineUser className="text-2xl text-white group-hover:text-white " />
                 <h3 className="text-base text-white group-hover:text-white font-semibold ">
-                  User: ABC123
+                  User: admin
                 </h3>
               </div>
               <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-sky-400 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
                 <FiSettings className="text-2xl text-white group-hover:text-white " />
                 <h3 className="text-base text-white group-hover:text-white font-semibold ">
-                  Status: Active
+                  Type: admin
                 </h3>
               </div>
             </div>
-            <h1 className="text-base text-center font-bold text-white">
-              Account Balance
-            </h1>
-            {/* setting  */}
-            <div className=" my-4 border-b border-gray-100 pb-4">
-              <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-sky-400 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                <h3 className="text-base text-white group-hover:text-white font-semibold ">
-                  Total: 100,000
-                </h3>
-              </div>
-              <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-sky-400 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                <h3 className="text-base text-white group-hover:text-white font-semibold ">
-                  Spent: 100,000
-                </h3>
-              </div>
-            </div>
+           
             
             {/* logout */}
             <div className=" my-4">

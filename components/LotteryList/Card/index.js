@@ -24,17 +24,17 @@ const Card = ({ lottery }) => {
             <div className="text-center w-full">
             <h1 className="text-green-400 text-lg font-bold">Open Now</h1>
             </div>
-            <div class="flex items-center justify-center text-center h-20 bg-sky-400 rounded m-3">
-              <div class="w-1/12">
+            <div className="flex items-center justify-center text-center h-20 bg-sky-400 rounded m-3">
+              <div className="w-1/12">
                 <BsCalendarDay className="mx-auto" />
               </div>
-              <div class="w-1/2">
+              <div className="w-1/2">
                 <h3>Date: {lottery?.open_date}</h3>
               </div>
-              <div class="item w-1/12">
+              <div className="item w-1/12">
                 <BiTimeFive className="mr-2" />
               </div>
-              <div class="item w-1/2">
+              <div className="item w-1/2">
                 <h3 className="text-left">
                   Close on:{" "}
                   <span className="text-red-600">{lottery?.closing_time}</span>
