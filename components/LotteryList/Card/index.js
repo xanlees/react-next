@@ -22,7 +22,7 @@ const Card = ({ lottery }) => {
               </div>
             </div>
             <div className="text-center w-full">
-            <h1 className="text-green-400 text-lg font-bold">Open Now</h1>
+            <h1 className="text-red-500 text-lg font-bold">Closed Now</h1>
             </div>
             <div className="flex items-center justify-center text-center h-20 bg-sky-400 rounded m-3">
               <div className="w-1/12">

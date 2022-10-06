@@ -7,6 +7,16 @@ import { MdOutlineLogout } from "react-icons/md";
 import { FiSettings } from "react-icons/fi";
 import { AiOutlineUser } from "react-icons/ai";
 
+const sidebar = [
+  { page: "Lottery List", href: "/", order: 0 },
+  { page: "Loss Predition", href: "/", order: 1 },
+  { page: "Sale Summary", href: "/", order: 2 },
+  { page: "Accounting", href: "/", order: 3 },
+  { page: "Agent Payment", href: "/", order: 4 },
+  { page: "Customer", href: "/", order: 5 },
+  { page: "How to Play", href: "/", order: 6 },
+];
+
 function Sidebar() {
   const [scrollY, setScrollY] = useState(0);
 
@@ -44,25 +54,38 @@ function Sidebar() {
             <h1 className="text-3xl text-center cursor-pointer font-bold text-white border-b border-gray-100 pb-4 w-full m-2">
               Luad Game
             </h1>
-            <h1 className="text-base text-center font-bold text-white ">
-              User Info
-            </h1>
-            <div className=" my-4 border-b border-gray-100 pb-4">
+            <div className=" my-4 border-bpb-4 bg-gray-400 rounded-lg">
               <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-sky-400 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
                 <AiOutlineUser className="text-2xl text-white group-hover:text-white " />
-                <h3 className="text-base text-white group-hover:text-white font-semibold ">
-                  User: admin
+                <h3 className="text-white group-hover:text-white font-semibold ">
+                  User: Owner
                 </h3>
               </div>
               <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-sky-400 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
                 <FiSettings className="text-2xl text-white group-hover:text-white " />
                 <h3 className="text-base text-white group-hover:text-white font-semibold ">
-                  Type: admin
+                  Type: Admin
                 </h3>
               </div>
             </div>
-           
-            
+            <div className=" my-4 border-b border-gray-100 pb-4">
+              <h1 className="text-base text-center font-bold text-white">
+                Menu
+              </h1>
+            </div>
+
+            {sidebar.map((item) => {
+              return (
+                <>
+                  <div className="mx-0 flex mb-2 justify-start gap-4 pl-5 hover:bg-sky-400 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
+                    <h3 className=" text-white group-hover:text-white font-semibold">
+                      <Link href={item.href}>{item.page}</Link>
+                    </h3>
+                  </div>
+                </>
+              );
+            })}
+
             {/* logout */}
             <div className=" my-4">
               <div className="flex mb-2 justify-start items-center gap-4 pl-5 border border-gray-200  hover:bg-sky-400 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
