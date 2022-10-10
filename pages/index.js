@@ -1,53 +1,32 @@
-import Article from "../components/Article";
-import getAPI from "../components/Article/util";
 import Login from "../components/Login";
-import {useSelector, useDispatch} from "react-redux";
-import { toggleChangeAction } from "../redux/reducer";
-
-
-import bodyParser from "body-parser";
-import { promisify } from "util";
+import { Image } from "@vechaiui/react";
 
 const Home = (props) => {
-  const visible = useSelector((state) => state.app.client.toggleForm)
-  const dispatch = useDispatch()
-
-  const onUpdate = () =>{
-    dispatch(toggleChangeAction())
-  }
   return (
-    <div>
-      <div style={{ textAlign: "center" }}>
-        <h1>Visible : {visible?"on":"off"}</h1>
-        <button onClick={onUpdate}>Toggle</button> &nbsp;
+    <>
+      <div className="item  flex-inline items-center">
+        <div>
+          <Image
+            alt="bruce wayne"
+            htmlWidth={100}
+            htmlHeight={50}
+            className="object-cover mx-auto mt-20"
+            src="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/grins-and-giggles_grins-and-giggles-huruf-blue-foil-l-balon_full02.jpg"
+          />
+        </div>
+
+        <div className="item  h-20 w-1/2 mx-auto mb-7">
+          <h1 className="text-center text-6xl font-bold text-sky-400">
+            {" "}
+           Luad Game
+          </h1>
+        </div>
+        <div className="item ">
+          <Login url="/customer" is_redirect="true" method="post" {...props} />
+        </div>
       </div>
-      <form method="post" herf="http://shop.localhost:8000/api/v1/login/">
-        <input name="name" defaultValue={props.name} />
-        <button type="submit">submit</button>
-      </form>
-      <p>{props.message}</p>
-      <Article {...props} />
-      <Login method="post" {...props} />
-    </div>
+    </>
   );
 };
 
-Article.defaultProps = {
-  showImage: true,
-};
-
-Login.defaultProps = {
-  url: "http://localhost:8000/api/v1/login/",
-};
-
-const getBody = promisify(bodyParser.urlencoded());
-
-export async function getServerSideProps(context) {
-  const { params, req, res } = context;
-  if (req.method === "POST") {
-    await getBody(req, res);
-    // call POST API here
-  }
-  return getAPI();
-}
 export default Home;

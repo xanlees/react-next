@@ -2,12 +2,13 @@ import React from "react";
 import { useRef } from 'react';
 import postAPI from "./util";
 
-export default function index({ url, method}) {
+export default function index({ url, method, is_redirect}) {
   const form = useRef(null);
+  let redirect = is_redirect ? is_redirect: false
 
   const execRequest = (e) => {
-    
-    e.preventDefault();
+    if (!redirect)
+      e.preventDefault();
     const formData = new FormData(form.current);
     const result = postAPI(method, url, formData);
   };
@@ -86,7 +87,7 @@ export default function index({ url, method}) {
           </div>
           <button
             type="submit"
-            className="w-full text-black bg-yellow-500 hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-yellow-500 dark:hover:bg-yellow-600 dark:focus:ring-yellow-800"
+            className="w-full text-black bg-sky-400 hover:bg-sky-600 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-yellow-500 dark:hover:bg-yellow-600 dark:focus:ring-yellow-800"
           >
             Sign in
           </button>

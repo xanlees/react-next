@@ -1,10 +1,15 @@
 import React from "react";
 import { useState } from "react";
+<<<<<<< HEAD
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import { useRef } from "react";
 
 const status = [{ name: "Active" }, { name: "Block" }];
+=======
+import { useRef } from "react";
+
+>>>>>>> main
 export default function index(url, method) {
   const form = useRef(null);
   const execRequest = (e) => {
@@ -17,15 +22,22 @@ export default function index(url, method) {
     console.log(result);
   };
 
+<<<<<<< HEAD
   const [selected, setSelected] = useState(status[0]);
+=======
+>>>>>>> main
 
   return (
     <div>
       <>
         <div className="text-center mt-24">
+<<<<<<< HEAD
           <h2 className="text-4xl font-sans font-semibold">
             Editagent
           </h2>
+=======
+          <h2 className="text-4xl font-sans font-semibold">Editagent</h2>
+>>>>>>> main
         </div>
         <form
           action={url}
@@ -37,7 +49,10 @@ export default function index(url, method) {
           <div className=" py-7">
             <div className="mx-auto w-full bg-gray-100 rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
               <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+<<<<<<< HEAD
       
+=======
+>>>>>>> main
                 <div className="py-1">
                   <label
                     htmlFor="password"
@@ -100,6 +115,7 @@ export default function index(url, method) {
 
                   <div className="py-3">
                     <label
+<<<<<<< HEAD
                       htmlFor="password"
                       className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
@@ -164,6 +180,24 @@ export default function index(url, method) {
                       </Transition>
                     </div>
                   </Listbox>
+=======
+                      htmlFor="is_active"
+                      className="block text-sm font-medium text-gray-700 dark:text-white"
+                    >
+                      Status
+                    </label>
+                    <div className="py-2">
+                      <select
+                        id="is_active"
+                        name="is_active"
+                        className=" rounded-lg hover:border-sky-500 "
+                      >
+                        <option value={true}>Active</option>
+                        <option value={false}>Inactive</option>
+                      </select>
+                    </div>
+                  </div>
+>>>>>>> main
 
                   <div className="py-2 relative translate-x-60">
                     <button
