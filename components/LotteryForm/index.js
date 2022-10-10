@@ -108,7 +108,6 @@ const index = () => {
       closing_date: dateClose,
       user: 1,
     };
-
   };
 
   return (
