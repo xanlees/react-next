@@ -20,11 +20,7 @@ const Listagent = ({ listagent }) => {
                 </div>
                 <div className="relative translate-x-full translate-y-1 w-full max-w-full flex-grow flex-1 text-right">
                   <button
-<<<<<<< HEAD
-                    className="bg-blue-500 text-white active:bg-blue-600 font-bold px-7 py-1 rounded outline-none focus:outline-none transition-all duration-150"
-=======
                     className="bg-sky-500 text-white active:bg-blue-600 font-bold px-7 py-1 rounded outline-none focus:outline-none transition-all duration-150"
->>>>>>> main
                     type="button"
                   >
                     Add
@@ -79,15 +75,9 @@ const Listagent = ({ listagent }) => {
                   {results.map((item) => {
                     return (
                       <Listagentrow
-<<<<<<< HEAD
-                        agent={item.agent}
-                        agentStatus={item.status}
-                        commision={item.commision}
-=======
                         username={item.username}
                         is_active={item.is_active ? "Active" : "Inactive"}
                         commission={item.commission[0].commission}
->>>>>>> main
                       />
                     );
                   })}

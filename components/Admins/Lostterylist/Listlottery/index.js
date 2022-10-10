@@ -86,10 +86,7 @@ const Listlottery = ({ listlottery }) => {
                       return (
                         <Listlotteryrow
                           name={item.name}
-<<<<<<< HEAD
-=======
                           code={item.code}
->>>>>>> main
                           opendate={item.open_date}
                           closingdate={item.closing_date}
                         />
