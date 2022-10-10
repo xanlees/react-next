@@ -38,7 +38,7 @@ const Card = ({ lottery }) => {
               </div>
               <div className="item w-1/2">
                 <h3 className="text-left">
-                  Close on:{" "}
+                  Close on:
                   <span className="text-red-600">{lottery?.closing_time}</span>
                 </h3>
               </div>
