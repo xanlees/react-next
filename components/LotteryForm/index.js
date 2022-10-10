@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { toast } from "react-toastify";
 
 const Monday = {
   tuesday: false,
@@ -66,6 +64,31 @@ const index = () => {
     setAddTime(values);
   };
 
+  const handleAddPlayers = () => {
+    const values = [...allPlayers];
+    values.push({
+      name: "",
+      description: "",
+      price: null,
+      rating: null
+    });
+    setAllPlayers(values);
+  };
+
+  const handleRemovePlayers = (index) => {
+    const values = [...allPlayers];
+    values.splice(index, 1);
+    setAllPlayers(values);
+  };
+
+  const handleInputChange = (index, event) => {
+    const values = [...allPlayers];
+    const updatedValue = event.target.name;
+    values[index][updatedValue] = event.target.value;
+
+    setAllPlayers(values);
+  };
+
   useEffect(() => {
     document.getElementById("monday").classList.toggle("hidden");
   }, [monday]);
@@ -110,31 +133,17 @@ const index = () => {
       closing_date: dateClose,
       user: 1,
     };
-
-    try {
-      const { data } = await axios({
-        method: "post",
-        url: "http://localhost:8000/api/v1/lottery",
-        data: sentdata,
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-      toast.success("Success");
-      console.log("upload ", data);
-    } catch (error) {
-      console.log("request error ", error);
-      toast.error("This name is already taken");
-    }
   };
 
   return (
     <>
       <form onSubmit={handleSubmit}>
         {/* Set language */}
-        <div className="max-w-lg  bg-gray-100  shadow-2xl rounded-lg mx-auto text-center py-12 mt-4 ">
+        <div className="max-w-lg  bg-gray-100  shadow-2xl rounded-lg mx-auto text-center py-2 ">
           <h1 className="text-gray-900 text-center font-extrabold text-3xl">
             Language
           </h1>
-          <div className="container py-5 max-w-md mx-auto flex flex-col-2 justify-center">
+          <div className="container py-2 max-w-md mx-auto flex flex-col-2 justify-center">
             <div className="bg-gray-200 text-lg  p-1 rounded-md">
               <input
                 id="en"
@@ -209,36 +218,6 @@ const index = () => {
                   className="border border-gray-300 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 bg-sky-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500"
                 />
               </div>
-              {/* <div>
-                <label
-                  htmlFor="time_open"
-                  className="block mb-2 text-sm font-medium dark:text-gray-900 text-left"
-                >
-                  Set time to open
-                </label>
-                <input
-                  type="datetime-local"
-                  id="time_open"
-                  className="border border-gray-300 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 bg-sky-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500"
-                  required
-                  onChange={(e) => handleChangeDateOpen(e)}
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="phone"
-                  className="block mb-2 text-sm font-medium dark:text-gray-900 text-left"
-                >
-                  Set time to close
-                </label>
-                <input
-                  type="datetime-local"
-                  id="phone"
-                  className="border border-gray-300 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 bg-sky-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500"
-                  required
-                  onChange={(e) => handleChangeDateClose(e)}
-                />
-              </div> */}
             </div>
             <div className="mb-6">
               <label
@@ -393,41 +372,68 @@ const index = () => {
             <h1 className="text-gray-900 text-center font-extrabold mt-3 text-3xl mb-5">
               Tuesday
             </h1>
-            <div className="grid gap-6 mb-6 lg:grid-cols-2">
-              <div>
-                <label
-                  htmlFor="time_open"
-                  className="block mb-2 text-sm font-medium dark:text-gray-900 text-left"
+            <div className="grid gap-6 mb-6 lg:grid-cols-3">
+              {addTime.length > 0 && (
+                <>
+                  {addTime.map((index) => (
+                    <>
+                      {/* <div className="bg-red-600"></div> */}
+                      <div>
+                        <label
+                          htmlFor="time_open"
+                          className="block mb-2 text-sm font-medium dark:text-gray-900 text-left"
+                        >
+                          Set time to open
+                        </label>
+                        <input
+                          type="datetime-local"
+                          id="time_open"
+                          className="border border-gray-300 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 bg-sky-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500"
+                          required
+                          onChange={(e) => handleChangeDateOpen(e)}
+                        />
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="phone"
+                          className="block mb-2 text-sm font-medium dark:text-gray-900 text-left"
+                        >
+                          Set time to close
+                        </label>
+                        <input
+                          type="datetime-local"
+                          id="phone"
+                          className="border border-gray-300 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 bg-sky-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500"
+                          required
+                          onChange={(e) => handleChangeDateClose(e)}
+                        />
+                      </div>
+                      <div className="flex items-center justify-between mt-5">
+                        <button
+                          className="bg-red-500 hover:bg-red-700 hover:text-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                          type="button"
+                          onClick={() => handleRemoveTime(index)}
+                        >
+                          delete
+                        </button>
+                      </div>
+                    </>
+                  ))}
+                </>
+              )}
+              <div className="flex  items-end mt-5">
+                <button
+                  className="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                  type="button"
+                  onClick={() => handleAddTimes()}
                 >
-                  Set time to open
-                </label>
-                <input
-                  type="datetime-local"
-                  id="time_open"
-                  className="border border-gray-300 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 bg-sky-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500"
-                  required
-                  onChange={(e) => handleChangeDateOpen(e)}
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="phone"
-                  className="block mb-2 text-sm font-medium dark:text-gray-900 text-left"
-                >
-                  Set time to close
-                </label>
-                <input
-                  type="datetime-local"
-                  id="phone"
-                  className="border border-gray-300 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 bg-sky-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500"
-                  required
-                  onChange={(e) => handleChangeDateClose(e)}
-                />
+                  + Add Time
+                </button>
               </div>
             </div>
           </div>
         </div>
-        {/* wednesday */}
+        ;{/* wednesday */}
         <div
           className="max-w-lg  bg-gray-100 shadow-2xl rounded-lg m-auto text-center py-12 mt-4 "
           id="wednesday"

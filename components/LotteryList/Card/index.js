@@ -13,7 +13,9 @@ const Card = ({ lottery }) => {
                 <img className="h-9 w-16" src={lottery?.image} alt="lao" />
               </div>
               <div className="text-center w-full bg-white h- rounded-lg m-3">
-                <p className="py-4 text-20 text-3xl font-bold">{lottery?.name}</p>
+                <p className="py-4 text-20 text-3xl font-bold">
+                  {lottery?.name}
+                </p>
               </div>
             </div>
             <div>
@@ -22,11 +24,11 @@ const Card = ({ lottery }) => {
               </div>
             </div>
             <div className="text-center w-full">
-            <h1 className="text-red-500 text-lg font-bold">Closed Now</h1>
+              <h1 className="text-red-500 text-lg font-bold">Closed Now</h1>
             </div>
             <div className="flex items-center justify-center text-center h-20 bg-sky-400 rounded m-3">
               <div className="w-1/12">
-                <BsCalendarDay className="mx-auto" />
+                <BsCalendarDay className="mx-auto ml-5" />
               </div>
               <div className="w-1/2">
                 <h3>Date: {lottery?.open_date}</h3>
@@ -36,7 +38,7 @@ const Card = ({ lottery }) => {
               </div>
               <div className="item w-1/2">
                 <h3 className="text-left">
-                  Close on:{" "}
+                  Close on:
                   <span className="text-red-600">{lottery?.closing_time}</span>
                 </h3>
               </div>
