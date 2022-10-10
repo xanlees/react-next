@@ -1,9 +1,7 @@
 // import LotteryForm from "."
 
 
-// export const LotteryFormStory = (args) => (
-//     <LotteryForm method="post" {...args} />
-//   );
+// export const Story = (args) => <LotteryForm { ...args }/>;
 
 
 // export default {
@@ -12,5 +10,3 @@
 //   argTypes:  {
 //   }
 // }
-
-
