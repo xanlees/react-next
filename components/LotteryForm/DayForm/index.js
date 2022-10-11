@@ -1,6 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+const Monday = {
+  monday: true,
+};
 
 export default function index() {
+  const [monday, setMonday] = useState(Monday);
+
+  useEffect(() => {
+    document.getElementById("monday").classList.toggle("hidden");
+  }, [monday]);
+
   const [addTime, setAddTime] = useState([{ open_date: "", closing_date: "" }]);
 
   const handleAddTimes = () => {
@@ -20,13 +29,94 @@ export default function index() {
     const updatedValue = event.target.name;
     values[index][updatedValue] = event.target.value;
     setAddTime(values);
+    console.log(addTime, values);
   };
 
   return (
     <>
+      <div className="max-w-lg  bg-gray-100 shadow-2xl rounded-lg m-auto text-center py-12 mt-4 ">
+        <div className="mx-5">
+          <h1 className="text-gray-900 text-center font-extrabold mt-3 text-3xl mb-5">
+            Days
+          </h1>
+          <div className="grid grid-cols-6 gap-1 mr-10">
+            <input
+              type="checkbox"
+              className="text-1xl ml-10"
+              onChange={() => {
+                setMonday(!monday);
+              }}
+            />
+            <label htmlFor="" className="text-start">
+              Monday
+            </label>
+            <input
+              type="checkbox"
+              className="text-1xl ml-10"
+              onChange={() => {
+                setTuesday(!tuesday);
+              }}
+            />
+            <label htmlFor="" className="text-start">
+              Tuesday
+            </label>
+            <input
+              type="checkbox"
+              className="text-1xl ml-10"
+              onChange={() => {
+                setWednesday(!wednesday);
+              }}
+            />
+            <label htmlFor="" className="text-start">
+              Wednesday
+            </label>
+            <input
+              type="checkbox"
+              className="text-1xl ml-10"
+              onChange={() => {
+                setThursday(!thursday);
+              }}
+            />
+            <label htmlFor="" className="text-start">
+              Thursday
+            </label>
+            <input
+              type="checkbox"
+              className="text-1xl ml-10"
+              onChange={() => {
+                setFriday(!friday);
+              }}
+            />
+            <label htmlFor="" className="text-start">
+              Friday
+            </label>
+            <input
+              type="checkbox"
+              className="text-1xl ml-10"
+              onChange={() => {
+                setSaturday(!saturday);
+              }}
+            />
+            <label htmlFor="" className="text-start">
+              Saturday
+            </label>
+            <input
+              type="checkbox"
+              className="text-1xl ml-10 bg-sky"
+              onChange={() => {
+                setSunday(!sunday);
+              }}
+            />
+            <label htmlFor="" className="text-start">
+              Sunday
+            </label>
+          </div>
+        </div>
+      </div>
+
       <div
         className="max-w-lg  bg-gray-100 shadow-2xl rounded-lg m-auto text-center py-12 mt-4 "
-        id="tuesday"
+        id="monday"
       >
         <div className="mx-5">
           <h1 className="text-gray-900 text-center font-extrabold mt-3 text-3xl mb-5">
@@ -37,7 +127,6 @@ export default function index() {
               <>
                 {addTime.map((index) => (
                   <>
-                    {/* <div className="bg-red-600"></div> */}
                     <div>
                       <label
                         htmlFor="open_date"
