@@ -1,20 +1,25 @@
 import React, { useState, useEffect } from "react";
+
 const Monday = {
-  monday: true,
+  monday: false,
 };
 
 export default function index() {
   const [monday, setMonday] = useState(Monday);
+  console.log(monday);
 
   useEffect(() => {
     document.getElementById("monday").classList.toggle("hidden");
   }, [monday]);
 
-  const [addTime, setAddTime] = useState([{ open_date: "", closing_date: "" }]);
+  const [addTime, setAddTime] = useState([{ open: "", close: "" }]);
 
   const handleAddTimes = () => {
     const values = [...addTime];
-    values.push({ open_date: "", closing_date: "" });
+    values.push({
+      open: "",
+      close: "",
+    });
     setAddTime(values);
   };
 
@@ -28,8 +33,8 @@ export default function index() {
     const values = [...addTime];
     const updatedValue = event.target.name;
     values[index][updatedValue] = event.target.value;
+
     setAddTime(values);
-    console.log(addTime, values);
   };
 
   return (
@@ -122,41 +127,33 @@ export default function index() {
           <h1 className="text-gray-900 text-center font-extrabold mt-3 text-3xl mb-5">
             Monday
           </h1>
-          <div className="grid gap-6 mb-6 lg:grid-cols-3">
+          <div className="grid gap-6 mb-6 lg:grid-cols-3 ml-10">
             {addTime.length > 0 && (
               <>
-                {addTime.map((index) => (
+                {addTime.map((index, field) => (
                   <>
                     <div>
-                      <label
-                        htmlFor="open_date"
-                        className="block mb-2 text-sm font-medium dark:text-gray-900 text-left"
-                      >
+                      <label className="block mb-2 text-sm font-medium dark:text-gray-900 text-left">
                         Set time to open
                       </label>
                       <input
                         type="datetime-local"
-                        id="open_date"
-                        name="open_date"
+                        name="name"
+                        value={field.name}
+                        onChange={(event) => handleInputTime(index, event)}
                         className="border border-gray-300 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 bg-sky-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500"
-                        required
-                        onChange={(e) => handleInputTime(e)}
                       />
                     </div>
                     <div>
-                      <label
-                        htmlFor="closing_date"
-                        className="block mb-2 text-sm font-medium dark:text-gray-900 text-left"
-                      >
+                      <label className="block mb-2 text-sm font-medium dark:text-gray-900 text-left">
                         Set time to close
                       </label>
                       <input
                         type="datetime-local"
-                        name="closing_date"
-                        id="closing_date"
+                        name="description"
+                        value={field.description}
                         className="border border-gray-300 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 bg-sky-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500"
-                        required
-                        onChange={(e) => handleInputTime(e)}
+                        onChange={(event) => handleInputTime(index, event)}
                       />
                     </div>
                     <div className="flex items-center justify-between mt-7">
