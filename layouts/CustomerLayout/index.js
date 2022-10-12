@@ -5,12 +5,12 @@ import Navbar from "./Navbar";
 export default function index({ children }) {
   return (
     <>
-      <div class="min-h-screen flex">
-        <div class="w-56 flex-none">
+      <div className="min-h-screen flex">
+        <div className="w-56 flex-none">
           <Sidebar />
         </div>
 
-        <main class="flex-1 min-w-0 overflow-auto">
+        <main className="flex-1 min-w-0 overflow-auto">
           <Navbar />
           {children}
         </main>
