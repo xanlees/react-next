@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import axios from "axios";
+import postAPI from "./util";
+// import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const index = () => {
+const index = ({ url, method }) => {
   const [active, setActive] = useState(0);
   const [language, setLanguage] = useState("en");
   const [image, setImage] = useState("");
-  const [codeName, setCodeName] = useState({ code: "" });
+  const [code, setCode] = useState("");
   const [group, setGroup] = useState({
     name: "",
   });
@@ -15,10 +17,6 @@ const index = () => {
   };
   const handleChangeLanguage = (e) => {
     setLanguage(e.target.value);
-  };
-  console.log(language);
-  const handleCodeName = (e) => {
-    setCodeName({ ...codeName, [e.target.name]: e.target.value });
   };
 
   const onFileChange = (e) => setImage(e.target.files[0]);
@@ -40,27 +38,20 @@ const index = () => {
 
     const sentdata = {
       translations,
-      image: image,
-      open_date: "",
+      image,
+      code,
       user: 1,
     };
 
-    try {
-      const { data } = await axios({
-        method: "post",
-        url: "http://localhost:8000/api/v1/lotteries",
-        data: sentdata,
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-      console.log("upload ", data);
-    } catch (error) {
-      console.log("request error ", error);
-    }
+    const result = await postAPI(method, url, sentdata);
+    console.log(result);
+    // toast.success(result.status.code);
+    return result.status.code;
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} method="post" encType="multipart/form-data">
         {/* Set language */}
         <div className="max-w-lg  bg-gray-100  shadow-2xl mx-auto text-center">
           <h1 className="text-gray-900">Language</h1>
@@ -140,7 +131,7 @@ const index = () => {
                   id="code_name"
                   name="code"
                   className="border border-gray-300 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 bg-sky-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500"
-                  onChange={(e) => handleCodeName(e)}
+                  onChange={(e) => setCode(e.target.value)}
                 />
               </div>
             </div>
@@ -171,6 +162,7 @@ const index = () => {
           </button>
         </div>
       </form>
+      {/* <ToastContainer /> */}
     </>
   );
 };

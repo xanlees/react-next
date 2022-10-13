@@ -11,7 +11,6 @@ const UI = () => {
     address: "",
     phoneNumber: "",
   });
-  console.log(contacts);
   const [editFormData, setEditFormData] = useState({
     fullName: "",
     address: "",
@@ -109,50 +108,67 @@ const UI = () => {
     <div className="app-container">
       <h2>Add a number</h2>
       <form onSubmit={handleAddFormSubmit}>
-        <label htmlFor="">Number</label>
+        <label htmlFor="" className="mx-3">
+          ເລກ
+        </label>
         <input
-          type="text"
+          className="rounded-lg w-32"
+          type="Number"
           name="fullName"
           required="required"
-          placeholder="Number"
+          placeholder="ເລກ"
           onChange={handleAddFormChange}
+          min="1"
+          max="5"
         />
-        <label htmlFor="">Number</label>
+        <label htmlFor="" className="mx-3">
+          ບົນ
+        </label>
 
         <input
+          className="rounded-lg w-32"
           type="text"
           name="address"
           required="required"
-          placeholder="Number"
+          placeholder="ຈໍໍານວນເງິນ"
           onChange={handleAddFormChange}
         />
-        <label htmlFor="">Number</label>
+        <label htmlFor="" className="mx-3">
+          ລ່າງ
+        </label>
 
         <input
+          className="rounded-lg w-32"
           type="text"
           name="phoneNumber"
           required="required"
-          placeholder="Number"
+          placeholder="ຈໍໍານວນເງິນ"
           onChange={handleAddFormChange}
         />
-        <button type="submit">Add</button>
+        <div>{addFormData.fullName}</div>
+        <div className="mt-4">
+          <button
+            type="submit"
+            className="border p-2 bg-sky-600 text-white rounded-lg mr-2"
+          >
+            ເພີ່ມ
+          </button>
+          <button
+            type="submit"
+            className="border p-2 bg-sky-600 text-white rounded-lg w-20"
+          >
+            ຊື່
+          </button>
+        </div>
       </form>
       <form onSubmit={handleEditFormSubmit}>
         <table className="mt-5">
           <thead>
             <tr>
-              <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
-                Number
-              </th>
-              <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
-                Top
-              </th>
-              <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
-                Bottom
-              </th>
-              <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
-                Actions
-              </th>
+              <th className="p-3 bg-sky-400 text-white border-l-2">ເລກ</th>
+              <th className="p-3 bg-sky-400 text-white border-l-2">ບົນ</th>
+              <th className="p-3 bg-sky-400 text-white border-l-2">ລ່າງ</th>
+              <th className="p-3 bg-sky-400 text-white border-l-2">ແກ້ໄຂ</th>
             </tr>
           </thead>
           <tbody>
