@@ -1,12 +1,9 @@
-import DayForm from "."
+import DayForm from ".";
 
-
-export const Story = (args) => <DayForm { ...args }/>;
-
+export const Story = (args) => <DayForm {...args} />;
 
 export default {
-  title: 'LotteryForm/elements/DayForm',
+  title: "LotteryForm/elements/DayForm",
   component: DayForm,
-  argTypes:  {
-  }
-}
+  argTypes: {},
+};
