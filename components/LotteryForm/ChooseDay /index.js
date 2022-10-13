@@ -188,6 +188,7 @@ const index = () => {
 
   const [monday, setMonday] = useState(Monday);
   const [tuesday, setTuesday] = useState(Tuesday);
+  console.log(tuesday);
   const [wednesday, setWednesday] = useState(Wednesday);
   const [thursday, setThursday] = useState(Thursday);
   const [friday, setFriday] = useState(Friday);
