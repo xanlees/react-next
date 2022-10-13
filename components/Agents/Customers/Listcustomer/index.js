@@ -1,6 +1,5 @@
 import React from "react";
 import Listcustomerrow from "./Listcustomerrow";
-import { useRouter } from "next/router";
 
 const Listcustomer = ({ listcustomer }) => {
   if (!listcustomer) return "ຊອກຫາຂໍ້ມູນບໍ່ເຫັນ!";
@@ -8,7 +7,6 @@ const Listcustomer = ({ listcustomer }) => {
   const { results } = listcustomer;
   console.log(results);
 
-  
   return (
     <>
       <section className="py-1 bg-blueGray-50">
@@ -22,17 +20,8 @@ const Listcustomer = ({ listcustomer }) => {
                   </h3>
                 </div>
 
-                {/* <div className="relative translate-x-full translate-y-1 w-full max-w-full flex-grow flex-1 text-right">
-                <input
-                  type="datetime-local"
-                  id="time_open"
-                  className="border border-gray-300 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 bg-sky-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500"
-                  required
-                />
-                </div> */}
-
                 <div className="relative translate-x-full translate-y-1 w-full max-w-full flex-grow flex-1 text-right">
-                  <button
+                <button
                     className="bg-sky-500 hover:bg-sky-700 hover:text-gray-500 hover:border-blue text-white active:bg-blue-600 font-bold px-7 py-1 rounded outline-none focus:outline-none transition-all duration-150"
                     type="button"
                   >
