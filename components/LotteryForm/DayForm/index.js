@@ -24,7 +24,6 @@ const Sunday = {
 
 export default function index() {
   const [monday, setMonday] = useState(Monday);
-  console.log(monday);
   const [tuesday, setTuesday] = useState(Tuesday);
   const [wednesday, setWednesday] = useState(Wednesday);
   const [thursday, setThursday] = useState(Thursday);
