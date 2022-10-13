@@ -1,16 +1,11 @@
-import LotteryForm from "."
+import LotteryForm from ".";
 
+export const LotteryFormStory = (args) => (
+  <LotteryForm method="post" {...args} />
+);
 
-// export const LotteryFormStory = (args) => (
-//     <LotteryForm method="post" {...args} />
-//   );
-
-
-// export default {
-//   title: 'LotteryForm/components/LotteryForm',
-//   component: LotteryForm,
-//   argTypes:  {
-//   }
-// }
-
-
+export default {
+  title: "LotteryForm/components/LotteryForm",
+  component: LotteryForm,
+  argTypes: {},
+};
