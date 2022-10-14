@@ -115,11 +115,8 @@ const UI = () => {
           className="rounded-lg w-32"
           type="Number"
           name="fullName"
-          required="required"
           placeholder="ເລກ"
           onChange={handleAddFormChange}
-          min="1"
-          max="5"
         />
         <label htmlFor="" className="mx-3">
           ບົນ
@@ -129,7 +126,6 @@ const UI = () => {
           className="rounded-lg w-32"
           type="text"
           name="address"
-          required="required"
           placeholder="ຈໍໍານວນເງິນ"
           onChange={handleAddFormChange}
         />
@@ -141,7 +137,6 @@ const UI = () => {
           className="rounded-lg w-32"
           type="text"
           name="phoneNumber"
-          required="required"
           placeholder="ຈໍໍານວນເງິນ"
           onChange={handleAddFormChange}
         />

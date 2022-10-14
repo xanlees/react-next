@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import postAPI from "./util";
 // import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import "react-toastify/dist/ReactToastify.css";
 
 const index = ({ url, method }) => {
   const [active, setActive] = useState(0);
@@ -42,11 +42,22 @@ const index = ({ url, method }) => {
       code,
       user: 1,
     };
-
     const result = await postAPI(method, url, sentdata);
-    console.log(result);
-    // toast.success(result.status.code);
-    return result.status.code;
+
+    // try {
+    //   if (group === "") {
+    //     toast.error("Enter the name of lottery");
+    //   } else if (code === "") {
+    //     toast.error("Enter the code of lottery");
+    //   } else if (image === "") {
+    //     toast.error("Select an image");
+    //   } else {
+    //     await postAPI(method, url, sentdata);
+    //     toast.success("recorded");
+    //   }
+    // } catch (error) {
+    //   toast.error("fail");
+    // }
   };
 
   return (
@@ -146,7 +157,6 @@ const index = ({ url, method }) => {
                 type="file"
                 id="password"
                 className="border border-gray-300 text-sm rounded-lg focus:ring-sky-400 focus:border-sky-100 block w-full p-2.5 bg-sky-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-400 dark:focus:border-sky-400"
-                required
                 onChange={onFileChange}
               />
             </div>
