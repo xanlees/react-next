@@ -1,7 +1,7 @@
 // Import the global style enabling tailwind classes
-import '../styles/globals.css'
-import { getAxios } from '../utils/get-axios'
-import withAxiosDecorator from 'storybook-axios';
+import "../styles/globals.css";
+import { getAxios } from "../utils/get-axios";
+import withAxiosDecorator from "storybook-axios";
 import * as NextImage from "next/image";
 
 const OriginalNextImage = NextImage.default;
@@ -17,10 +17,8 @@ Object.defineProperty(NextImage, "default", {
   ),
 });
 
-
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
-}
-
+};
 
 export const decorators = [withAxiosDecorator(getAxios())];
