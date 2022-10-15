@@ -4,6 +4,7 @@ import { Image } from "@vechaiui/react";
 const Home = (props) => {
   return (
     <>
+    
       <div className="item  flex-inline items-center">
         <div>
           <Image
@@ -18,7 +19,7 @@ const Home = (props) => {
         <div className="item  h-20 w-1/2 mx-auto mb-7">
           <h1 className="text-center text-6xl font-bold text-sky-400">
             {" "}
-           Luad Game
+            Luad Game
           </h1>
         </div>
         <div className="item ">

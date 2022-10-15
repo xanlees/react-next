@@ -1,37 +1,64 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+
+const Monday = {
+  monday: false,
+};
+
 const index = () => {
-  const [userinfo, setUserInfo] = useState({
-    day: [],
-  });
-  const handleChange = (e) => {
-    const { value, checked } = e.target;
-    const { day } = userinfo;
+  const [lottery, setLottery] = useState(23);
+  const [addTimeMonday, setAddTimeMonday] = useState([
+    {
+      open_date: "",
+      closing_date: "",
+    },
+  ]);
 
-    if (checked) {
-      setUserInfo({
-        day: [...day, value],
-      });
-    } else {
-      setUserInfo({
-        day: day.filter((e) => e !== value),
-      });
-    }
+  const handleAddTimes = () => {
+    const values = [...addTimeMonday];
+    values.push({
+      open_date: "",
+      closing_date: "",
+    });
+    setAddTimeMonday(values);
   };
-  const val = userinfo.day;
-  console.log("val", val);
+  console.log(addTimeMonday);
+  const handleRemoveTime = (index) => {
+    const values = [...addTimeMonday];
+    values.splice(index, 1);
+    setAddTimeMonday(values);
+  };
+  const handleInputTime = (index, event) => {
+    const values = [...addTimeMonday];
+    const updatedValue = event.target.name;
+    values[index][updatedValue] = event.target.value;
 
-  // const day = new days();
-  // for (const key of Object.keys(day)) {
-  //   days.append(key, day[key]);
-  // }
-  // days.append("day", val);
+    setAddTimeMonday(values);
+  };
+
+  const [monday, setMonday] = useState(Monday);
+  console.log(monday);
+
+  // useEffect(() => {
+  //   document.getElementById("monday").classList.toggle("hidden");
+  // }, [monday]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // const time = {
+    //   open_date: "2022-10-28T19:51",
+    //   closing_date: "2022-10-28T19:44",
+    //   lottery: "23",
+    // };
+    // const sentdata = {
+    //   open_date: time.open_date,
+    //   closing_date: time.closing_date,
+    //   lottery: time.lottery,
+    // };
+
     const sentdata = {
-      days: "monday",
-      lottery: 3,
+      days: monday,
+      lottery: 2,
     };
 
     try {
@@ -41,12 +68,11 @@ const index = () => {
         data: sentdata,
         headers: { "Content-Type": "multipart/form-data" },
       });
-      console.log("upload", data);
+      console.log("upload ", data);
     } catch (error) {
       console.log("request error ", error);
     }
   };
-
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -59,8 +85,9 @@ const index = () => {
               <input
                 type="checkbox"
                 className="text-1xl ml-10"
-                value="monday"
-                onChange={(e) => handleChange(e)}
+                onChange={() => {
+                  setMonday(!monday);
+                }}
               />
               <label htmlFor="" className="text-start">
                 Monday
@@ -68,8 +95,9 @@ const index = () => {
               <input
                 type="checkbox"
                 className="text-1xl ml-10"
-                value="tuesday"
-                onChange={(e) => handleChange(e)}
+                onChange={() => {
+                  setMonday(!monday);
+                }}
               />
               <label htmlFor="" className="text-start">
                 Tuesday
@@ -77,8 +105,9 @@ const index = () => {
               <input
                 type="checkbox"
                 className="text-1xl ml-10"
-                value="wednesday"
-                onChange={(e) => handleChange(e)}
+                onChange={() => {
+                  setWednesday(!wednesday);
+                }}
               />
               <label htmlFor="" className="text-start">
                 Wednesday
@@ -86,8 +115,9 @@ const index = () => {
               <input
                 type="checkbox"
                 className="text-1xl ml-10"
-                value="Thursday"
-                onChange={(e) => handleChange(e)}
+                onChange={() => {
+                  setThursday(!thursday);
+                }}
               />
               <label htmlFor="" className="text-start">
                 Thursday
@@ -95,8 +125,9 @@ const index = () => {
               <input
                 type="checkbox"
                 className="text-1xl ml-10"
-                value="friday"
-                onChange={(e) => handleChange(e)}
+                onChange={() => {
+                  setFriday(!friday);
+                }}
               />
               <label htmlFor="" className="text-start">
                 Friday
@@ -104,17 +135,19 @@ const index = () => {
               <input
                 type="checkbox"
                 className="text-1xl ml-10"
-                value="saturday"
-                onChange={(e) => handleChange(e)}
+                onChange={() => {
+                  setSaturday(!saturday);
+                }}
               />
               <label htmlFor="" className="text-start">
                 Saturday
               </label>
               <input
                 type="checkbox"
-                className="text-1xl ml-10"
-                value="sunday"
-                onChange={(e) => handleChange(e)}
+                className="text-1xl ml-10 bg-sky"
+                onChange={() => {
+                  setSunday(!sunday);
+                }}
               />
               <label htmlFor="" className="text-start">
                 Sunday
