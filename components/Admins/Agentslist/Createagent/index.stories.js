@@ -17,8 +17,8 @@ export default {
   argTypes: {
     url: {
       defaultValue: {
-        register_url: "http://localhost:8000/api/v1/user/register",
-        deposit_url: "http://localhost:8000/api/v1/deposit",
+        registeragent_url: "http://localhost:8000/api/v1/user/register_agent",
+        commission_url: "http://localhost:8000/api/v1/commission",
       }
     },
   },

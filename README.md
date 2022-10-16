@@ -1,6 +1,6 @@
-# Bamboo BI Shop
+# Luad Game
 
-Bamboo BI Lannding page using nextjs, storybook and tailwindcss
+Luad Game application using nextjs, storybook and tailwindcss
 
 ## Install dependency
 
