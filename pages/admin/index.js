@@ -7,8 +7,8 @@ export default function index() {
   return (
     <>
       <AdminLayout>
-        <LotteryFrom></LotteryFrom>
-        <Lotterytime />
+        {/* <LotteryFrom /> */}
+        // <Lotterytime />
       </AdminLayout>
     </>
   );

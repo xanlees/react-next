@@ -8,13 +8,12 @@ import { FiSettings } from "react-icons/fi";
 import { AiOutlineUser } from "react-icons/ai";
 
 const sidebar = [
-  { page: "Lottery List", href: "/", order: 0 },
-  { page: "Loss Predition", href: "/", order: 1 },
+  { page: "Customer", href: "/", order: 0 },
+  { page: "List of lottery", href: "/", order: 1 },
   { page: "Sale Summary", href: "/", order: 2 },
-  { page: "Accounting", href: "/", order: 3 },
-  { page: "Agent Payment", href: "/", order: 4 },
-  { page: "Customer", href: "/", order: 5 },
-  { page: "How to Play", href: "/", order: 6 },
+  { page: "Manual", href: "/", order: 3 },
+  { page: "History Withdraw", href: "/", order: 4 },
+  { page: "History Deposit", href: "/", order: 5 },
 ];
 
 function Sidebar() {
