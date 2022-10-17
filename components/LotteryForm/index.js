@@ -1,12 +1,6 @@
 import React, { useState } from "react";
-import postAPI from "./util";
-<<<<<<< HEAD
-=======
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
->>>>>>> pern1
 
-const index = ({ url, method }) => {
+const Day = ({ url, method }) => {
   const [active, setActive] = useState(0);
   const [language, setLanguage] = useState("en");
   const [image, setImage] = useState("");
@@ -43,27 +37,7 @@ const index = ({ url, method }) => {
       code,
       user: 1,
     };
-<<<<<<< HEAD
    
-=======
-    const result = await postAPI(method, url, sentdata);
-
-    // try {
-    //   if (group === "") {
-    //     toast.error("Enter the name of lottery");
-    //   } else if (code === "") {
-    //     toast.error("Enter the code of lottery");
-    //   } else if (image === "") {
-    //     toast.error("Select an image");
-    //   } else {
-    //     await postAPI(method, url, sentdata);
-    //     toast.success("recorded");
-    //   }
-    // } catch (error) {
-    //   toast.error("fail");
-    // }
-  };
->>>>>>> pern1
 
   return (
     <div>
@@ -181,4 +155,4 @@ const index = ({ url, method }) => {
   );
 };
 
-export default index;
+export default Day

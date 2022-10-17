@@ -47,13 +47,9 @@ const EditableRow = ({
           onChange={handleEditFormChange}
         ></input>
       </td> */}
-      <td>
+
         <button type="submit">Save</button>
-        <button type="button" onClick={handleCancelClick}>
-          Cancel
-        </button>
-      </td>
-    </tr>
+        </tr>
   );
 };
 
