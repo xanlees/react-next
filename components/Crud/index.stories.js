@@ -1,13 +1,19 @@
-// import Crud from "."
+import Crud from ".";
+import getAPI from "./util"
+
+export const CrudStory = (args, { loaded: {listcustomer} }) => <Crud {...args} {...listcustomer}/>;
+CrudStory.args = {
+};
 
 
-// export const Story = (args) => <Crud { ...args }/>;
+CrudStory.loaders = [
+  async () => ({
+    listcustomer: (await getAPI()).props}),
+];
 
 
-// export default {
-//   title: 'Crud/components/Crud',
-//   component: Crud,
-//   argTypes:  {
-//   }
-// }
-
+export default {
+  title: "Crud",
+  component: Crud,
+  argTypes: {},
+};

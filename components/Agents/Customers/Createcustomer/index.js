@@ -4,7 +4,6 @@ import { useRef } from "react";
 import postAPI from "./util";
 
 
-
 export default function index({ url, method }) {
   const form = useRef(null);
 
@@ -47,16 +46,16 @@ export default function index({ url, method }) {
       switch (name) {
         case "username":
           if (!value) {
-            stateObj[name] = "Please enter Username.";
+            stateObj[name] = "ກະລຸນາປ້ອນຊື່ຜູ້ໃຊ້.";
           }
           break;
 
         case "password":
           if (!value) {
-            stateObj[name] = "Please enter Password.";
+            stateObj[name] = "ກະລຸນາປ້ອນລະຫັດຜ່ານ.";
           } else if (input.confirmPassword && value !== input.confirmPassword) {
             stateObj["confirmPassword"] =
-              "Password and Confirm Password does not match.";
+              "ຢືນຢັນລະຫັດຜ່ານບໍ່ຖືກຕ້ອງ.";
           } else {
             stateObj["confirmPassword"] = input.confirmPassword
               ? ""
@@ -66,15 +65,15 @@ export default function index({ url, method }) {
 
         case "confirmPassword":
           if (!value) {
-            stateObj[name] = "Please enter Confirm Password.";
+            stateObj[name] = "ກະລຸນາປ້ອນລະຫັດຢືນຢັນ.";
           } else if (input.password && value !== input.password) {
-            stateObj[name] = "Password and Confirm Password does not match.";
+            stateObj[name] = "ຢືນຢັນລະຫັດຜ່ານບໍ່ຖືກຕ້ອງ.";
           }
           break;
 
         case "deposit_amount":
           if (!value) {
-            stateObj[name] = "Please enter Deposit.";
+            stateObj[name] = "ກະລຸນາປ້ອນເງີນຝາກ.";
           }
           break;
 
@@ -84,7 +83,10 @@ export default function index({ url, method }) {
 
       return stateObj;
     });
+
+
   };
+  
 
   return (
     <div>

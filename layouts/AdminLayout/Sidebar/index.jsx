@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import ListOfagent from "../../../pages/admin/listoflottery"
 
 import { Disclosure } from "@headlessui/react";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -8,7 +9,7 @@ import { FiSettings } from "react-icons/fi";
 import { AiOutlineUser } from "react-icons/ai";
 
 const sidebar = [
-  { page: "Lottery List", href: "/", order: 0 },
+  { page: "Lottery List", href: "/ListOfagent", order: 0 },
   { page: "Loss Predition", href: "/", order: 1 },
   { page: "Sale Summary", href: "/", order: 2 },
   { page: "Accounting", href: "/", order: 3 },
@@ -58,13 +59,13 @@ function Sidebar() {
               <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-sky-400 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
                 <AiOutlineUser className="text-2xl text-white group-hover:text-white " />
                 <h3 className="text-white group-hover:text-white font-semibold ">
-                  User: Owner
+                  User: Agent
                 </h3>
               </div>
               <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-sky-400 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
                 <FiSettings className="text-2xl text-white group-hover:text-white " />
                 <h3 className="text-base text-white group-hover:text-white font-semibold ">
-                  Type: Admin
+                  Type: Agent
                 </h3>
               </div>
             </div>

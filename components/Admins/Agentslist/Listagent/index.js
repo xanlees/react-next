@@ -56,23 +56,23 @@ const Listagent = ({ listagent }) => {
             </div>
             <div className="block w-full overflow-x-auto">
               <table className="items-center bg-transparent w-full border-collapse ">
-                <thead className="bg-blue-500">
+                <thead className="bg-sky-500">
                   <tr>
                     <th className="px-6 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-center">
                       <button
-                        className=" text-white active:bg-blue-600 font-bold px-7 py-1 rounded outline-none focus:outline-none transition-all duration-150"
+                        className=" text-whitefont-bold px-7 py-1 rounded outline-none focus:outline-none transition-all duration-150"
                         type="button"
                       > Agent </button>
                     </th>
                     <th className="px-6 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-center">
                     <button
-                        className=" text-white active:bg-blue-600 font-bold px-7 py-1 rounded outline-none focus:outline-none transition-all duration-150"
+                        className=" text-whiteont-bold px-7 py-1 rounded outline-none focus:outline-none transition-all duration-150"
                         type="button"
                       > Status </button>
                     </th>
                     <th className="px-6 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-center">
                     <button
-                        className=" text-white active:bg-blue-600 font-bold px-7 py-1 rounded outline-none focus:outline-none transition-all duration-150"
+                        className=" text-white font-bold px-7 py-1 rounded outline-none focus:outline-none transition-all duration-150"
                         type="button"
                       > Commission </button>
                     </th>

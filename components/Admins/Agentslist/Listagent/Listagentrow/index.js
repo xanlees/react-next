@@ -18,8 +18,8 @@ const index = (props) => {
         <td className="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-blueGray-700 bg-blueGray-50 text-blueGray-500 border border-solid border-black py-3 ">
           <h1 className=" text-center">{commission}</h1>
         </td>
-        <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-blueGray-700 bg-blueGray-50 text-blueGray-500 border border-solid border-black py-3 ">
-            <Link href={`../../Editagent/index.js${username.id}`} className="btn btn-sm btn-primary mr-1"><IoMdCreate className=" w-6 h-6" /></Link>
+        <td className="border-t-0 text-sky-500 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-blueGray-700 bg-blueGray-50 text-blueGray-500 border border-solid border-black py-3 ">
+            <IoMdCreate className=" w-6 h-6" />
         </td>
       </tr>
       

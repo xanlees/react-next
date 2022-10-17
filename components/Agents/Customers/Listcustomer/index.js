@@ -64,7 +64,7 @@ const Listcustomer = ({ listcustomer }) => {
                 <thead className="bg-sky-500">
                   <tr>
                     <th className="px-6 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-center">
-                      Agent
+                      Custommer
                     </th>
                     <th className="px-6 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-center">
                       Create on
