@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 const index = () => {
+  const [addTimeMonday, setaddTimeMonday] = useState([{ open: "", close: "" }]);
+
   const [userinfo, setUserInfo] = useState({
     day: [],
   });
@@ -123,7 +125,7 @@ const index = () => {
           </div>
         </div>
         {/* monday */}
-        {/* <div
+        <div
           className="max-w-lg  bg-gray-100 shadow-2xl rounded-lg m-auto text-center py-12 mt-4"
           id="monday"
         >
@@ -179,7 +181,7 @@ const index = () => {
               Add time
             </button>
           </div>
-        </div> */}
+        </div>
 
         <div className="max-w-lg m-auto text-center py-5 mt-4 ">
           <button
