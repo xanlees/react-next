@@ -4,10 +4,10 @@ import data from "../../mock-data.json";
 import Listcustomerrow from "./Listcustomerrow";
 import Edits from "./Edits";
 
-const Listcustomer = ({listcustomer}) => {
-  if(!listcustomer) return "ຊອກຫາຂໍ້ມູນບໍ່ເຫັນ";
+const Listcustomer = ({ listcustomer }) => {
+  if (!listcustomer) return "ຊອກຫາຂໍ້ມູນບໍ່ເຫັນ";
 
-  const {results} = listcustomer;
+  const { results } = listcustomer;
 
   const [contacts, setContacts] = useState(data);
 
@@ -15,6 +15,7 @@ const Listcustomer = ({listcustomer}) => {
     username: "",
     date_joined: "",
     deposit_amount: "",
+    is_active: "",
   });
 
   const [editContactId, setEditContactId] = useState(null);
@@ -24,7 +25,6 @@ const Listcustomer = ({listcustomer}) => {
 
     const fieldName = event.target.getAttribute("name");
     const fieldValue = event.target.value;
-
     const newFormData = { ...editFormData };
     newFormData[fieldName] = fieldValue;
 
@@ -39,11 +39,12 @@ const Listcustomer = ({listcustomer}) => {
       username: addFormData.username,
       date_joined: addFormData.date_joined,
       deposit_amount: addFormData.deposit_amount,
+      is_active: addFormData.is_active,
     };
 
     const newContacts = [...contacts];
 
-    const index = contacts.findIndex((contact) => contact.id === editContactId);
+    const index = results.findIndex((contact) => contact.id === editContactId);
 
     newContacts[index] = editedContact;
 
@@ -59,6 +60,7 @@ const Listcustomer = ({listcustomer}) => {
       username: contact.username,
       date_joined: contact.date_joined,
       deposit_amount: contact.deposit[0]?.deposit_amount,
+      is_active: contact.is_active ? "Active" : "Inactive",
     };
 
     setEditFormData(formValues);
@@ -70,7 +72,6 @@ const Listcustomer = ({listcustomer}) => {
 
   return (
     <>
-    <form onSubmit={handleEditFormSubmit}>
       <section className="py-1 bg-blueGray-50">
         <div className="w-full xl:w-11/12 mb-12 xl:mb-0 mx-auto mt-24">
           <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
@@ -121,56 +122,61 @@ const Listcustomer = ({listcustomer}) => {
                 </div>
               </div>
             </div>
+
             <div className="block w-full overflow-x-auto">
-              <table className="items-center bg-transparent w-full border-collapse ">
-                <thead className="bg-sky-500">
-                  <tr>
-                    <th className="px-6 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-center">
-                      Agent
-                    </th>
-                    <th className="px-6 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-center">
-                      Create on
-                    </th>
-                    <th className="px-6 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-center">
-                      Balance
-                    </th>
-                    <th className="px-10 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-center">
-                      status
-                    </th>
-                    <th className="px-10 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-left">
-                      Deposit
-                    </th>
-                    <th className="px-10 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-left">
-                      Withdraw
-                    </th>
-                    <th className="px-10 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-left">
-                      ເບີ່ງປະຫວັດຫວຍ
-                    </th>
-                    <th className="px-10 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-left">
-                      Edit
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {results.map((contact) => (
-                    <Fragment>
-                      {editContactId === contact.id ? (
-                        <Edits
-                          editFormData={editFormData}
-                          handleEditFormChange={handleEditFormChange}
-                          handleCancelClick={handleCancelClick}
-                        />
-                      ) : (
-                        <Listcustomerrow
-                          contact={contact}
-                          handleEditClick={handleEditClick}
-                        />
-                      )}
-                    </Fragment>
-                  ))}
-                </tbody>
-              </table>
+              <form onSubmit={handleEditFormSubmit}>
+                <table className="items-center bg-transparent w-full border-collapse ">
+                  <thead className="bg-sky-500">
+                    <tr>
+                      <th className="px-6 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-center">
+                        Agent
+                      </th>
+                      <th className="px-6 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-center">
+                        Create on
+                      </th>
+                      <th className="px-6 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-center">
+                        Balance
+                      </th>
+                      <th className="px-10 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-center">
+                        status
+                      </th>
+                      <th className="px-10 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-left">
+                        Deposit
+                      </th>
+                      <th className="px-10 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-left">
+                        Withdraw
+                      </th>
+                      <th className="px-10 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-left">
+                        ເບີ່ງປະຫວັດຫວຍ
+                      </th>
+                      <th className="px-10 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-left">
+                        Edit
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {results.map((contact) => (
+                      <Fragment>
+                        {editContactId === contact.id ? (
+                          <Edits
+                            editFormData={editFormData}
+                            handleEditFormChange={handleEditFormChange}
+                            handleCancelClick={handleCancelClick}
+                          />
+                        ) : (
+                          <Listcustomerrow
+                            contact={contact}
+                            handleEditClick={handleEditClick}
+                            handleEditFormChange={handleEditFormChange}
+                          />
+                        )}
+                      </Fragment>
+                    ))}
+                  </tbody>
+                </table>
+              </form>
             </div>
+
             <div className=" flex flex-col py-5">
               <ul className="flex justify-end items-center">
                 <li>
@@ -239,7 +245,6 @@ const Listcustomer = ({listcustomer}) => {
           </div>
         </div>
       </section>
-      </form>
     </>
   );
 };

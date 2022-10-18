@@ -1,7 +1,7 @@
-import Edits from "../Edits";
+import Createcustomer from "../Createcustomer";
 
-export const EditsStory = (args) => (
-  <Edits method="post" {...args} />
+export const CreatecustomerStory = (args) => (
+  <Createcustomer method="post" {...args} />
 );
 
 // Here we export a variant of the default template passing props
@@ -9,8 +9,8 @@ export const EditsStory = (args) => (
 // Here we export the default component that
 // will be used by Storybook to show it inside the sidebar
 export default {
-  title: "Crud/Edits",
-  component: Edits,
+  title: "Admins/Customers/component/Createcustomer",
+  component: Createcustomer,
   argTypes: {
     url: {
       defaultValue: {

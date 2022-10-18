@@ -1,9 +1,7 @@
 import React from "react";
-import { IoMdCreate } from "react-icons/io";
-import { VscGear } from "react-icons/vsc";
-import { FcFullTrash } from "react-icons/fc";
 
-const Typelotryrow = (props) => {
+
+const Totalpredictrow = (props) => {
   let { name } = props;
 
   return (
@@ -29,4 +27,4 @@ const Typelotryrow = (props) => {
   );
 };
 
-export default Typelotryrow;
+export default Totalpredictrow;

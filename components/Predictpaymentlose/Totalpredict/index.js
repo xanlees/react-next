@@ -1,5 +1,5 @@
 import React from "react";
-import Typelotryrow from "./Typelotryrow";
+import Totalpredictrow from "./Totalpredictrow";
 
 export default function index({ typelottery }) {
   if (!typelottery) return "ຊອກຫາຂໍ້ມູນບໍ່ເຫັນ!";
@@ -48,7 +48,7 @@ export default function index({ typelottery }) {
                   <tbody>
                     {results.map((item) => {
                       return (
-                        <Typelotryrow
+                        <Totalpredictrow
                           name={item.name}
                           code={item.code}
                           opendate={item.open_date}
