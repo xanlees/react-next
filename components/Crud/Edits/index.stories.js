@@ -9,7 +9,7 @@ export const EditsStory = (args) => (
 // Here we export the default component that
 // will be used by Storybook to show it inside the sidebar
 export default {
-  title: "Crud/Elements/Edits",
+  title: "Crud/Edits",
   component: Edits,
   argTypes: {
     url: {

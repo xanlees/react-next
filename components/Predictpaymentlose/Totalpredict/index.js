@@ -1,5 +1,5 @@
 import React from "react";
-import Typelotryrow from "./Typelotryrow";
+import Totalpredictrow from "./Totalpredictrow";
 
 export default function index({ typelottery }) {
   if (!typelottery) return "ຊອກຫາຂໍ້ມູນບໍ່ເຫັນ!";
@@ -38,7 +38,7 @@ export default function index({ typelottery }) {
                         ຈຳນວນເງີນຊື້
                       </th>
                       <th className="border-t-0 align-middle border-l-0 border-r-0 text-white text-xs whitespace-nowrap p-4 text-center border border-solid border-black py-3 ">
-                        ເງີນ
+                        ເງີນຖືກ
                       </th>
                       <th className="border-t-0 align-middle border-l-0 border-r-0 text-white text-xs whitespace-nowrap p-4 text-center border border-solid border-black py-3 ">
                         ງວດ
@@ -48,11 +48,11 @@ export default function index({ typelottery }) {
                   <tbody>
                     {results.map((item) => {
                       return (
-                        <Typelotryrow
-                          name={item.name}
-                          code={item.code}
-                          opendate={item.open_date}
-                          closingdate={item.closing_date}
+                        <Totalpredictrow
+                          lottery_id={item.lottery_id}
+                          sales={item.sales}
+                          win={item.win}
+                          instalment_id={item.instalment_id}
                         />
                       );
                     })}

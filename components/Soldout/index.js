@@ -1,5 +1,5 @@
 import React from "react";
-import Salesall from "./Salesall";
+import Salesoutall from "./Salesoutall";
 
 const Soldout = ({ soldout }) => {
   if (!soldout) return "ຊອກຫາຂໍ້ມູນບໍ່ເຫັນ!";
@@ -92,8 +92,7 @@ const Soldout = ({ soldout }) => {
                         className=" text-white active:bg-blue-600 font-bold px-7 py-1 rounded outline-none focus:outline-none transition-all duration-150"
                         type="button"
                       >
-                        {" "}
-                        ເວລາ{" "}
+                        ເວລາ
                       </button>
                     </th>
                   </tr>
@@ -101,7 +100,7 @@ const Soldout = ({ soldout }) => {
                 <tbody>
                   {results.map((item) => {
                     return (
-                      <Salesall
+                      <Salesoutall
                         username={item.username}
                         is_active={item.is_active ? "Active" : "Inactive"}
                         // commission={item.commission[0].commission}

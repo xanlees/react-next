@@ -1,12 +1,12 @@
 import React from "react";
 import Listagentrow from "./Listagentrow";
+import Link from "next/link";
 
 const Listagent = ({ listagent }) => {
   if (!listagent) return "ຊອກຫາຂໍ້ມູນບໍ່ເຫັນ!";
 
   const { results } = listagent;
 
-    
   return (
     <>
       <section className="py-1 bg-blueGray-50">
@@ -24,7 +24,10 @@ const Listagent = ({ listagent }) => {
                     className="bg-sky-500 text-white active:bg-blue-600 font-bold px-7 py-1 rounded outline-none focus:outline-none transition-all duration-150"
                     type="button"
                   >
-                    Add
+                      <Link href="/admin/listofagent/createagent">
+                      <a>Add</a>
+                    </Link>
+
                   </button>
                 </div>
 
@@ -62,19 +65,28 @@ const Listagent = ({ listagent }) => {
                       <button
                         className=" text-whitefont-bold px-7 py-1 rounded outline-none focus:outline-none transition-all duration-150"
                         type="button"
-                      > Agent </button>
+                      >
+                        {" "}
+                        Agent{" "}
+                      </button>
                     </th>
                     <th className="px-6 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-center">
-                    <button
+                      <button
                         className=" text-whiteont-bold px-7 py-1 rounded outline-none focus:outline-none transition-all duration-150"
                         type="button"
-                      > Status </button>
+                      >
+                        {" "}
+                        Status{" "}
+                      </button>
                     </th>
                     <th className="px-6 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-center">
-                    <button
+                      <button
                         className=" text-white font-bold px-7 py-1 rounded outline-none focus:outline-none transition-all duration-150"
                         type="button"
-                      > Commission </button>
+                      >
+                        {" "}
+                        Commission{" "}
+                      </button>
                     </th>
                     <th className="px-10 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-left">
                       Edit

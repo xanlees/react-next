@@ -3,6 +3,8 @@ import React from "react";
 const Lowerrow_3 = (props) => {
   let { id, number, sales, win } = props;
 
+
+
   return (
     <>
       <tr>
@@ -13,10 +15,10 @@ const Lowerrow_3 = (props) => {
         <h1 className=" text-center">{number}</h1>
         </td>
         <td className="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center bg-blueGray-50 border border-solid border-black py-3 ">
-        <h1 className=" text-center">{sales}</h1>
+        {/* <h1 className=" text-center">{sales}</h1> */}
         </td>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center bg-blueGray-50 border border-solid border-black py-3 ">
-        <h1 className=" text-center">{win}</h1>
+        {/* <h1 className=" text-center">{win}</h1> */}
         </td>
       </tr>
     </>

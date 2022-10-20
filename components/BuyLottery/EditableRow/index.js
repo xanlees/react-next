@@ -48,7 +48,8 @@ const EditableRow = ({
         ></input>
       </td> */}
 
-        <button type="submit">Save</button>
+      <button type="submit">Save</button>
+        <button type="button" onClick={handleCancelClick}></button>
         </tr>
   );
 };

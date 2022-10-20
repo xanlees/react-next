@@ -1,7 +1,14 @@
 import Kick_lower from "."
+import getAPI from "./util";
 
+export const Kick_lowerStory = (args, { loaded: {lower} }) => <Kick_lower {...args} {...lower} />;
+Kick_lowerStory.args = {
+};
 
-export const Story = (args) => <Kick_lower { ...args }/>;
+Kick_lowerStory.loaders = [
+  async () => ({
+    lower: (await getAPI()).props}),
+];
 
 
 export default {
