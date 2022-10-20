@@ -9,7 +9,7 @@ Lower_2Story.args = {
 
 Lower_2Story.loaders = [
   async () => ({
-    lower: (await getAPI()).props}),
+    lower: (await getAPI_lowe()).props}),
 ];
 
 

@@ -5,7 +5,7 @@ import Lowerrow from "./Lowerrow"
 export default function index({lower}) {
  if (!lower) return "ຊອກຫາຂໍ້ມູນບໍ່ເຫັນ!";
 
-const {results} = lower
+// const {results} = lower
   return (
     <div>
       <>
@@ -62,7 +62,7 @@ const {results} = lower
                     </tr>
                   </thead>
                   <tbody>
-                    {results.map((item) => {
+                    {/* {results.map((item) => {
                       return (
                         <Lowerrow
                           id={item.id}
@@ -71,7 +71,7 @@ const {results} = lower
                           win={item.win}
                         />
                       );
-                    })}
+                    })} */}
                   </tbody>
                 </table>
               </div>
