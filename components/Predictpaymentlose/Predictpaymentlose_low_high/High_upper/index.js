@@ -1,6 +1,10 @@
 import React from "react";
+import Highupperrow from "./Highupperrow";
 
-export default function index () {
+export default function index({ upper }) {
+  if (!upper) return "ຊອກຫາຂໍ້ມູນບໍ່ເຫັນ!";
+
+  const { results } = upper;
 
   return (
     <div>
@@ -12,7 +16,7 @@ export default function index () {
                 <div className="flex flex-wrap items-center">
                   <div className="relative w-full px-2 max-w-full flex-1">
                     <h3 className=" align-middle transition-all duration-150 font-Saysettha OT text-base text-blueGray-700">
-                      ຕໍ່າບົນ
+                      ສູງບົນ
                     </h3>
                   </div>
                   <div className="relative w-full max-w-full flex-grow flex-1 text-right">
@@ -57,49 +61,17 @@ export default function index () {
                       </th>
                     </tr>
                   </thead>
-                  <tbody className=" font-saysettha OT">
-                    <tr>
-                      <td className="border-t-0 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center bg-blueGray-50 text-blueGray-500 border border-solid border-black py-3 ">
-                        1
-                      </td>
-                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center bg-blueGray-50 border border-solid border-black py-3 ">
-                        000
-                      </td>
-                      <td className="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center bg-blueGray-50 border border-solid border-black py-3 ">
-                        100,000
-                      </td>
-                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center bg-blueGray-50 border border-solid border-black py-3 ">
-                        9.500.000
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center bg-blueGray-50 border border-solid border-black py-3 ">
-                        2
-                      </td>
-                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center bg-blueGray-50 border border-solid border-black marker:py-3 ">
-                        001
-                      </td>
-                      <td className="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center bg-blueGray-50 border border-solid border-black py-3 ">
-                        100.000
-                      </td>
-                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center bg-blueGray-50 border border-solid border-black py-3 ">
-                        10.000.000
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center bg-blueGray-50 border border-solid border-black py-3 ">
-                        3
-                      </td>
-                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center bg-blueGray-50 border border-solid border-black marker:py-3 ">
-                        876
-                      </td>
-                      <td className="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center bg-blueGray-50 border border-solid border-black py-3 ">
-                        100.000
-                      </td>
-                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center bg-blueGray-50 border border-solid border-black py-3 ">
-                        10.000.000
-                      </td>
-                    </tr>
+                  <tbody>
+                    {results.map((item) => {
+                      return (
+                        <Highupperrow
+                          id={item.id}
+                          name={item.name}
+                          sales={item.sales}
+                          win={item.win}
+                        />
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
@@ -109,4 +81,4 @@ export default function index () {
       </>
     </div>
   );
-};
+}

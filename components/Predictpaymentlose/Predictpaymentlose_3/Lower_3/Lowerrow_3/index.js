@@ -3,6 +3,8 @@ import React from "react";
 const Lowerrow_3 = (props) => {
   let { id, number, sales, win } = props;
 
+
+
   return (
     <>
       <tr>

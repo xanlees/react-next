@@ -1,7 +1,15 @@
 import Khus_lower from "."
+import getAPI from "./util";
 
 
-export const Story = (args) => <Khus_lower { ...args }/>;
+export const Khus_lowerStory = (args, { loaded: {lower} }) => <Khus_lower {...args} {...lower} />;
+Khus_lowerStory.args = {
+};
+
+Khus_lowerStory.loaders = [
+  async () => ({
+    lower: (await getAPI()).props}),
+];
 
 
 export default {

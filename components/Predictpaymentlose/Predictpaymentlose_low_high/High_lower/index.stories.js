@@ -1,7 +1,16 @@
 import High_lower from "."
+import getAPI from "./util";
 
 
-export const Story = (args) => <High_lower { ...args }/>;
+
+export const High_lowerStory = (args, { loaded: {lower} }) => <High_lower {...args} {...lower} />;
+High_lowerStory.args = {
+};
+
+High_lowerStory.loaders = [
+  async () => ({
+    lower: (await getAPI()).props}),
+];
 
 
 export default {

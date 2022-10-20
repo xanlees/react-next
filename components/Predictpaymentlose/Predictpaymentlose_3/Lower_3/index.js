@@ -4,7 +4,7 @@ import Lowerrow_3 from "./Lowerrow_3";
 export default function index({lower}) {
   if (!lower) return "ຊອກຫາຂໍ້ມູນບໍ່ເຫັນ!";
 
-  const {results} = lower
+  const {results} = lower;
   return (
     <div>
       <>
@@ -61,7 +61,7 @@ export default function index({lower}) {
                     </tr>
                   </thead>
                   <tbody>
-                    {results.map((item) => {
+                    {Object.values(results).map((item) => {
                       return (
                         <Lowerrow_3
                           id={item.id}
