@@ -1,10 +1,9 @@
 import React from "react";
 import Lowerrow_3 from "./Lowerrow_3";
 
-export default function index({lower}) {
+export default function index({ lower }) {
   if (!lower) return "ຊອກຫາຂໍ້ມູນບໍ່ເຫັນ!";
-
-  const {results} = lower;
+  const { results } = lower;
   return (
     <div>
       <>
