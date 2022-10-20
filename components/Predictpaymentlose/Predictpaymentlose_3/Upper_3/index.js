@@ -66,8 +66,8 @@ export default function index({upper}) {
                         <Lowerrow_upper
                           id={item.id}
                           number={item.number}
-                          sales={item.sales}
-                          win={item.win}
+                          // sales={item.sales}
+                          // win={item.win}
                         />
                       );
                     })}
