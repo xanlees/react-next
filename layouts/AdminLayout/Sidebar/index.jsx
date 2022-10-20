@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import ListOfagent from "../../../pages/admin/listoflottery"
+import ListOfagent from "../../../pages/admin/list-of-lottery";
 
 import { Disclosure } from "@headlessui/react";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -9,13 +9,14 @@ import { FiSettings } from "react-icons/fi";
 import { AiOutlineUser } from "react-icons/ai";
 
 const sidebar = [
-  { page: "Lottery List", href: "/ListOfagent", order: 0 },
-  { page: "Loss Predition", href: "/", order: 1 },
-  { page: "Sale Summary", href: "/", order: 2 },
-  { page: "Accounting", href: "/", order: 3 },
-  { page: "Agent Payment", href: "/", order: 4 },
-  { page: "Customer", href: "/", order: 5 },
-  { page: "How to Play", href: "/", order: 6 },
+  { page: "Lottery List", href: "/admin/list-of-lottery", order: 0 },
+  { page: "Loss Predition", href: "/admin/predict-payment-lose", order: 1 },
+  { page: "Sale Summary", href: "/coming", order: 2 },
+  { page: "Accounting", href: "/coming", order: 3 },
+  { page: "Agent Payment", href: "/coming", order: 4 },
+  { page: "Agent List", href: "/admin/list-of-agent", order: 7 },
+  { page: "Customer", href: "/admin/list-of-customer", order: 5 },
+  { page: "How to Play", href: "/coming", order: 6 },
 ];
 
 function Sidebar() {
@@ -59,13 +60,13 @@ function Sidebar() {
               <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-sky-400 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
                 <AiOutlineUser className="text-2xl text-white group-hover:text-white " />
                 <h3 className="text-white group-hover:text-white font-semibold ">
-                  User: Agent
+                  User: Admin
                 </h3>
               </div>
               <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-sky-400 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
                 <FiSettings className="text-2xl text-white group-hover:text-white " />
                 <h3 className="text-base text-white group-hover:text-white font-semibold ">
-                  Type: Agent
+                  Type: Admin
                 </h3>
               </div>
             </div>

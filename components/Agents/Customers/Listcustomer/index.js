@@ -1,5 +1,6 @@
 import React from "react";
 import Listcustomerrow from "./Listcustomerrow";
+import Link from "next/link";
 
 const Listcustomer = ({ listcustomer }) => {
   if (!listcustomer) return "ຊອກຫາຂໍ້ມູນບໍ່ເຫັນ!";
@@ -25,7 +26,7 @@ const Listcustomer = ({ listcustomer }) => {
                     className="bg-sky-500 hover:bg-sky-700 hover:text-gray-500 hover:border-blue text-white active:bg-blue-600 font-bold px-7 py-1 rounded outline-none focus:outline-none transition-all duration-150"
                     type="button"
                   >
-                    Add
+                    <Link href="/agent/create-customer">Add</Link>
                   </button>
                 </div>
 

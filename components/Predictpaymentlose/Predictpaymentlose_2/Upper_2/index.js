@@ -1,13 +1,10 @@
 import React from "react";
-import Upperrow from './Upperrow'
+import Upperrow from "./Upperrow";
 
-
-
-
-export default function index({upper}) {
+export default function index({ upper }) {
   if (!upper) return "ຊອກຫາຂໍ້ມູນບໍ່ເຫັນ!";
-
-  const {results} = upper
+  const { results } = upper;
+  // const { results } = upper.upper;
   return (
     <div>
       <>

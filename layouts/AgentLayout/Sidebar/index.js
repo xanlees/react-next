@@ -8,7 +8,7 @@ import { FiSettings } from "react-icons/fi";
 import { AiOutlineUser } from "react-icons/ai";
 
 const sidebar = [
-  { page: "Customer", href: "/", order: 0 },
+  { page: "Customer", href: "/agent", order: 0 },
   { page: "List of lottery", href: "/", order: 1 },
   { page: "Sale Summary", href: "/", order: 2 },
   { page: "Manual", href: "/", order: 3 },

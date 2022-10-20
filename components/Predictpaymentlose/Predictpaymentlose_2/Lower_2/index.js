@@ -1,11 +1,11 @@
 import React from "react";
-import Lowerrow from "./Lowerrow"
+import Lowerrow from "./Lowerrow";
 
+export default function index({ lower }) {
+  // console.log("DATA LOWER", lower);
+  if (!lower) return "ຊອກຫາຂໍ້ມູນບໍ່ເຫັນ!";
 
-export default function index({lower}) {
- if (!lower) return "ຊອກຫາຂໍ້ມູນບໍ່ເຫັນ!";
-
-const {results} = lower
+  const { results } = lower;
   return (
     <div>
       <>

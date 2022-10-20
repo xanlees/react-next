@@ -1,21 +1,19 @@
-import Lower_2 from "."
-import getAPI from "./util";
+import Lower_2 from ".";
+import getAPI_Lower from "./util";
 
-
-
-export const Lower_2Story = (args, { loaded: {lower} }) => <Lower_2 {...args} {...lower} />;
-Lower_2Story.args = {
-};
+export const Lower_2Story = (args, { loaded: { lower } }) => (
+  <Lower_2 {...args} {...lower} />
+);
+Lower_2Story.args = {};
 
 Lower_2Story.loaders = [
   async () => ({
-    lower: (await getAPI()).props}),
+    lower: (await getAPI_Lower()).props,
+  }),
 ];
 
-
 export default {
-  title: 'Predictpaymentlose/Predictpaymentlose_2/elements/Lower_2',
+  title: "Predictpaymentlose/Predictpaymentlose_2/elements/Lower_2",
   component: Lower_2,
-  argTypes:  {
-  }
-}
+  argTypes: {},
+};
