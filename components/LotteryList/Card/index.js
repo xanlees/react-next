@@ -7,6 +7,7 @@ const Card = ({ lotteries }) => {
   if (!lotteries) return "The lottery wasn't found!";
   const { name, image, code } = lotteries;
   const time = lotteries.lottery_day[0].lottery_time[0].closing_date;
+  const day = lotteries.lottery_day[0].days;
   const formatDate = Moment(time).format("LT");
   return (
     <>
@@ -34,7 +35,9 @@ const Card = ({ lotteries }) => {
                 <BsCalendarDay className="mx-auto ml-5" />
               </div>
               <div className="w-1/2">
-                <h3>Date: </h3>
+                <h3>
+                  Date: <span>{day} </span>
+                </h3>
               </div>
               <div className="item w-1/12">
                 <BiTimeFive className="mr-2" />
