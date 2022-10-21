@@ -7,10 +7,10 @@ export default function index({ lotteries }) {
       <div className="container my-12 mx-auto px-4 md:px-12 bg-white shadow-2xl rounded-lg mr-20 ">
         <h1 className="text-4xl pt-3 text-red-600 font-bold">Lao Lotto</h1>
         <div className="flex flex-wrap -mx-1 lg:-mx-4">
-          {lotteries?.map((item) => {
+          {lotteries?.map((item, index) => {
             return (
               <>
-                <Card lottery={item} />
+                <Card key={index} lotteries={item} />
               </>
             );
           })}
