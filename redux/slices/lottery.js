@@ -7,7 +7,7 @@ const initialState = {
   lottery_time: [],
   lottery_day_data: [],
   day_id: "",
-  lottery_id: 7,
+  lottery_id: "",
   lottery_day_id: "",
 };
 
