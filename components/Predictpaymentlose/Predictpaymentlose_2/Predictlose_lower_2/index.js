@@ -62,7 +62,7 @@ export default function index({ lower }) {
                     </tr>
                   </thead>
                   <tbody>
-                    {/* {results.map((item) => {
+                    {results.map((item) => {
                       return (
                         <Lowerrow
                           id={item.id}
@@ -71,7 +71,7 @@ export default function index({ lower }) {
                           win={item.win}
                         />
                       );
-                    })} */}
+                    })}
                   </tbody>
                 </table>
               </div>

@@ -8,11 +8,11 @@ const index = ({ upper, lower }) => {
   return (
     <div>
       <div className="flex  flex-col-2">
-        <div className="relative translate-x-96">
+        <div className="w-full">
           <PredictPaymentLoseTwoUpper upper={upper} />
         </div>
 
-        <div className=" relative translate-x-96 px-40 ">
+        <div className=" w-full ">
           <PredictPaymentLoseTwoLower lower={lower} />
         </div>
       </div>
