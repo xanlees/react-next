@@ -5,7 +5,7 @@ import {
   AiOutlineFileSearch,
   AiOutlineMinusCircle,
 } from "react-icons/ai";
-
+import Link from "next/link";
 const index = (props) => {
   let { username, date, is_active, deposit } = props;
 
@@ -26,22 +26,41 @@ const index = (props) => {
         </td>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-blueGray-700 bg-blueGray-50 text-blueGray-500 border border-solid border-black py-3 ">
           <button className=" bg-white text-sky-500 font-bold py-2 px-6 rounded-full whitespace-nowrap ">
-            <AiOutlinePlusCircle className=" w-6 h-6" />
+            <Link href="/coming">
+              <a href="">
+                <AiOutlinePlusCircle className=" w-6 h-6" />
+              </a>
+            </Link>
           </button>
         </td>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-blueGray-700 bg-blueGray-50 text-blueGray-500 border border-solid border-black py-3 ">
           <button className=" bg-white text-red-500 font-bold py-2 px-8 rounded-full whitespace-nowrap ">
-            <AiOutlineMinusCircle className=" w-6 h-6" />
+            <Link href="/coming">
+              <a>
+                <AiOutlineMinusCircle className=" w-6 h-6" />
+              </a>
+            </Link>
           </button>
         </td>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-blueGray-700 bg-blueGray-50 text-blueGray-500 border border-solid border-black py-3 ">
           <button className=" bg-white text-sky-500 font-bold py-2 px-12 rounded-full whitespace-nowrap ">
-            <AiOutlineFileSearch className=" w-6 h-6" />
+            <Link href="/coming">
+              <a>
+                <AiOutlineFileSearch className=" w-6 h-6" />
+              </a>
+            </Link>
           </button>
         </td>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-blueGray-700 bg-blueGray-50 text-blueGray-500 border border-solid border-black py-3 ">
-          <button type="button" className=" bg-white text-sky-500 font-bold py-2 px-4 rounded-full whitespace-nowrap ">
-            <IoMdCreate className=" w-6 h-6" />
+          <button
+            type="button"
+            className=" bg-white text-sky-500 font-bold py-2 px-4 rounded-full whitespace-nowrap "
+          >
+            <Link href="/coming">
+              <a>
+                <IoMdCreate className=" w-6 h-6" />
+              </a>
+            </Link>
           </button>
         </td>
       </tr>

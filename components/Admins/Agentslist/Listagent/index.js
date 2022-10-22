@@ -24,10 +24,9 @@ const Listagent = ({ listagent }) => {
                     className="bg-sky-500 text-white active:bg-blue-600 font-bold px-7 py-1 rounded outline-none focus:outline-none transition-all duration-150"
                     type="button"
                   >
-                      <Link href="/admin/listofagent/createagent">
+                    <Link href="/admin/list-of-agent/create-agent">
                       <a>Add</a>
                     </Link>
-
                   </button>
                 </div>
 

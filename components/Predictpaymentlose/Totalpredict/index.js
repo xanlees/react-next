@@ -1,10 +1,10 @@
 import React from "react";
 import Totalpredictrow from "./Totalpredictrow";
 
-export default function index({ typelottery }) {
-  if (!typelottery) return "ຊອກຫາຂໍ້ມູນບໍ່ເຫັນ!";
+export default function index({ totalpredict }) {
+  if (!totalpredict) return "ຊອກຫາຂໍ້ມູນບໍ່ເຫັນ!";
 
-  const { results } = typelottery;
+  const { results } = totalpredict;
   return (
     <div>
       <>
@@ -49,7 +49,7 @@ export default function index({ typelottery }) {
                     {results.map((item) => {
                       return (
                         <Totalpredictrow
-                          lottery_id={item.lottery_id}
+                          name={item.name}
                           sales={item.sales}
                           win={item.win}
                           instalment_id={item.instalment_id}
