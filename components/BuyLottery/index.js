@@ -1,8 +1,5 @@
-// import React from "react";
-import BuyTwoNumber from "./BuyTwoNumber";
-import GroupNumber from "./GroupNumber";
 import React from "react";
-import NumberTopAndBottom from "./NumberTopAndBottom";
+import BuyTwoNumber from "./BuyTwoNumber";
 
 const index = () => {
   return (
@@ -22,7 +19,6 @@ const index = () => {
               </p>
             </div>
           </div>
-          {/* OPTION */}
           <div className="flex flex-cols mt-3 ">
             <button className="border p-2 bg-sky-600 text-white rounded-lg mr-2">
               2 ໂຕ
@@ -50,9 +46,7 @@ const index = () => {
           <button className="border p-2 bg-sky-600 text-white rounded-lg mr-2 mt-2 mb-3">
             ຊື່ແບບ B
           </button>
-          {/* <NumberTopAndBottom /> */}
           <BuyTwoNumber />
-          {/* <GroupNumber /> */}
         </div>
       </div>
     </>

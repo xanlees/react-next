@@ -7,8 +7,8 @@ const FormPrize = () => {
     e.preventDefault();
     const formData = new FormData(FormDataPrize.current);
     console.log("object", formData);
-  const result = getAxios()[method](url, formData);
-
+    const result = getAxios()[method](url, formData);
+  };
   return (
     <>
       <section className="antialiased px-4 mt-11">
