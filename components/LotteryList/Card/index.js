@@ -6,9 +6,9 @@ import Moment from "moment";
 const Card = ({ lotteries }) => {
   if (!lotteries) return "The lottery wasn't found!";
   const { name, image, code } = lotteries;
-  const time = lotteries.lottery_day[0].lottery_time[0].closing_date;
-  const day = lotteries.lottery_day[0].days;
-  const formatDate = Moment(time).format("LT");
+  // const time = lotteries.lottery_day[0].lottery_time[0].closing_date;
+  // const day = lotteries.lottery_day[0].days;
+  // const formatDate = Moment(time).format("LT");
   return (
     <>
       <div className="w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3 xl:w-1/3 transitin ease-in-out hover:scale-110 duration-700 cursor-pointer mb-5 mt-3">
@@ -35,9 +35,7 @@ const Card = ({ lotteries }) => {
                 <BsCalendarDay className="mx-auto ml-5" />
               </div>
               <div className="w-1/2">
-                <h3>
-                  Date: <span>{day} </span>
-                </h3>
+                <h3>{/* Date: <span>{day} </span> */}</h3>
               </div>
               <div className="item w-1/12">
                 <BiTimeFive className="mr-2" />
@@ -45,7 +43,7 @@ const Card = ({ lotteries }) => {
               <div className="item w-1/2">
                 <h3 className="text-left">
                   Close on:
-                  <span className="text-red-600">{formatDate}</span>
+                  {/* <span className="text-red-600">{formatDate}</span> */}
                 </h3>
               </div>
             </div>
