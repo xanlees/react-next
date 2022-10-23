@@ -55,3 +55,4 @@ const Card = ({ lotteries }) => {
 };
 
 export default Card;
+import React from "react";
