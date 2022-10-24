@@ -107,7 +107,7 @@ const index = () => {
   };
   return (
     <>
-      <div className="app-container">
+      <div className="app-container" id="buy_lottery">
         <div className="grid grid-row-7">
           <form action="" onSubmit={handleAddFormSubmit}>
             <label className="mx-3">ເລກ</label>

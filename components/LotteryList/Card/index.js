@@ -12,6 +12,7 @@ const Card = ({ lotteries, time, days }) => {
       <div className="w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3 xl:w-1/3 transitin ease-in-out hover:scale-110 duration-700 cursor-pointer mb-5 mt-3">
         <div className="max-w-sm rounded overflow-hidden shadow-lg bg-gray-100">
           <div className="flex-inline items-center">
+            <h1 className="text-end mr-5">Time: 12/10/2020 03:30 </h1>
             <div className="flex items-center">
               <div className="p-3">
                 <img className="h-9 w-16" src={image} alt="lao" />
