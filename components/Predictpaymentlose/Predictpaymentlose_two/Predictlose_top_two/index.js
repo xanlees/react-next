@@ -1,9 +1,9 @@
 import React from "react";
 import Bottomrow from "./Bottomrow";
 
-export default function index({ upper }) {
-  if (!upper) return "ຊອກຫາຂໍ້ມູນບໍ່ເຫັນ!";
-  const { results } = upper;
+export default function index({ top }) {
+  if (!top) return "ຊອກຫາຂໍ້ມູນບໍ່ເຫັນ!";
+  const { results } = top;
   // const { results } = upper.upper;
   return (
     <div>
@@ -61,16 +61,16 @@ export default function index({ upper }) {
                     </tr>
                   </thead>
                   <tbody>
-                    {/* {results.map((item) => {
+                    {results.map((item) => {
                       return (
                         <Bottomrow
                           id={item.id}
-                          number={item.number}
-                          sales={item.sales}
+                          cost={item.cost}
+                          predict_lose={item.predict_lost}
                           win={item.win}
                         />
                       );
-                    })} */}
+                    })}
                   </tbody>
                 </table>
               </div>

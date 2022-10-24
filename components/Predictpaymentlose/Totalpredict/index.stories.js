@@ -2,13 +2,13 @@ import Totalpredict from "."
 import getAPI from "./util";
 
 
-export const TotalpredictStory = (args, { loaded: {typelottery} }) => <Totalpredict {...args} {...typelottery} />;
+export const TotalpredictStory = (args, { loaded: {totalpredict} }) => <Totalpredict {...args} {...totalpredict} />;
 TotalpredictStory.args = {
 };
 
 TotalpredictStory.loaders = [
   async () => ({
-    typelottery: (await getAPI()).props}),
+    totalpredict: (await getAPI()).props}),
 ];
 
 

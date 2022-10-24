@@ -73,6 +73,9 @@ const Listlottery = ({ listlottery }) => {
                       <th className="px-6 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-center">
                         Close
                       </th>
+                      <th className="px-6 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-center">
+                        Day
+                      </th>
                       <th className="px-6 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-left">
                         ກຳນົດຜົນຫວຍ
                       </th>
@@ -90,8 +93,9 @@ const Listlottery = ({ listlottery }) => {
                         <Listlotteryrow
                           name={item.name}
                           code={item.code}
-                          opendate={item.open_date}
-                          closingdate={item.closing_date}
+                          opendate={item.lottery_day[0].lottery_time[0].open_date}
+                          closingdate={item.lottery_day[0].lottery_time[0].closing_date}
+                          lottery_day={item.lottery_day[0].days}
                         />
                       );
                     })}

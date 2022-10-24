@@ -2,15 +2,15 @@ import React from "react";
 import PredictPaymentLoseTwotop from "./Predictlose_top_two";
 import PredictPaymentLoseTwobottom from "./Predictlose_bottom_two";
 
-const index = ({ upper, lower }) => {
+const index = ({ top, bottom }) => {
   return (
     <div>
       <div className="flex  flex-col-2">
         <div className="w-full">
-          <PredictPaymentLoseTwotop upper={upper} />
+          <PredictPaymentLoseTwotop top={top} />
         </div>
         <div className=" w-full">
-          <PredictPaymentLoseTwobottom lower={lower} />
+          <PredictPaymentLoseTwobottom bottom={bottom} />
         </div>
       </div>
     </div>

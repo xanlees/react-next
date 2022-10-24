@@ -1,11 +1,11 @@
 import React from "react";
 import Toprow from "./Toprow";
 
-export default function index({ lower }) {
-  // console.log("DATA LOWER", lower);
-  if (!lower) return "ຊອກຫາຂໍ້ມູນບໍ່ເຫັນ!";
+export default function index({ bottom }) {
 
-  const { results } = lower;
+  if (!bottom) return "ຊອກຫາຂໍ້ມູນບໍ່ເຫັນ!";
+
+  const { results } = bottom;
   return (
     <div>
       <>
@@ -66,9 +66,9 @@ export default function index({ lower }) {
                       return (
                         <Toprow
                           id={item.id}
-                          number={item.number}
-                          sales={item.sales}
-                          win={item.win}
+                          lottery={item.lottery_product}
+                          cost={item.cost}
+                          predict_lose={item.predict_lost}
                         />
                       );
                     })}

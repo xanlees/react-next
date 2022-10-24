@@ -5,7 +5,7 @@ export const Story = (args) => <Dropdown { ...args }/>;
 
 
 export default {
-  title: 'Soldout/elements/Dropdown',
+  title: 'Totalsales_summary/elements/Dropdown',
   component: Dropdown,
   argTypes:  {
   }

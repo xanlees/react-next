@@ -4,7 +4,7 @@ import Upperrow from "./Upperrow";
 export default function index({ upper }) {
   if (!upper) return "ຊອກຫາຂໍ້ມູນບໍ່ເຫັນ!";
   const { results } = upper;
-  // const { results } = upper.upper;
+
   return (
     <div>
       <>
@@ -18,7 +18,7 @@ export default function index({ upper }) {
                       ວິງ
                     </h3>
                   </div>
-                  <div className="relative w-full max-w-full flex-grow flex-1 text-right">
+                  <div className="relative flex-grow flex-1 text-right">
                     <div className="pt-2 relative mx-auto transition-all duration-150">
                       <input
                         className="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"

@@ -1,14 +1,14 @@
 import Predictlose_bottom_two from ".";
 import getAPI_Lower from "./util";
 
-export const Lower_2Story = (args, { loaded: { lower } }) => (
-  <Predictlose_bottom_two {...args} {...lower} />
+export const Lower_2Story = (args, { loaded: { bottom } }) => (
+  <Predictlose_bottom_two {...args} {...bottom} />
 );
 Lower_2Story.args = {};
 
 Lower_2Story.loaders = [
   async () => ({
-    lower: (await getAPI_Lower()).props,
+    bottom: (await getAPI_Lower()).props,
   }),
 ];
 

@@ -1,10 +1,10 @@
 import React from "react";
-import Moneyreport from "./Moneyreport";
+import TotalsalesRow from "./TotalsalesRow";
 
-const Soldout = ({ soldout }) => {
-  // if (!soldout) return "ຊອກຫາຂໍ້ມູນບໍ່ເຫັນ!";
+const Totalsales_summary = ({ financial_reports }) => {
+  if (!financial_reports) return "ຊອກຫາຂໍ້ມູນບໍ່ເຫັນ!";
 
-  // const { results } = soldout;
+  const { results } = financial_reports;
 
   return (
     <>
@@ -14,14 +14,14 @@ const Soldout = ({ soldout }) => {
             <div className="rounded-t mb-0 px-4 py-3 border-0"></div>
             <div className="block w-full overflow-x-auto">
               <table className="items-center bg-transparent w-full border-collapse ">
-                <thead className="bg-blue-500">
+                <thead className="bg-sky-500">
                   <tr>
                     <th className="px-6 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-center">
                       <button
                         className=" text-white active:bg-blue-600 font-bold px-7 py-1 rounded outline-none focus:outline-none transition-all duration-150"
                         type="button"
                       >
-                        ຫວຍ
+                        ID
                       </button>
                     </th>
                     <th className="px-6 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-center">
@@ -29,7 +29,7 @@ const Soldout = ({ soldout }) => {
                         className=" text-white active:bg-blue-600 font-bold px-7 py-1 rounded outline-none focus:outline-none transition-all duration-150"
                         type="button"
                       >
-                        ຍອດຂາຍ
+                        ຈຳນວນເງີນຄົນຊື້ເລກ
                       </button>
                     </th>
                     <th className="px-6 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-center">
@@ -37,7 +37,7 @@ const Soldout = ({ soldout }) => {
                         className=" text-white active:bg-blue-600 font-bold px-7 py-1 rounded outline-none focus:outline-none transition-all duration-150"
                         type="button"
                       >
-                        ຈຳນວນເງີນຄົນຊື້
+                        ຈຳນວນເງີນຄົນຖືກ
                       </button>
                     </th>
 
@@ -46,10 +46,18 @@ const Soldout = ({ soldout }) => {
                         className=" text-white active:bg-blue-600 font-bold px-7 py-1 rounded outline-none focus:outline-none transition-all duration-150"
                         type="button"
                       >
-                        ຈຳນວນຄົນຖືກ
+                        ຈຳນວນຊື້
                       </button>
                     </th>
 
+                    <th className="px-6 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-center">
+                      <button
+                        className=" text-white active:bg-blue-600 font-bold px-7 py-1 rounded outline-none focus:outline-none transition-all duration-150"
+                        type="button"
+                      >
+                        ໄດ້ເສຍ
+                      </button>
+                    </th>
                     <th className="px-6 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-center">
                       <button
                         className=" text-white active:bg-blue-600 font-bold px-7 py-1 rounded outline-none focus:outline-none transition-all duration-150"
@@ -58,26 +66,18 @@ const Soldout = ({ soldout }) => {
                         ວັນເດືອນປີ
                       </button>
                     </th>
-                    <th className="px-6 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-center">
-                      <button
-                        className=" text-white active:bg-blue-600 font-bold px-7 py-1 rounded outline-none focus:outline-none transition-all duration-150"
-                        type="button"
-                      >
-                        ເວລາ
-                      </button>
-                    </th>
                   </tr>
                 </thead>
                 <tbody>
-                  {/* {results.map((item) => {
+                  {results.map((item) => {
                     return (
-                      <Moneyreport
+                      <TotalsalesRow
                         username={item.username}
                         is_active={item.is_active ? "Active" : "Inactive"}
                         // commission={item.commission[0].commission}
                       />
                     );
-                  })} */}
+                  })}
                 </tbody>
               </table>
             </div>
@@ -152,4 +152,4 @@ const Soldout = ({ soldout }) => {
     </>
   );
 };
-export default Soldout;
+export default Totalsales_summary;

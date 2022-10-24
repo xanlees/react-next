@@ -1,10 +1,10 @@
 import React from "react";
-import Salesoutall from "./Salesoutall";
+import Totalsales_summaryRow from "./Totalsales_summaryRow";
 
-const Soldout = ({ soldout }) => {
-  if (!soldout) return "ຊອກຫາຂໍ້ມູນບໍ່ເຫັນ!";
+const Soldout = ({ totalsales_summary }) => {
+  if (!totalsales_summary) return "ຊອກຫາຂໍ້ມູນບໍ່ເຫັນ!";
 
-  const { results } = soldout;
+  const { results } = totalsales_summary;
 
   return (
     <>
@@ -43,7 +43,7 @@ const Soldout = ({ soldout }) => {
             </div>
             <div className="block w-full overflow-x-auto">
               <table className="items-center bg-transparent w-full border-collapse ">
-                <thead className="bg-blue-500">
+                <thead className="bg-sky-500">
                   <tr>
                     <th className="px-6 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-center">
                       <button
@@ -100,7 +100,7 @@ const Soldout = ({ soldout }) => {
                 <tbody>
                   {results.map((item) => {
                     return (
-                      <Salesoutall
+                      <Totalsales_summaryRow
                         username={item.username}
                         is_active={item.is_active ? "Active" : "Inactive"}
                         // commission={item.commission[0].commission}
