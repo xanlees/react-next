@@ -4,7 +4,7 @@ import { VscGear } from "react-icons/vsc";
 import { FcFullTrash } from "react-icons/fc";
 
 const Listlotteryrow = (props) => {
-  let { name, code, opendate, closingdate } = props;
+  let { name, code, open, close } = props;
 
   return (
     <>
@@ -13,13 +13,13 @@ const Listlotteryrow = (props) => {
           <h1 className=" text-center">{name}</h1>
         </td>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-blueGray-700 bg-blueGray-50 text-blueGray-500 border border-solid border-black py-3 ">
-        <h1 className=" text-center">{code}</h1>
+          <h1 className=" text-center">{code}</h1>
         </td>
         <td className="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-blueGray-700 bg-blueGray-50 text-blueGray-500 border border-solid border-black py-3 ">
-          <h1 className=" text-center">{opendate}</h1>
+          <h1 className=" text-center">{open}</h1>
         </td>
         <td className="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-blueGray-700 bg-blueGray-50 text-blueGray-500 border border-solid border-black py-3 ">
-          <h1 className=" text-center">{closingdate}</h1>
+          <h1 className=" text-center">{close}</h1>
         </td>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-blueGray-700 bg-blueGray-50 text-blueGray-500 border border-solid border-black py-3 ">
           <button className="bg-white text-blue-500 font-bold py-2 px-8 rounded-full">

@@ -8,9 +8,22 @@ export default function index({ lotteries }) {
         <h1 className="text-4xl pt-3 text-red-600 font-bold">Lao Lotto</h1>
         <div className="flex flex-wrap -mx-1 lg:-mx-4 ">
           {lotteries?.map((item, index) => {
+            console.log("day", lotteries[0].lottery_day[0].days);
+            console.log(
+              "time",
+              lotteries[0].lottery_day[0].lottery_time[0].closing_date
+            );
+
             return (
               <>
-                <Card key={index} lotteries={item} />
+                <Card
+                  key={index}
+                  lotteries={item}
+                  times={
+                    lotteries[0].lottery_day[0].lottery_time[0].closing_date
+                  }
+                  days={lotteries[0].lottery_day[0].days}
+                />
               </>
             );
           })}

@@ -25,8 +25,8 @@ const Listlottery = ({ listlottery }) => {
                       className="bg-blue-500 text-white active:bg-blue-600 font-bold px-7 py-1 rounded outline-none focus:outline-none transition-all duration-150"
                       type="button"
                     >
-                      <Link href="../../">
-                        <a>Add</a>
+                      <Link href="coming">
+                        <a>add</a>
                       </Link>
                     </button>
                   </div>
@@ -86,12 +86,20 @@ const Listlottery = ({ listlottery }) => {
                   </thead>
                   <tbody>
                     {results.map((item) => {
+                      // console.log(results.lottery_day[0].days);
                       return (
                         <Listlotteryrow
                           name={item.name}
                           code={item.code}
-                          opendate={item.open_date}
-                          closingdate={item.closing_date}
+                          // open={
+                          //   lotteries[0].lottery_day[0].lottery_time[0]
+                          //     .closing_date
+                          // }
+                          // close={
+                          //   lotteries[0].lottery_day[0].lottery_time[0]
+                          //     .open_time
+                          // }
+                          // days={lotteries[0].lottery_day[0].days}
                         />
                       );
                     })}
