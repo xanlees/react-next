@@ -4,7 +4,6 @@ import { BiTimeFive } from "react-icons/bi";
 import Moment from "moment";
 
 const Card = ({ lotteries, time, days }) => {
-  console.log("fdsefsdf", time);
   if (!lotteries) return "The lottery wasn't found!";
   const { name, image, code } = lotteries;
   const formatDate = Moment(time).format("LT");
