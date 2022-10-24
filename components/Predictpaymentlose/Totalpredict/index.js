@@ -9,7 +9,7 @@ export default function index({ totalpredict }) {
     <div>
       <>
         <section className="py-1 bg-blueGray-50">
-          <div className="w-full xl:w-7/12 mb-12 xl:mb-0 mx-auto mt-24">
+          <div className="w-full xl:w-11/12 mb-12 xl:mb-0 mx-auto mt-24">
             <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
               <div className="block w-full overflow-x-auto">
                 <div className="relative py-4 text-right">

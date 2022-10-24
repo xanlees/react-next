@@ -1,12 +1,12 @@
-import Upper_3 from "."
+import Upper_all from "."
 
 
-export const Story = (args) => <Upper_3 { ...args }/>;
+export const Story = (args) => <Upper_all { ...args }/>;
 
 
 export default {
-  title: 'Predictpaymentlose/Predictpaymentlose_all/Upper_3',
-  component: Upper_3,
+  title: 'Predictpaymentlose/Predictpaymentlose_all/Upper_all',
+  component: Upper_all,
   argTypes:  {
   }
 }

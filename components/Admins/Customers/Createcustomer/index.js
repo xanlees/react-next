@@ -3,6 +3,15 @@ import { useState } from "react";
 import { useRef } from "react";
 import postAPI from "./util";
 
+function makeid(length) {
+  var result = "";
+  var characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  var charactersLength = characters.length;
+  for (var i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+}
 
 export default function index({ url, method }) {
   const form = useRef(null);
@@ -54,8 +63,7 @@ export default function index({ url, method }) {
           if (!value) {
             stateObj[name] = "ກະລຸນາປ້ອນລະຫັດຜ່ານ.";
           } else if (input.confirmPassword && value !== input.confirmPassword) {
-            stateObj["confirmPassword"] =
-              "ຢືນຢັນລະຫັດຜ່ານບໍ່ຖືກຕ້ອງ.";
+            stateObj["confirmPassword"] = "ຢືນຢັນລະຫັດຜ່ານບໍ່ຖືກຕ້ອງ.";
           } else {
             stateObj["confirmPassword"] = input.confirmPassword
               ? ""
@@ -83,14 +91,13 @@ export default function index({ url, method }) {
 
       return stateObj;
     });
-
-
   };
-  
 
   return (
     <div>
       <>
+        <button type="submit">{makeid}fffff</button>
+        <h1>{makeid(5)}</h1>
         <div className="text-center mt-24">
           <h2 className="text-4xl font-sans font-semibold">
             Create a new customer
