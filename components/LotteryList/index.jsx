@@ -10,18 +10,10 @@ export default function index({ lotteries }) {
         <Link href={`/buy-lottery/${lotteries[0].id}`}>
           <div className="flex flex-wrap -mx-1 lg:-mx-4 ">
             {lotteries?.map((item, index) => {
-              console.log("ID", lotteries[0].id);
+              console.log("item", item);
               return (
                 <>
-                  <Card
-                    key={index}
-                    lotteries={item}
-                    times={
-                      lotteries[0].lottery_day[0].lottery_time[0].closing_date
-                    }
-                    days={lotteries[0].lottery_day[0].days}
-                    id={lotteries[0].id}
-                  />
+                  <Card key={index} lotteries={item} />
                 </>
               );
             })}
