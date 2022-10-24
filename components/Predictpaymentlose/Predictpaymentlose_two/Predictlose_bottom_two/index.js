@@ -66,9 +66,9 @@ export default function index({ bottom }) {
                       return (
                         <Toprow
                           id={item.id}
+                          lottery={item.lottery_product}
                           cost={item.cost}
                           predict_lose={item.predict_lost}
-                          win={item.win}
                         />
                       );
                     })}
