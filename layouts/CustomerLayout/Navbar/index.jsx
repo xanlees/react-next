@@ -16,10 +16,14 @@ export default function index() {
     <nav id="navbar" className="flex justify-between p-2 px-4">
       <div className="flex items-center justify-between w-full">
         <ul className="hidden lg:flex lg:justify-center w-full">
-          {navbar.map((item) => {
+          {navbar.map((item, index) => {
             return (
               <>
-                <li className="mr-1" onClick={() => setActive(item.order)}>
+                <li
+                  className="mr-1"
+                  onClick={() => setActive(item.order)}
+                  key={index + item.order}
+                >
                   <Link href={item.href}>
                     <a
                       className={`font-medium ${
