@@ -9,7 +9,7 @@ export default function index({ lotteries }) {
         <h1 className="text-4xl pt-3 text-red-600 font-bold">Lao Lotto</h1>
         <div className="flex flex-wrap -mx-1 lg:-mx-4 ">
           {lotteries?.map((item, index) => {
-            console.log("lotteries", item.period[0].id);
+            // console.log("lotteries", lotteries);
             return (
               <>
                 <Link
@@ -32,7 +32,7 @@ export default function index({ lotteries }) {
                       date_open={item.period[0].date_open}
                       period_number={item.period[0].period_number}
                       closing_time={item.period[0].closing_time}
-                      day={item.lottery_day[0].days}
+                      // day={item.lottery_day[0].days}
                     />
                   </a>
                 </Link>

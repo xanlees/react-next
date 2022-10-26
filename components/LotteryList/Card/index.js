@@ -11,13 +11,16 @@ const Card = ({
   date_open,
   closing_time,
   period_number,
-  day,
 }) => {
   // if (!lotteries) return "The lottery wasn't found!";
   // const { name, image, code } = lotteries;
   const closing = Moment(closing_time).format("LT");
   const openDate = Moment(date_open).format("MMM Do YY");
   const closing_day = Moment(closing_time).format("dddd");
+  const Days = Moment(date_open).format("dddd");
+  const Days1 = Moment(closing_time).format("MMM Do YY");
+  console.log("Bamboo", Days);
+  console.log("Bamboo1", Days1);
 
   return (
     <>
@@ -49,16 +52,6 @@ const Card = ({
             <div className="text-center w-full">
               <h1 className="text-red-500 text-lg font-bold">{is_online}</h1>
             </div>
-            {/* <div className="grid xl:grid-cols-2 lg:grid-cols-2 h-20 bg-sky-400 ">
-              <div className="grid  grid-cols-3  text-right">
-                <BsCalendarDay className=" text-left" />
-                Day : <span>{closing_day}</span>
-              </div>
-              <div>
-                <BiTimeFive />
-                Close on : <span className="text-red-600">{closing}</span>
-              </div>
-            </div> */}
             <div className="flex items-center justify-center text-center h-20 bg-sky-400 rounded m-3 ">
               <div className="w-1/12">
                 <BsCalendarDay className="mx-auto ml-5" />

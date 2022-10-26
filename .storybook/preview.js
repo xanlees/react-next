@@ -4,6 +4,8 @@ import { getAxios } from "../utils/get-axios";
 import withAxiosDecorator from "storybook-axios";
 import * as NextImage from "next/image";
 
+import { Provider } from "react-redux";
+import { store } from "../redux/store";
 const OriginalNextImage = NextImage.default;
 
 Object.defineProperty(NextImage, "default", {
@@ -21,4 +23,11 @@ export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
 };
 
-export const decorators = [withAxiosDecorator(getAxios())];
+export const decorators = [
+  withAxiosDecorator(getAxios()),
+  (Story) => (
+    <Provider store={store}>
+      <Story />
+    </Provider>
+  ),
+];
