@@ -45,7 +45,7 @@ export default function index({ low_bottom }) {
               </div>
               <div className="block w-full overflow-x-auto">
                 <table className="items-center bg-transparent w-full border-collapse ">
-                  <thead className="bg-blue-500 ">
+                  <thead className="bg-sky-500 ">
                     <tr>
                       <td className="border-t-0 align-middle border-l-0 border-r-0 text-white text-xs whitespace-nowrap p-4 text-center border border-solid border-black py-3 ">
                         ID
