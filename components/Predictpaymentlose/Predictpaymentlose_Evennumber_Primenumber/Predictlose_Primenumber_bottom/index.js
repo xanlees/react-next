@@ -62,15 +62,20 @@ export default function index({ primenumber_bottom }) {
                     </tr>
                   </thead>
                   <tbody>
-                    {results.map((item) => {
-                      return (
-                        <Kickupperrow
-                          id={item.id}
-                          name={item.name}
-                          sales={item.sales}
-                          win={item.win}
-                        />
-                      );
+                  {results.map((item) => {
+                      if (
+                        item.lottery_type != null &&
+                        item.lottery_type === 8
+                      ) {
+                        return (
+                          <Low_top_row
+                            id={item.id}
+                            lottery_name={item.lottery_name}
+                            cost={item.cost}
+                            win={item.predict_lost}
+                          />
+                        );
+                      }
                     })}
                   </tbody>
                 </table>

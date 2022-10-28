@@ -1,21 +1,22 @@
 import React from "react";
+import { RiDeleteBin3Line } from "react-icons/ri";
+import { BiEdit } from "react-icons/bi";
 
 const ReadOnlyRow = ({ contact, handleEditClick, handleDeleteClick }) => {
   return (
-    <tr>
-      <td>{contact.fullName}</td>
-      <td>{contact.address}</td>
-      <td>{contact.phoneNumber}</td>
-     
+    <tr className="grid grid-cols-2">
       <td>
         <button
+          className=""
           type="button"
           onClick={(event) => handleEditClick(event, contact)}
         >
-          Edit
+          <BiEdit className=" text-blue-600" />
         </button>
+      </td>
+      <td>
         <button type="button" onClick={() => handleDeleteClick(contact.id)}>
-          Delete
+          <RiDeleteBin3Line className=" text-rose-600" />
         </button>
       </td>
     </tr>

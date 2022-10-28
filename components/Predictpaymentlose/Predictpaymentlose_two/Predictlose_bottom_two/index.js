@@ -2,7 +2,6 @@ import React from "react";
 import Toprow from "./Toprow";
 
 export default function index({ bottom }) {
-
   if (!bottom) return "ຊອກຫາຂໍ້ມູນບໍ່ເຫັນ!";
 
   const { results } = bottom;
@@ -63,14 +62,19 @@ export default function index({ bottom }) {
                   </thead>
                   <tbody>
                     {results.map((item) => {
-                      return (
-                        <Toprow
-                          id={item.id}
-                          lottery={item.lottery_product}
-                          cost={item.cost}
-                          predict_lose={item.predict_lost}
-                        />
-                      );
+                      if (
+                        item.lottery_type != null &&
+                        item.lottery_type === 4
+                      ) {
+                        return (
+                          <Toprow
+                            id={item.id}
+                            lottery={item.lottery_name}
+                            cost={item.cost}
+                            predict_lose={item.predict_lost}
+                          />
+                        );
+                      }
                     })}
                   </tbody>
                 </table>

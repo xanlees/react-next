@@ -63,14 +63,19 @@ export default function index({ lower }) {
                   </thead>
                   <tbody>
                     {results.map((item) => {
-                      return (
-                        <Lowerrow
-                          id={item.id}
-                          number={item.number}
-                          sales={item.sales}
-                          win={item.win}
-                        />
-                      );
+                      if (
+                        item.lottery_type != null &&
+                        item.lottery_type === 2
+                      ) {
+                        return (
+                          <Lowerrow
+                            id={item.id}
+                            lottery_name={item.lottery_name}
+                            cost={item.cost}
+                            win={item.predict_lost}
+                          />
+                        );
+                      }
                     })}
                   </tbody>
                 </table>

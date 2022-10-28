@@ -6,6 +6,11 @@ const Listlottery = ({ listlottery }) => {
   if (!listlottery) return "ຊອກຫາຂໍ້ມູນບໍ່ເຫັນ!";
 
   const { results } = listlottery;
+  console.log(results)
+
+  // const date =  moment().format('dddd');  
+
+
 
   return (
     <div>
@@ -22,11 +27,11 @@ const Listlottery = ({ listlottery }) => {
                   </div>
                   <div className="relative translate-x-full translate-y-1 w-full max-w-full flex-grow flex-1 text-right">
                     <button
-                      className="bg-blue-500 text-white active:bg-blue-600 font-bold px-7 py-1 rounded outline-none focus:outline-none transition-all duration-150"
+                      className="bg-sky-500 text-white active:bg-blue-600 font-bold px-7 py-1 rounded outline-none focus:outline-none transition-all duration-150"
                       type="button"
                     >
-                      <Link href="../../">
-                        <a>Add</a>
+                      <Link href="coming">
+                        <a>add</a>
                       </Link>
                     </button>
                   </div>
@@ -59,7 +64,7 @@ const Listlottery = ({ listlottery }) => {
               </div>
               <div className="block w-full overflow-x-auto">
                 <table className="items-center bg-transparent w-full border-collapse ">
-                  <thead className="bg-blue-500">
+                  <thead className="bg-sky-500">
                     <tr>
                       <td className="px-6 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap text-center">
                         Name
@@ -93,9 +98,8 @@ const Listlottery = ({ listlottery }) => {
                         <Listlotteryrow
                           name={item.name}
                           code={item.code}
-                          opendate={item.lottery_day[0].lottery_time[0].open_date}
-                          closingdate={item.lottery_day[0].lottery_time[0].closing_date}
-                          lottery_day={item.lottery_day[0].days}
+                          date_open={item.period[0].date_open}
+                          closing_time={item.period[0].closing_time}
                         />
                       );
                     })}

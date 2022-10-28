@@ -61,16 +61,21 @@ export default function index({ upper }) {
                     </tr>
                   </thead>
                   <tbody>
-                    {/* {results.map((item) => {
-                      return (
-                        <Upperrow
-                          id={item.id}
-                          number={item.number}
-                          sales={item.sales}
-                          win={item.win}
-                        />
-                      );
-                    })} */}
+                  {results.map((item) => {
+                      if (
+                        item.lottery_type != null &&
+                        item.lottery_type === 9
+                      ) {
+                        return (
+                          <Toprow
+                            id={item.id}
+                            lottery={item.lottery_name}
+                            cost={item.cost}
+                            predict_lose={item.predict_lost}
+                          />
+                        );
+                      }
+                    })}
                   </tbody>
                 </table>
               </div>

@@ -1,7 +1,7 @@
 import React from "react";
 
 const Toprow = (props) => {
-  let { id, cost, lottery, predict_lose,} = props;
+  let { id, lottery, cost, predict_lose,} = props;
 
   return (
     <>
