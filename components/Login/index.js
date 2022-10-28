@@ -1,16 +1,25 @@
-import React from "react";
-import { useRef } from 'react';
+import React, { useState } from "react";
+import { useRef } from "react";
 import postAPI from "./util";
+import { useRouter } from "next/router";
+import Cookies from "js-cookie";
 
-export default function index({ url, method, is_redirect}) {
+export default function index({ url, method, is_redirect, req, res }) {
+  const router = useRouter();
   const form = useRef(null);
-  let redirect = is_redirect ? is_redirect: false
+  const [fail_login, setFail_login] = useState(false);
+  let redirect = is_redirect ? is_redirect : false;
 
-  const execRequest = (e) => {
-    if (!redirect)
-      e.preventDefault();
+  const execRequest = async (e) => {
+    if (!redirect) e.preventDefault();
     const formData = new FormData(form.current);
-    const result = postAPI(method, url, formData);
+    const result = await postAPI(method, url, formData);
+    if (result.status == 200) {
+      setFail_login(false);
+      Cookies.set("token", result.data.access);
+      router.push("/customer");
+    } else setFail_login(true);
+    console.log(fail_login);
   };
 
   return (
@@ -91,6 +100,13 @@ export default function index({ url, method, is_redirect}) {
           >
             Sign in
           </button>
+          {fail_login ? (
+            <p className="text-red-500 text-center">
+              Username or Password is incorrect
+            </p>
+          ) : (
+            ""
+          )}
         </form>
       </div>
     </div>
