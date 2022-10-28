@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useRef } from "react";
 import postAPI from "./util";
+import { useNotification } from "@vechaiui/react";
 
 function makeid(length) {
   var result = "";
@@ -45,6 +46,18 @@ export default function index({ url, method }) {
       [name]: value,
     }));
     validateInput(e);
+  };
+
+  const notification = useNotification();
+  const handleMessage = (show) => {
+    notification({
+      title: "Crete Agent Successful",
+      className:
+        " bg-green-500 border-lg text-white h-full w-64 text-2xl font-extralight tracking-tight ",
+      status: show,
+      position: "top-right",
+      duration: "900",
+    });
   };
 
   const validateInput = (e) => {
@@ -96,7 +109,7 @@ export default function index({ url, method }) {
   return (
     <div>
       <>
-        <button type="submit">{makeid}fffff</button>
+        <button type="submit">{makeid}</button>
         <h1>{makeid(5)}</h1>
         <div className="text-center mt-24">
           <h2 className="text-4xl font-sans font-semibold">
@@ -236,6 +249,7 @@ export default function index({ url, method }) {
                 <div className="py-2 relative translate-x-60 ">
                   <button
                     type="submit"
+                    onClick={() => handleMessage()}
                     className=" w-24 text-white bg-sky-500 hover:bg-sky-700 focus:ring-4 focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800"
                   >
                     Save

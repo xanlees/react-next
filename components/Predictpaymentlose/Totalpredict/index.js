@@ -50,9 +50,7 @@ export default function index({ totalpredict }) {
                       return (
                         <Totalpredictrow
                           name={item.name}
-                          sales={item.sales}
-                          win={item.win}
-                          instalment_id={item.instalment_id}
+                          date_open={item.period[0].date_open}
                         />
                       );
                     })}

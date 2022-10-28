@@ -67,7 +67,7 @@ export default function index({ upper }) {
                         item.lottery_type === 9
                       ) {
                         return (
-                          <Toprow
+                          <Upperrow
                             id={item.id}
                             lottery={item.lottery_name}
                             cost={item.cost}

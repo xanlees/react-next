@@ -8,7 +8,7 @@ const Listlottery = ({ listlottery }) => {
   const { results } = listlottery;
   console.log(results)
 
-  // const date =  moment().format('dddd');  
+
 
 
 
