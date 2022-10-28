@@ -10,8 +10,8 @@ const index = (prop) => {
   );
 };
 
-export async function getServerSideProps() {
-  return getAPI();
-}
+// export async function getServerSideProps() {
+//   return getAPI();
+// }
 
 export default index;
