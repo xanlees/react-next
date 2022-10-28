@@ -4,11 +4,16 @@ import { VscGear } from "react-icons/vsc";
 import { FcFullTrash } from "react-icons/fc";
 import Moment from "moment";
 
+<<<<<<< HEAD
 const Listlotteryrow = ({name, code, date_open, closing_time}) => {
   const closing = Moment(closing_time).format("LT");
   const open = Moment(date_open).format("LT");
   const Days = Moment(date_open).format("dddd");
   const Days1 = Moment(closing_time).format("MMM Do YY");
+=======
+const Listlotteryrow = (props) => {
+  let { name, code, open, close } = props;
+>>>>>>> ea668275925642d20189a5ee91da3e436ad91b3d
 
   return (
     <>
@@ -23,10 +28,14 @@ const Listlotteryrow = ({name, code, date_open, closing_time}) => {
           <h1 className=" text-center">{open}</h1>
         </td>
         <td className="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-blueGray-700 bg-blueGray-50 text-blueGray-500 border border-solid border-black py-3 ">
+<<<<<<< HEAD
           <h1 className=" text-center">{closing}</h1>
         </td>
         <td className="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-blueGray-700 bg-blueGray-50 text-blueGray-500 border border-solid border-black py-3 ">
           <h1 className=" text-center">{Days}</h1>
+=======
+          <h1 className=" text-center">{close}</h1>
+>>>>>>> ea668275925642d20189a5ee91da3e436ad91b3d
         </td>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-blueGray-700 bg-blueGray-50 text-blueGray-500 border border-solid border-black py-3 ">
           <button className="bg-white text-blue-500 font-bold py-2 px-8 rounded-full">

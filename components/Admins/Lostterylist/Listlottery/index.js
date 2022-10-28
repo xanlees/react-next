@@ -94,12 +94,25 @@ const Listlottery = ({ listlottery }) => {
                   </thead>
                   <tbody>
                     {results.map((item) => {
+                      // console.log(results.lottery_day[0].days);
                       return (
                         <Listlotteryrow
                           name={item.name}
                           code={item.code}
+<<<<<<< HEAD
                           date_open={item.period[0].date_open}
                           closing_time={item.period[0].closing_time}
+=======
+                          // open={
+                          //   lotteries[0].lottery_day[0].lottery_time[0]
+                          //     .closing_date
+                          // }
+                          // close={
+                          //   lotteries[0].lottery_day[0].lottery_time[0]
+                          //     .open_time
+                          // }
+                          // days={lotteries[0].lottery_day[0].days}
+>>>>>>> ea668275925642d20189a5ee91da3e436ad91b3d
                         />
                       );
                     })}
