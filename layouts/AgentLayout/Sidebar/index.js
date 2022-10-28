@@ -14,6 +14,7 @@ const sidebar = [
   { page: "Manual", href: "/", order: 3 },
   { page: "History Withdraw", href: "/", order: 4 },
   { page: "History Deposit", href: "/", order: 5 },
+  { page: "Predict Lose", href: "/agent/predict-lose", order: 5 },
 ];
 
 function Sidebar() {

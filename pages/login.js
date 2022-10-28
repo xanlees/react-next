@@ -4,7 +4,6 @@ import { Image } from "@vechaiui/react";
 const Home = (props) => {
   return (
     <>
-    
       <div className="item  flex-inline items-center">
         <div>
           <Image
@@ -23,7 +22,12 @@ const Home = (props) => {
           </h1>
         </div>
         <div className="item ">
-          <Login url="/customer" is_redirect="true" method="post" {...props} />
+          <Login
+            url="http://localhost:8000/api/v1/login"
+            is_redirect={false}
+            method="post"
+            {...props}
+          />
         </div>
       </div>
     </>
