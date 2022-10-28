@@ -5,7 +5,7 @@ export const Story = (args) => <Datetime { ...args }/>;
 
 
 export default {
-  title: 'Reportmoney/elements/Datetime',
+  title: 'Financial_reports/elements/Datetime',
   component: Datetime,
   argTypes:  {
   }

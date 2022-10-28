@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useRef } from "react";
 import postAPI from "./util";
+import { useNotification } from "@vechaiui/react";
 
 export default function index({ url, method }) {
   const form = useRef(null);
@@ -12,6 +13,18 @@ export default function index({ url, method }) {
     const formData = new FormData(form.current);
     const result = postAPI(method, url, formData);
     console.log(result);
+  };
+
+  const notification = useNotification();
+  const handleMessage = (show) => {
+    notification({
+      title: "Crete Agent Successful",
+      className:
+        " bg-green-500 border-lg text-white h-full w-64 text-2xl font-extralight tracking-tight ",
+      status: show,
+      position: "top-right",
+      duration: "900",
+    });
   };
 
   const [input, setInput] = useState({
@@ -245,6 +258,7 @@ export default function index({ url, method }) {
                 <div className="py-2 relative translate-x-60">
                   <button
                     type="submit"
+                    onClick={() => handleMessage()}
                     className=" w-24 text-white bg-sky-500 hover:bg-sky-700 focus:ring-4 focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800"
                   >
                     Save

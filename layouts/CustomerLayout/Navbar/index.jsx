@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import Link from "next/link";
 
 const navbar = [
-  { page: "Home", href: "/", order: 0 },
-  { page: "Prize", href: "/", order: 1 },
-  { page: "Order History", href: "/", order: 2 },
-  { page: "Balance", href: "/", order: 3 },
-  { page: "Balance History", href: "/", order: 4 },
-  { page: "How to Play", href: "/", order: 5 },
+  { page: "Home", href: "/customer", order: 0 },
+  { page: "Prize", href: "/coming", order: 1 },
+  { page: "Order History", href: "/customer/order-history", order: 2 },
+  { page: "Balance", href: "/coming", order: 3 },
+  { page: "Balance History", href: "/coming", order: 4 },
+  { page: "How to Play", href: "/coming", order: 5 },
 ];
 
 export default function index() {
@@ -23,7 +23,9 @@ export default function index() {
                   <Link href={item.href}>
                     <a
                       className={`font-medium ${
-                        active === item.order ? "bg-sky-700 rounded-sm text-white" : "bg-sky-400"
+                        active === item.order
+                          ? "bg-sky-700 rounded-sm text-white"
+                          : "bg-sky-400"
                       } dark:text-dark text-white px-2 py-1 hover:bg-sky-700 hover:text-white hover:rounded- dark:hover:text-white`}
                     >
                       {item.page}

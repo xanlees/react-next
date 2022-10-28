@@ -3,12 +3,11 @@ import { BsCalendarDay } from "react-icons/bs";
 import { BiTimeFive } from "react-icons/bi";
 import Moment from "moment";
 
-const Card = ({ lotteries }) => {
+const Card = ({ lotteries, time, days }) => {
+  console.log("fdsefsdf", time);
   if (!lotteries) return "The lottery wasn't found!";
   const { name, image, code } = lotteries;
-  const time = lotteries.lottery_day[0].lottery_time[0].closing_date;
-  const day = lotteries.lottery_day[0].days;
-  const formatDate = Moment(time).format("LT");
+  const formatDate =  (time).format("LT");
   return (
     <>
       <div className="w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3 xl:w-1/3 transitin ease-in-out hover:scale-110 duration-700 cursor-pointer mb-5 mt-3">
@@ -36,7 +35,7 @@ const Card = ({ lotteries }) => {
               </div>
               <div className="w-1/2">
                 <h3>
-                  Date: <span>{day} </span>
+                  Date <span>{days}</span>
                 </h3>
               </div>
               <div className="item w-1/12">

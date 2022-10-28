@@ -1,5 +1,5 @@
 import React from "react";
-import Highupperrow from "./Highupperrow";
+import High_bottom_row from "./High_bottom_row";
 
 export default function index({ high_bottom }) {
   if (!high_bottom) return "ຊອກຫາຂໍ້ມູນບໍ່ເຫັນ!";
@@ -10,7 +10,7 @@ export default function index({ high_bottom }) {
     <div>
       <>
         <section className="py-1 bg-blueGray-50">
-          <div className="w-full xl:w-11/12 mb-12 xl:mb-0 mx-auto mt-24">
+          <div className="w-full xl:w-9/12 mb-12 xl:mb-0 mx-auto mt-24">
             <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
               <div className="rounded-t mb-0 px-4 py-3 border-0">
                 <div className="flex flex-wrap items-center">
@@ -62,15 +62,20 @@ export default function index({ high_bottom }) {
                     </tr>
                   </thead>
                   <tbody>
-                    {results.map((item) => {
-                      return (
-                        <Highupperrow
-                          id={item.id}
-                          name={item.name}
-                          sales={item.sales}
-                          win={item.win}
-                        />
-                      );
+                  {results.map((item) => {
+                      if (
+                        item.lottery_type != null &&
+                        item.lottery_type === 6
+                      ) {
+                        return (
+                          <High_bottom_row
+                            id={item.id}
+                            lottery_name={item.lottery_name}
+                            cost={item.cost}
+                            win={item.predict_lost}
+                          />
+                        );
+                      }
                     })}
                   </tbody>
                 </table>
