@@ -69,8 +69,7 @@ export default function index({ upper }) {
                       ) {
                         return (
                           <Upperrow
-                            // data={myIndexedData}
-                            // columns={columns}
+                            key={item}
                             id={item.id}
                             lottery_name={item.lottery_name}
                             cost={item.cost}

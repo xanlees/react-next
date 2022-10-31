@@ -1,10 +1,14 @@
 import React from "react";
 import Totalpredictrow from "./Totalpredictrow";
 
-export default function index({ totalpredict }) {
-  if (!totalpredict) return "ຊອກຫາຂໍ້ມູນບໍ່ເຫັນ!";
+export default function index({ totalpredict ,totalpredict_total}) {
+  if (!totalpredict, !totalpredict_total) return "ຊອກຫາຂໍ້ມູນບໍ່ເຫັນ!";
+  // const results= { results } = totalpredict  === totalpredict_total ;
+  const { results } =  totalpredict_total 
+  // console.log("totalpredict", totalpredict)
+  // console.log("totalpredict_total", totalpredict_total)
 
-  const { results } = totalpredict;
+  console.log( "results", results)
   return (
     <div>
       <>
@@ -49,6 +53,7 @@ export default function index({ totalpredict }) {
                     {results.map((item) => {
                       return (
                         <Totalpredictrow
+                          key={item.name}
                           name={item.name}
                           sales={item.sales}
                           win={item.win}
