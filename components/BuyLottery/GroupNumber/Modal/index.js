@@ -1,6 +1,10 @@
 import React, { useState } from "react";
-import { RiDeleteBin5Line } from "react-icons/ri";
+import SelectNumber from "./SelectNumber";
+import { useSelector } from "react-redux";
 const NumberModal = () => {
+  const Select_Lottery_Number = useSelector(
+    (state) => state.number_button.number
+  );
   const [showModal, setShowModal] = useState(false);
   return (
     <div>
@@ -26,91 +30,19 @@ const NumberModal = () => {
                     Balance: 100,000 kip
                   </div>
                 </div>
-
-                {/* <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                  <button
-                    className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                    onClick={() => setShowModal(false)}
-                  >
-                    <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
-                      <div>3 Digit </div>
-                    </span>
-                  </button>
-                </div> */}
                 {/*body*/}
                 <div className="">
                   <div className="mb-3 ml-8">3 Digit </div>
                   <div className="grid  grid-cols-8 space-3 text-center">
-                    <div className=" text-sm rounded-lg text-gray h-10 w-full pt-2">
-                      # 1
-                    </div>
-                    <div className="bg-gray-900 border border-gray-300 text-sm rounded-lg text-white h-10 w-full pt-2">
-                      911
-                    </div>
-
-                    <input
-                      type="text"
-                      className="pt-2 col-span-2 w-full border border-gray-300 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500  bg-sky-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500"
-                    />
-                    <div className="pt-2 bg-gray-900 border border-gray-300 text-sm rounded-lg text-white h-10 w-full">
-                      Multiple
-                    </div>
-
-                    <input
-                      type="text"
-                      className=" pt-2 col-span-2 w-full border border-gray-300 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500  bg-sky-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500"
-                    />
-                    <button className="mr-3">
-                      <RiDeleteBin5Line className=" text-white text-sm rounded-lg  w-full bg-red-500 h-10 mr-5 mb-1" />
-                    </button>
-                  </div>
-                  <div className="grid  grid-cols-8 space-3 text-center">
-                    <div className=" text-sm rounded-lg text-gray h-10 w-full pt-2">
-                      # 1
-                    </div>
-                    <div className="bg-gray-900 border border-gray-300 text-sm rounded-lg text-white h-10 w-full pt-2">
-                      911
-                    </div>
-
-                    <input
-                      type="text"
-                      className="pt-2 col-span-2 w-full border border-gray-300 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500  bg-sky-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500"
-                    />
-                    <div className="pt-2 bg-gray-900 border border-gray-300 text-sm rounded-lg text-white h-10 w-full">
-                      Multiple
-                    </div>
-
-                    <input
-                      type="text"
-                      className=" pt-2 col-span-2 w-full border border-gray-300 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500  bg-sky-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500"
-                    />
-                    <button className="mr-3">
-                      <RiDeleteBin5Line className=" text-white text-sm rounded-lg  w-full bg-red-500 h-10 mr-5" />
-                    </button>
-                  </div>
-                </div>
-                <div className="grid  grid-cols-4 space-3 text-center">
-                  <input
-                    type="text"
-                    className=" pt-2 col-span-2 w-full border border-gray-300 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500  bg-sky-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500"
-                  />
-                  <div className="grid grid-cols-4 grid-rows-2 gap-2">
-                    <input
-                      type="text"
-                      className=" pt-2 col-span-2 w-full border border-gray-300 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500  bg-sky-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500"
-                    />
-                    <input
-                      type="text"
-                      className=" pt-2 col-span-2 w-full border border-gray-300 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500  bg-sky-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500"
-                    />
-                    <input
-                      type="text"
-                      className=" pt-2 col-span-2 w-full border border-gray-300 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500  bg-sky-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500"
-                    />
-                    <input
-                      type="text"
-                      className=" pt-2 col-span-2 w-full border border-gray-300 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500  bg-sky-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500"
-                    />
+                    {Select_Lottery_Number.map((item, index) => {
+                      return (
+                        <SelectNumber
+                          key={index}
+                          lottery_number={item}
+                          index={index}
+                        />
+                      );
+                    })}
                   </div>
                 </div>
 
