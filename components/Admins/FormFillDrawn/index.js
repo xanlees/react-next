@@ -9,7 +9,7 @@ const FormFillDrawn = () => {
     console.log(data);
     try {
       const { data1 } = await axios({
-        method: "PUT",
+        method: "put",
         url: "http://localhost:8000/api/v1/lottery_period",
         data: data,
         headers: { "Content-Type": "application/json" },
