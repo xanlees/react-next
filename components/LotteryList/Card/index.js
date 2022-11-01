@@ -31,7 +31,6 @@ const Card = ({
               Period <span>{period_number}</span>
             </div>
           </div>
-
           <div className="flex-inline items-center">
             <div className="flex items-center">
               <div className="p-3">
