@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 
 const navbar = [
-  { page: "Home", href: "/customer", order: 0 },
+  { page: "Home", href: "/", order: 0 },
   { page: "Prize", href: "/coming", order: 1 },
   { page: "Order History", href: "/customer/order-history", order: 2 },
   { page: "Balance", href: "/coming", order: 3 },
