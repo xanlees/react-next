@@ -64,13 +64,12 @@ export default function index({ upper }) {
                   <tbody>
                     {results.map((item) => {
                       if (
-                        item.lottery_type != null &&
-                        item.lottery_type === 1
+                        item.lottery_type.id != null &&
+                        item.lottery_type.id === 1
                       ) {
                         return (
                           <Upperrow
-                            // data={myIndexedData}
-                            // columns={columns}
+                            key={item}
                             id={item.id}
                             lottery_name={item.lottery_name}
                             cost={item.cost}

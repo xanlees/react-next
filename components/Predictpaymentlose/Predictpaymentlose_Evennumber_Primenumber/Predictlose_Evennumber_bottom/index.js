@@ -50,7 +50,7 @@ export default function index({evennumber_bottom}) {
                         ID
                       </td>
                       <th className="border-t-0 align-middle border-l-0 border-r-0 text-white text-xs whitespace-nowrap p-4 text-center border border-solid border-black py-3 ">
-                        ບົນ
+                        ລ່າງ
                       </th>
                       <th className="border-t-0 align-middle border-l-0 border-r-0 text-white text-xs whitespace-nowrap p-4 text-center border border-solid border-black py-3 ">
                         ຈຳນວນຂາຍ
@@ -63,8 +63,8 @@ export default function index({evennumber_bottom}) {
                   <tbody>
                   {results.map((item) => {
                       if (
-                        item.lottery_type != null &&
-                        item.lottery_type === 8
+                        item.lottery_type.id != null &&
+                        item.lottery_type.id === 8
                       ) {
                         return (
                           <Khusupperrow

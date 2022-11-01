@@ -61,10 +61,10 @@ export default function index({ upper }) {
                     </tr>
                   </thead>
                   <tbody>
-                  {results.map((item) => {
+                    {results.map((item) => {
                       if (
-                        item.lottery_type != null &&
-                        item.lottery_type === 9
+                        item.lottery_type.id != null &&
+                        item.lottery_type.id === 9
                       ) {
                         return (
                           <Upperrow

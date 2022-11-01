@@ -45,7 +45,7 @@ export default function index({ high_top }) {
               </div>
               <div className="block w-full overflow-x-auto">
                 <table className="items-center bg-transparent w-full border-collapse ">
-                  <thead className="bg-blue-500 ">
+                  <thead className="bg-sky-500 ">
                     <tr>
                       <td className="border-t-0 align-middle border-l-0 border-r-0 text-white text-xs whitespace-nowrap p-4 text-center border border-solid border-black py-3 ">
                         ID
@@ -64,8 +64,8 @@ export default function index({ high_top }) {
                   <tbody>
                   {results.map((item) => {
                       if (
-                        item.lottery_type != null &&
-                        item.lottery_type === 5
+                        item.lottery_type.id != null &&
+                        item.lottery_type.id === 5
                       ) {
                         return (
                           <High_top_row
