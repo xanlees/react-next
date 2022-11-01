@@ -8,7 +8,7 @@ const Listlottery = ({ listlottery }) => {
   const { results } = listlottery;
   console.log(results)
 
-  // const date =  moment().format('dddd');  
+
 
 
 
@@ -94,6 +94,7 @@ const Listlottery = ({ listlottery }) => {
                   </thead>
                   <tbody>
                     {results.map((item) => {
+                      // console.log(results.lottery_day[0].days);
                       return (
                         <Listlotteryrow
                           name={item.name}

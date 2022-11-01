@@ -1,8 +1,12 @@
 import React from "react";
-
+import Moment from "moment";
 
 const Totalpredictrow = (props) => {
-  let {  name, win, } = props;
+  let {  name, date_open } = props;
+
+  // const open = Moment(date).format("L");
+  const Days = Moment(date_open).format("L");
+
 
   return (
     <>
@@ -17,10 +21,10 @@ const Totalpredictrow = (props) => {
         {/* <h1 className=" text-center">{win}</h1> */}
         </td>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center bg-blueGray-50 border border-solid border-black py-3 ">
-        {/* <h1 className=" text-center">{instalment_id}</h1> */}
+        
         </td>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center bg-blueGray-50 border border-solid border-black py-3 ">
-          
+        <h1 className=" text-center">{Days}</h1>
         </td>
       </tr>
     </>

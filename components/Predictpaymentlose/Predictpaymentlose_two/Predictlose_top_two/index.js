@@ -61,14 +61,14 @@ export default function index({ top }) {
                     </tr>
                   </thead>
                   <tbody>
-                  {results.map((item, index) => {
+                  {results.map((item) => {
                       if (
-                        item.lottery_type != null &&
-                        item.lottery_type === 3
+                        item.lottery_type.id != null &&
+                        item.lottery_type.id === 3
                       ) {
                         return (
                           <Bottomrow
-                            key={index}
+                            key={item}
                             id={item.id}
                             lottery_name={item.lottery_name}
                             cost={item.cost}

@@ -3,8 +3,11 @@ import { useState } from "react";
 import { useRef } from "react";
 import postAPI from "./util";
 import { useNotification } from "@vechaiui/react";
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
 
-export default function index({ url, method }) {
+export default function index(props, { url, method }) {
   const form = useRef(null);
 
   const execRequest = (e) => {
@@ -14,6 +17,40 @@ export default function index({ url, method }) {
     const result = postAPI(method, url, formData);
     console.log(result);
   };
+
+  const user = props?.user;
+  const [showPassword, setShowPassword] = useState(false);
+  const isAddMode = !user;
+
+  const validationSchema = Yup.object().shape({
+    username: Yup.string()
+        .required('username is required'),
+    password: Yup.string()
+        .transform(x => x === '' ? undefined : x)
+        .concat(isAddMode ? Yup.string().required('Password is required') : null)
+        .min(8, 'Password must be at least 8 characters'),
+    confirmPassword: Yup.string()
+        .transform(x => x === '' ? undefined : x)
+        .when('password', (password, schema) => {
+            if (password || isAddMode) return schema.required('Confirm Password is required');
+        })
+        .oneOf([Yup.ref('password')], 'Passwords must match'),
+    commission: Yup.string()
+        .required('commissions required'),
+});
+const formOptions = { resolver: yupResolver(validationSchema) };
+
+if (!isAddMode) {
+  const { password, confirmPassword, ...defaultValues } = user;
+  formOptions.defaultValues = defaultValues;
+}
+function onSubmit(data) {
+  return isAddMode
+      ? createUser(data)
+      : updateUser(user.id, data);
+}
+const { register, handleSubmit, reset, formState } = useForm(formOptions);
+const { errors } = formState;
 
   const notification = useNotification();
   const handleMessage = (show) => {
@@ -26,77 +63,6 @@ export default function index({ url, method }) {
       duration: "900",
     });
   };
-
-  const [input, setInput] = useState({
-    username: "",
-    password: "",
-    confirmPassword: "",
-    commission: "",
-  });
-
-  const [error, setError] = useState({
-    username: "",
-    password: "",
-    confirmPassword: "",
-    commission: "",
-  });
-
-  const onInputChange = (e) => {
-    const { name, value } = e.target;
-    setInput((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-    validateInput(e);
-  };
-
-  const validateInput = (e) => {
-    let { name, value } = e.target;
-    setError((prev) => {
-      const stateObj = { ...prev, [name]: "" };
-
-      switch (name) {
-        case "username":
-          if (!value) {
-            stateObj[name] = "Please enter Username.";
-          }
-          break;
-
-        case "password":
-          if (!value) {
-            stateObj[name] = "Please enter Password.";
-          } else if (input.confirmPassword && value !== input.confirmPassword) {
-            stateObj["confirmPassword"] =
-              "Password and Confirm Password does not match.";
-          } else {
-            stateObj["confirmPassword"] = input.confirmPassword
-              ? ""
-              : error.confirmPassword;
-          }
-          break;
-
-        case "confirmPassword":
-          if (!value) {
-            stateObj[name] = "Please enter Confirm Password.";
-          } else if (input.password && value !== input.password) {
-            stateObj[name] = "Password and Confirm Password does not match.";
-          }
-          break;
-
-        case "commission":
-          if (!value) {
-            stateObj[name] = "Please enter Deposit.";
-          }
-          break;
-
-        default:
-          break;
-      }
-
-      return stateObj;
-    });
-  };
-
   return (
     <div>
       <>
@@ -107,7 +73,7 @@ export default function index({ url, method }) {
         </div>
         <form action={url} ref={form} method={method} onSubmit={execRequest}>
           <div className=" py-7">
-            <div className="mx-auto w-full bg-gray-100 rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+            <div className="mx-auto w-full bg-gray-100 rounded-lg shadow d onSubmit = {handleSubmit(onSubmit)}ark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
               <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                 <div className="py-1">
                   <button
@@ -138,16 +104,12 @@ export default function index({ url, method }) {
                     type="text"
                     name="username"
                     id="username"
-                    value={input.username}
-                    onChange={onInputChange}
-                    onBlur={validateInput}
+                    {...register('username')} 
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="username"
                     required=""
                   />
-                  {error.username && (
-                    <span className="err">{error.username}</span>
-                  )}
+                   <div className="invalid-feedback">{errors.username?.message}</div>
                 </div>
 
                 <div>
@@ -161,16 +123,13 @@ export default function index({ url, method }) {
                     type="password"
                     name="password"
                     id="password"
-                    value={input.password}
-                    onChange={onInputChange}
-                    onBlur={validateInput}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    {...register('password')} 
+                    // className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className={`form-control ${errors.password ? 'is-invalid' : ''}`}
                     placeholder="........."
                     required=""
                   />
-                  {error.password && (
-                    <span className="err">{error.password}</span>
-                  )}
+                  <div className="invalid-feedback">{errors.password?.message}</div>
                 </div>
                 <div className="">
                   <label
@@ -183,16 +142,13 @@ export default function index({ url, method }) {
                     type="password"
                     name="confirmPassword"
                     id="confirmPassword"
-                    value={input.confirmPassword}
-                    onChange={onInputChange}
-                    onBlur={validateInput}
+                    {...register('confirmPassword')} 
                     placeholder=""
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    // className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required=""
+                    className={`form-control ${errors.confirmPassword ? 'is-invalid' : ''}`}
                   />
-                  {error.confirmPassword && (
-                    <span className="err">{error.confirmPassword}</span>
-                  )}
+                  <div className="invalid-feedback">{errors.confirmPassword?.message}</div>
                 </div>
 
                 <div className="">
@@ -206,16 +162,12 @@ export default function index({ url, method }) {
                     type="float"
                     name="commission"
                     id="commission"
-                    value={input.commission}
-                    onChange={onInputChange}
-                    onBlur={validateInput}
+                    {...register('commission')} 
                     placeholder=""
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required=""
                   />
-                  {error.commission && (
-                    <span className="err">{error.commission}</span>
-                  )}
+                  <div className="invalid-feedback">{errors.commission?.message}</div>
                 </div>
                 <div className="">
                   <label

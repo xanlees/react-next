@@ -5,9 +5,12 @@ import {
   AiOutlineFileSearch,
   AiOutlineMinusCircle,
 } from "react-icons/ai";
+import Moment from "moment";
 
 const index = (props) => {
   let { username, date, is_active, deposit } = props;
+
+  const open = Moment(date).format("L");
 
   return (
     <>
@@ -16,7 +19,7 @@ const index = (props) => {
           <h1 className=" text-center">{username}</h1>
         </td>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-blueGray-700 bg-blueGray-50 text-blueGray-500 border border-solid border-black py-3 ">
-          <h1 className=" text-center">{date}</h1>
+          <h1 className=" text-center">{open}</h1>
         </td>
         <td className="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-blueGray-700 bg-blueGray-50 text-blueGray-500 border border-solid border-black py-3 ">
           <h1 className=" text-center">{deposit}</h1>

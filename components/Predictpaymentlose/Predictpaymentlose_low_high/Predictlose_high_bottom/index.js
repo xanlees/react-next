@@ -64,8 +64,8 @@ export default function index({ high_bottom }) {
                   <tbody>
                   {results.map((item) => {
                       if (
-                        item.lottery_type != null &&
-                        item.lottery_type === 6
+                        item.lottery_type.id != null &&
+                        item.lottery_type.id === 6
                       ) {
                         return (
                           <High_bottom_row

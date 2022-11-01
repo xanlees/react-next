@@ -1,27 +1,25 @@
 import Article from "../../components/Article";
 import getAPI from "../../components/Article/util";
 import Login from "../../components/Login";
-import {useSelector, useDispatch} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { toggleChangeAction } from "../../redux/reducer";
-
 
 import bodyParser from "body-parser";
 import { promisify } from "util";
 
 const Home = (props) => {
-  const visible = useSelector((state) => state.app.client.toggleForm)
-  const dispatch = useDispatch()
+  const visible = useSelector((state) => state.app.client.toggleForm);
+  const dispatch = useDispatch();
 
-  const onUpdate = () =>{
-    dispatch(toggleChangeAction())
-  }
+  const onUpdate = () => {
+    dispatch(toggleChangeAction());
+  };
   return (
     <div>
-      
       <Article {...props} />
       <Login method="post" {...props} />
       <div style={{ textAlign: "center" }}>
-        <h1>Visible : {visible?"on":"off"}</h1>
+        <h1>Visible : {visible ? "on" : "off"}</h1>
         <button onClick={onUpdate}>Toggle</button> &nbsp;
       </div>
       <form method="post" herf="http://shop.localhost:8000/api/v1/login/">

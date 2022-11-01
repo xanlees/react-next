@@ -64,11 +64,11 @@ export default function index({ lower }) {
                   <tbody>
                   {results.map((item) => {
                       if (
-                        item.lottery_type != null &&
-                        item.lottery_type === 10
+                        item.lottery_type.id != null &&
+                        item.lottery_type.id === 10
                       ) {
                         return (
-                          <Toprow
+                          <Lowerrow
                             id={item.id}
                             lottery={item.lottery_name}
                             cost={item.cost}

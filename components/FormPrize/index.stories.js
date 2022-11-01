@@ -7,4 +7,3 @@ export default {
   component: FormPrize,
   argTypes: {},
 };
- 
