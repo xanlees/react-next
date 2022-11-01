@@ -7,10 +7,10 @@ import NumberModal from "../../components/BuyLottery/GroupNumber/Modal";
 export default function index(props) {
   return (
     <>
-      <LotteryList {...props} />a
-      {/* <CustomerLayout>
+      {/* <LotteryList {...props} /> */}
+      <CustomerLayout>
         <LotteryList {...props} />a
-      </CustomerLayout> */}
+      </CustomerLayout>
     </>
   );
 }
