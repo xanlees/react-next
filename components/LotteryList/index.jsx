@@ -10,12 +10,6 @@ export default function index({ lotteries }) {
         <div className="flex flex-wrap mx-3 lg:-mx-4">
           {/* <div className="flex flex-wrap mx-3 lg:-mx-4 md:gap-x-1"> */}
           {lotteries?.map((item, index) => {
-            console.log("day", lotteries[0].lottery_day[0].days);
-            console.log(
-              "time",
-              lotteries[0].lottery_day[0].lottery_time[0].closing_date
-            );
-
             return (
               <>
                 <Link
