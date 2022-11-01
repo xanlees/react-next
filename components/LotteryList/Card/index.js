@@ -17,10 +17,6 @@ const Card = ({
   const closing = Moment(closing_time).format("LT");
   const openDate = Moment(date_open).format("MMM Do YY");
   const closing_day = Moment(closing_time).format("dddd");
-  const Days = Moment(date_open).format("dddd");
-  const Days1 = Moment(closing_time).format("MMM Do YY");
-  console.log("Bamboo", Days);
-  console.log("Bamboo1", Days1);
 
   return (
     <>
@@ -35,7 +31,6 @@ const Card = ({
               Period <span>{period_number}</span>
             </div>
           </div>
-
           <div className="flex-inline items-center">
             <div className="flex items-center">
               <div className="p-3">

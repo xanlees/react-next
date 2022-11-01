@@ -8,7 +8,6 @@ export default function index({ lotteries }) {
       <div className="container my-12 mx-auto px-4 md:px-12 bg-white shadow-2xl rounded-lg mr-20 ">
         <h1 className="text-4xl pt-3 text-red-600 font-bold">Lao Lotto</h1>
         <div className="flex flex-wrap mx-3 lg:-mx-4">
-          {/* <div className="flex flex-wrap mx-3 lg:-mx-4 md:gap-x-1"> */}
           {lotteries?.map((item, index) => {
             return (
               <>
