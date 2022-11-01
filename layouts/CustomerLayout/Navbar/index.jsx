@@ -14,7 +14,7 @@ export default function index() {
   const [active, setActive] = useState(0);
   return (
     <>
-      <nav id="navbar" className="flex justify-between p-2 px-4">
+      {/* <nav id="navbar" className="flex justify-between p-2 px-4">
         <div className="flex items-center justify-between w-full">
           <ul className="hidden lg:flex lg:justify-center w-full">
             {navbar.map((item, index) => {
@@ -42,8 +42,8 @@ export default function index() {
             })}
           </ul>
         </div>
-      </nav>
-      {/* <div className="flex flex-wrap py-2 ml-2">
+      </nav> */}
+      <div className="flex flex-wrap py-2 ml-2">
         <div className="w-full px-4">
           <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-sky-500 rounded">
             <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
@@ -91,7 +91,7 @@ export default function index() {
             </div>
           </nav>
         </div>
-      </div> */}
+      </div>
     </>
   );
 }

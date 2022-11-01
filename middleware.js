@@ -5,14 +5,15 @@ export function middleware(req) {
   const { cookies } = req;
   const url = req.url;
   const token = cookies.get("token");
+  console.log(req.url);
 
   if (
-    url.includes("/customer") ||
-    url.includes("/admin") ||
-    url.includes("/buy-lottory")
+    !url.includes("/login") &&
+    !url.includes("/_") &&
+    !url.includes("/favicon.ico")
   ) {
+    console.log("enter");
     if (token == undefined) {
-      console.log(token);
       return NextResponse.redirect(`${origin}/login`);
     }
   } else {

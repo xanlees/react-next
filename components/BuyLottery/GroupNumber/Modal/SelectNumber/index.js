@@ -12,12 +12,14 @@ const SelectNumber = ({ lottery_number, index }) => {
         {lottery_number}
       </div>
       <NumericFormat
+        pattern="[0-9]*"
+        // oninput="this.value=this.value.replace(/[^0-9]/g,'')"
         type="text"
         placeholder="Enter Amount"
         className="pt-2 col-span-2 w-full h-10 border border-gray-300 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500  bg-sky-400 dark:focus:ring-sky-500 dark:focus:border-sky-500 text-white"
       />
       <div className="pt-2 bg-gray-900 border border-gray-300 text-sm rounded-lg text-white w-full h-10">
-        Multiple
+        950
       </div>
       <div
         className="pt-2 col-span-2 w-full h-10 border border-gray-300 text-sm
