@@ -31,23 +31,28 @@ const NumberModal = () => {
                   </div>
                 </div>
                 {/*body*/}
-                <div className="">
-                  <div className="mb-3 ml-8">3 Digit </div>
-                  <div className="grid  grid-cols-8 space-3 text-center">
-                    {Select_Lottery_Number.map((item, index) => {
-                      return (
-                        <SelectNumber
-                          key={index}
-                          lottery_number={item}
-                          index={index}
-                        />
-                      );
-                    })}
-                  </div>
-                </div>
 
+                <div className="mb-3 ml-8">3 Digit </div>
+                <div className="grid  grid-cols-8 space-3 text-center">
+                  {Select_Lottery_Number.map((item, index) => {
+                    return (
+                      <SelectNumber
+                        key={index}
+                        lottery_number={item}
+                        index={index}
+                      />
+                    );
+                  })}
+                </div>
+                <div className="bg-red-500">
+                  <input
+                    type="text"
+                    className="ml-24 w-64 active:bg-sky-600 font-bold uppercase text-sm  text-white rounded bg-sky-600"
+                  />
+                  <input type="text" className="w-24 ml-2" />
+                </div>
                 {/*footer*/}
-                <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b active:bg-sky-600">
                   <button
                     className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 "
                     type="button"
@@ -56,7 +61,7 @@ const NumberModal = () => {
                     Close
                   </button>
                   <button
-                    className="bg-sky-500 text-white active:bg-sky-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 w-full"
+                    className="bg-sky-500 text-white px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 w-full"
                     type="button"
                     onClick={() => setShowModal(false)}
                   >
