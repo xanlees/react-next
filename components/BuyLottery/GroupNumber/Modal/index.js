@@ -39,22 +39,25 @@ const NumberModal = () => {
                       <SelectNumber
                         key={index}
                         lottery_number={item}
-                        index={index}
+                        index={index + 1}
                       />
                     );
                   })}
                 </div>
-                <div className="bg-red-500">
+                <div className="mt-1 mb-1 text-white">
                   <input
                     type="text"
-                    className="ml-24 w-64 active:bg-sky-600 font-bold uppercase text-sm  text-white rounded bg-sky-600"
+                    placeholder="Enter for each number"
+                    className="ml-24 w-64 pt-2 col-span-2 h-10 border border-gray-300 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500  bg-sky-400 dark:focus:ring-sky-500 dark:focus:border-sky-500 text-white"
                   />
-                  <input type="text" className="w-24 ml-2" />
+                  <button className="w-24 ml-2 h-10 bg-sky-500 rounded text-white">
+                    Copy
+                  </button>
                 </div>
                 {/*footer*/}
                 <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b active:bg-sky-600">
                   <button
-                    className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 "
+                    className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 h-10 "
                     type="button"
                     onClick={() => setShowModal(false)}
                   >
@@ -62,7 +65,7 @@ const NumberModal = () => {
                   </button>
                   <button
                     className="bg-sky-500 text-white px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 w-full"
-                    type="button"
+                    type="submit"
                     onClick={() => setShowModal(false)}
                   >
                     Confirm buy
