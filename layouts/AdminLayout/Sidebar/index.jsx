@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import ListOfagent from "../../../pages/admin/list-of-lottery";
 
 import { Disclosure } from "@headlessui/react";
 import { GiHamburgerMenu } from "react-icons/gi";

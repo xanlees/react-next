@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRef } from "react";
 import postAPI from "./util";
 import { useNotification } from "@vechaiui/react";
+import { NumericFormat } from "react-number-format";
 
 function makeid(length) {
   var result = "";
@@ -212,7 +213,7 @@ export default function index({ url, method }) {
                   >
                     Deposit Amount
                   </label>
-                  <input
+                  <NumericFormat
                     type="text"
                     name="deposit_amount"
                     id="deposit_amount"

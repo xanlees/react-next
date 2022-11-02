@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useRef } from "react";
 import postAPI from "./util";
 import { useNotification } from "@vechaiui/react";
-
+import { NumericFormat } from "react-number-format";
 
 export default function index({ url, method }) {
   const form = useRef(null);
@@ -27,7 +27,6 @@ export default function index({ url, method }) {
       duration: "900",
     });
   };
-
 
   const [input, setInput] = useState({
     username: "",
@@ -68,8 +67,7 @@ export default function index({ url, method }) {
           if (!value) {
             stateObj[name] = "ກະລຸນາປ້ອນລະຫັດຜ່ານ.";
           } else if (input.confirmPassword && value !== input.confirmPassword) {
-            stateObj["confirmPassword"] =
-              "ຢືນຢັນລະຫັດຜ່ານບໍ່ຖືກຕ້ອງ.";
+            stateObj["confirmPassword"] = "ຢືນຢັນລະຫັດຜ່ານບໍ່ຖືກຕ້ອງ.";
           } else {
             stateObj["confirmPassword"] = input.confirmPassword
               ? ""
@@ -88,19 +86,17 @@ export default function index({ url, method }) {
         case "deposit_amount":
           if (!value) {
             stateObj[name] = "ກະລຸນາປ້ອນເງີນຝາກ.";
+          } else if (input.deposit_amount && value !== input.deposit_amount) {
+            stateObj[name] = "plese input number";
           }
           break;
 
         default:
           break;
       }
-
       return stateObj;
     });
-
-
   };
-  
 
   return (
     <div>
@@ -206,17 +202,20 @@ export default function index({ url, method }) {
                   >
                     Deposit Amount
                   </label>
-                  <input
-                    type="text"
+
+                  <NumericFormat
+                    min={0}
                     name="deposit_amount"
                     id="deposit_amount"
                     placeholder="deposit_amount"
+                    maxLength="30"
                     value={input.deposit_amount}
                     onChange={onInputChange}
                     onBlur={validateInput}
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required=""
                   />
+
                   {error.deposit_amount && (
                     <span className="err">{error.deposit_amount}</span>
                   )}

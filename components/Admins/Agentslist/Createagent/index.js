@@ -3,11 +3,8 @@ import { useState } from "react";
 import { useRef } from "react";
 import postAPI from "./util";
 import { useNotification } from "@vechaiui/react";
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as Yup from 'yup';
 
-export default function index(props, { url, method }) {
+export default function index({ url, method }) {
   const form = useRef(null);
 
   const execRequest = (e) => {
@@ -18,39 +15,74 @@ export default function index(props, { url, method }) {
     console.log(result);
   };
 
-  const user = props?.user;
-  const [showPassword, setShowPassword] = useState(false);
-  const isAddMode = !user;
+  const [input, setInput] = useState({
+    username: "",
+    password: "",
+    confirmPassword: "",
+    commission: "",
+  });
 
-  const validationSchema = Yup.object().shape({
-    username: Yup.string()
-        .required('username is required'),
-    password: Yup.string()
-        .transform(x => x === '' ? undefined : x)
-        .concat(isAddMode ? Yup.string().required('Password is required') : null)
-        .min(8, 'Password must be at least 8 characters'),
-    confirmPassword: Yup.string()
-        .transform(x => x === '' ? undefined : x)
-        .when('password', (password, schema) => {
-            if (password || isAddMode) return schema.required('Confirm Password is required');
-        })
-        .oneOf([Yup.ref('password')], 'Passwords must match'),
-    commission: Yup.string()
-        .required('commissions required'),
-});
-const formOptions = { resolver: yupResolver(validationSchema) };
+  const [error, setError] = useState({
+    username: "",
+    password: "",
+    confirmPassword: "",
+    commission: "",
+  });
 
-if (!isAddMode) {
-  const { password, confirmPassword, ...defaultValues } = user;
-  formOptions.defaultValues = defaultValues;
-}
-function onSubmit(data) {
-  return isAddMode
-      ? createUser(data)
-      : updateUser(user.id, data);
-}
-const { register, handleSubmit, reset, formState } = useForm(formOptions);
-const { errors } = formState;
+  const onInputChange = (e) => {
+    const { name, value } = e.target;
+    setInput((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+    validateInput(e);
+  };
+
+  const validateInput = (e) => {
+    let { name, value } = e.target;
+    setError((prev) => {
+      const stateObj = { ...prev, [name]: "" };
+
+      switch (name) {
+        case "username":
+          if (!value) {
+            stateObj[name] = "ກະລຸນາປ້ອນຊື່ຜູ້ໃຊ້.";
+          }
+          break;
+
+        case "password":
+          if (!value) {
+            stateObj[name] = "ກະລຸນາປ້ອນລະຫັດຜ່ານ.";
+          } else if (input.confirmPassword && value !== input.confirmPassword) {
+            stateObj["confirmPassword"] = "ຢືນຢັນລະຫັດຜ່ານບໍ່ຖືກຕ້ອງ.";
+          } else {
+            stateObj["confirmPassword"] = input.confirmPassword
+              ? ""
+              : error.confirmPassword;
+          }
+          break;
+
+        case "confirmPassword":
+          if (!value) {
+            stateObj[name] = "ກະລຸນາປ້ອນລະຫັດຢືນຢັນ.";
+          } else if (input.password && value !== input.password) {
+            stateObj[name] = "ຢືນຢັນລະຫັດຜ່ານບໍ່ຖືກຕ້ອງ.";
+          }
+          break;
+
+        case "deposit_amount":
+          if (!value) {
+            stateObj[name] = "ກະລຸນາປ້ອນເງີນຝາກ.";
+          }
+          break;
+
+        default:
+          break;
+      }
+
+      return stateObj;
+    });
+  };
 
   const notification = useNotification();
   const handleMessage = (show) => {
@@ -104,12 +136,16 @@ const { errors } = formState;
                     type="text"
                     name="username"
                     id="username"
-                    {...register('username')} 
+                    value={input.username}
+                    onChange={onInputChange}
+                    onBlur={validateInput}
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="username"
                     required=""
                   />
-                   <div className="invalid-feedback">{errors.username?.message}</div>
+                  {error.username && (
+                    <span className="err">{error.username}</span>
+                  )}
                 </div>
 
                 <div>
@@ -123,13 +159,16 @@ const { errors } = formState;
                     type="password"
                     name="password"
                     id="password"
-                    {...register('password')} 
-                    // className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    className={`form-control ${errors.password ? 'is-invalid' : ''}`}
+                    value={input.password}
+                    onChange={onInputChange}
+                    onBlur={validateInput}
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="........."
                     required=""
                   />
-                  <div className="invalid-feedback">{errors.password?.message}</div>
+                  {error.password && (
+                    <span className="err">{error.password}</span>
+                  )}
                 </div>
                 <div className="">
                   <label
@@ -142,13 +181,16 @@ const { errors } = formState;
                     type="password"
                     name="confirmPassword"
                     id="confirmPassword"
-                    {...register('confirmPassword')} 
+                    value={input.confirmPassword}
+                    onChange={onInputChange}
+                    onBlur={validateInput}
                     placeholder=""
-                    // className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required=""
-                    className={`form-control ${errors.confirmPassword ? 'is-invalid' : ''}`}
                   />
-                  <div className="invalid-feedback">{errors.confirmPassword?.message}</div>
+                  {error.confirmPassword && (
+                    <span className="err">{error.confirmPassword}</span>
+                  )}
                 </div>
 
                 <div className="">
@@ -162,12 +204,16 @@ const { errors } = formState;
                     type="float"
                     name="commission"
                     id="commission"
-                    {...register('commission')} 
+                    value={input.commission}
+                    onChange={onInputChange}
+                    onBlur={validateInput}
                     placeholder=""
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required=""
                   />
-                  <div className="invalid-feedback">{errors.commission?.message}</div>
+                  {error.commission && (
+                    <span className="err">{error.commission}</span>
+                  )}
                 </div>
                 <div className="">
                   <label

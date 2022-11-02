@@ -16,7 +16,7 @@ export default {
       defaultValue: {
         register_url: "http://localhost:8000/api/v1/user/register",
         deposit_url: "http://localhost:8000/api/v1/deposit",
-      }
+      },
     },
   },
 };

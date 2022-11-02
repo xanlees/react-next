@@ -1,12 +1,20 @@
-import CustomerLayout from "."
+import CustomerLayout from ".";
+import getAPI_sidebar from "./Sidebar/util";
 
+export const Story = (args, { loaded: { sidebar_user_profile } }) => (
+  <CustomerLayout {...args} {...sidebar_user_profile} />
+);
 
-export const Story = (args) => <CustomerLayout { ...args }/>;
+Story.args = {};
 
+Story.loaders = [
+  async () => ({
+    sidebar_user_profile: (await getAPI_sidebar()).props,
+  }),
+];
 
 export default {
-  title: 'CustomerLayout/UI/CustomerLayout',
+  title: "CustomerLayout/UI/CustomerLayout",
   component: CustomerLayout,
-  argTypes:  {
-  },
+  argTypes: {},
 };
