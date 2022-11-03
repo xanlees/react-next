@@ -10,19 +10,14 @@ export default async function getAPI_sidebar() {
   );
   var { user_id } = decode;
   const user_url = "http://localhost:8000/api/v1/user/" + user_id;
-  // const deposit_url = "http://localhost:8000/api/v1/deposit";
   const method = "get";
   try {
     const response = await getAxios()[method](user_url, null);
-    // const response_data = await getAxios()[method](deposit_url);
     const data = await response.data;
-    // const deposit_data = await response_data.data;
     if (!data) return { props: {} };
-    // console.log("deposit_data", deposit_data);
     return {
       props: {
         sidebar_user_profile: data,
-        // user_deposit: deposit_data,
       },
     };
   } catch (e) {

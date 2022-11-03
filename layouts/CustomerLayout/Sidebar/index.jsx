@@ -6,7 +6,7 @@ import { FiSettings } from "react-icons/fi";
 import { AiOutlineUser } from "react-icons/ai";
 
 function Sidebar({ sidebar_user_profile }) {
-  // var { username, is_active } = sidebar_user_profile;
+  var { username, is_active } = sidebar_user_profile;
 
   const [scrollY, setScrollY] = useState(0);
   function showButton() {
@@ -48,13 +48,13 @@ function Sidebar({ sidebar_user_profile }) {
               <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-sky-400 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
                 <AiOutlineUser className="text-2xl text-white group-hover:text-white " />
                 <h3 className="text-base text-white group-hover:text-white font-semibold ">
-                  {/* User: {username} */}
+                  User: {username}
                 </h3>
               </div>
               <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-sky-400 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
                 <FiSettings className="text-2xl text-white group-hover:text-white " />
                 <h3 className="text-base text-white group-hover:text-white font-semibold ">
-                  {/* Status: {is_active ? "Active" : "Inactive"} */}
+                  Status: {is_active ? "Active" : "Inactive"}
                 </h3>
               </div>
             </div>
