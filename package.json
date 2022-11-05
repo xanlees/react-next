@@ -31,7 +31,7 @@
     "react-icons": "^4.4.0",
     "react-number-format": "^5.0.1",
     "react-redux": "^7.2.9",
-
+    "react-table": "^7.8.0",
     "storybook": "^6.5.12",
     "yup": "^0.32.11"
   },
