@@ -6,7 +6,7 @@ export default async function getAPI_sidebar() {
   var token = Cookies.get("token");
   var decode = verify(
     token,
-    "django-insecure-v6-x4d#e1wkcv4jila4!l)*url$o@jy8$&018rl7--dvegw%pj"
+    "bMFZFfDdzpgqlcQZklCdPldjAWAiMxfNZCIHvTtfHhSLyukxLz"
   );
   var { user_id } = decode;
   const user_url = "http://localhost:8000/api/v1/user/" + user_id;
