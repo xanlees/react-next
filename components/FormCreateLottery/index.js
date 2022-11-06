@@ -55,6 +55,7 @@ const FormCreateLottery = () => {
                 value="la"
                 className="peer hidden"
                 id="la"
+                placeholder=""
               />
               <label
                 className={`block cursor-pointer select-none rounded-xl p-3 text-center dark:text-white  peer-checked:bg-sky-500 peer-checked:font-bold peer-checked:text-white${
