@@ -11,6 +11,7 @@ export default function index({ url, method }) {
     e.preventDefault();
 
     const formData = new FormData(form.current);
+
     const result = postAPI(method, url, formData);
     console.log(result);
   };

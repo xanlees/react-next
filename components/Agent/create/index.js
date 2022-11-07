@@ -7,12 +7,13 @@ import { BsTelephone, BsPercent } from "react-icons/bs";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
+import postAPI from "./util";
 
 // Set formate phone number
 var phoneRegEx =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
-const index = () => {
+const index = ({ url }) => {
   const [showPassword, setShowPassword] = useState(false);
   // form validation rules
   const validationSchema = Yup.object().shape({
@@ -40,12 +41,14 @@ const index = () => {
     formState: { errors },
   } = useForm(formOptions);
 
-  const onSubmit = (data) => console.log("data", data);
-
+  const onSubmit = (data) => {
+    const sent = postAPI(url, data);
+    console.log("result_data", data);
+    console.log("url", url);
+  };
   return (
     <>
       <form
-        action=""
         onSubmit={handleSubmit(onSubmit)}
         className=" flex justify-center items-center bg-white"
       >
@@ -68,16 +71,8 @@ const index = () => {
                   id="name"
                   placeholder=":"
                   {...register("username")}
+                  value="Robert"
                 />
-
-                <button
-                  type="button"
-                  value="button"
-                  onClick={hadleCreateUser}
-                  className="w-full text-white bg-sky-500 hover:bg-sky-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800"
-                >
-                  Generate
-                </button>
               </div>
             </div>
           </div>
@@ -96,6 +91,7 @@ const index = () => {
                   id="fullname"
                   placeholder=":"
                   {...register("fullname")}
+                  value="JohnWick"
                 />
               </div>
             </div>
@@ -115,6 +111,7 @@ const index = () => {
                   id="phone_number"
                   placeholder=": 20 x0000000"
                   {...register("phone_number")}
+                  value="2098989898"
                 />
               </div>
             </div>
@@ -134,6 +131,7 @@ const index = () => {
                   id="commission"
                   placeholder=": "
                   {...register("commission")}
+                  value="10"
                 />
               </div>
             </div>
@@ -155,6 +153,7 @@ const index = () => {
                   className={`w-full border-0 focus:outline-none  form-control text-base font-normal text-gray-700 bg-white bg-clip-padding rounded-tr-lg rounded-tl-lg transition ease-in-out m-00 ${
                     errors.password ? "is-invalid" : ""
                   }`}
+                  value="12345678"
                 />
               </div>
             </div>
@@ -177,6 +176,7 @@ const index = () => {
                   className={`w-full border-0 focus:outline-none  form-control text-base font-normal text-gray-700 bg-white bg-clip-padding rounded-tr-lg rounded-tl-lg transition ease-in-out m-0 ${
                     errors.password_repeat ? "is-invalid" : ""
                   }`}
+                  value="12345678"
                 />
               </div>
             </div>
