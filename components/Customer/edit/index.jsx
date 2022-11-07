@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-
+import { patchAPI } from "./util";
 
 import * as yup from "yup";
 
 const schema = yup.object({}).required();
 
-export default function index({customer}) {
+export default function index({customer, url}) {
   const [enabled, setEnabled] = useState(true);
   
 
@@ -25,16 +25,19 @@ export default function index({customer}) {
     control
   } = useForm(formOptions);
 
+  
 
-  const onSubmit = (data) => console.log('submit',data);
+  const onSubmit = (data) => {
+    console.log('outer url', url)
+    const result = patchAPI(url, data);
+  }
+
 
   return (
     <>
       <form
         className="max-w-xl m-auto py-10 mt-10 px-12 border"
         onSubmit={handleSubmit(onSubmit)}
-        action={url}
-        method={method}
       >
         <label className="text-gray-600 font-medium">Username</label>
         <input
@@ -64,7 +67,7 @@ export default function index({customer}) {
           
         />
         <label className="text-gray-600 font-medium">Status</label>
-        <div><label class="inline-flex relative items-center mr-5 cursor-pointer">
+        <div><label className="inline-flex relative items-center mr-5 cursor-pointer">
           <input
             type="checkbox"
             className="sr-only peer"

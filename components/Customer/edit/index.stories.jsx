@@ -1,6 +1,8 @@
 import Customer from '.'
 import getAPI from './util'
 
+
+
 // Here we export a variant of the default template passing props
 export const Story = (args, { loaded: { customer } }) => <Customer {...args} {...customer} />;
 Story.args = {
@@ -17,6 +19,14 @@ export default {
   title: 'Customer/edit',
   component: Customer,
   argTypes: {
-    id: { defaultValue: "2" },
+    id: { defaultValue: "3" ,  control: 'number'},
+    url: {
+      defaultValue: {
+        customer_url: "http://localhost:8000/api/v1/user/",
+        deposit_url: "http://localhost:8000/api/v1/deposit/",
+      },
+    }
   },
 };
+
+
