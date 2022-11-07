@@ -41,19 +41,7 @@ const index = () => {
   } = useForm(formOptions);
 
   const onSubmit = (data) => console.log("data", data);
-  const [characters, setCharacters] = useState("");
 
-  const hadleCreateUser = () => {
-    let chars =
-      "abcdefghijklmnopqrstubwsyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-    let characters = "";
-    let plength = Math.floor(Math.random() * 7) + 7;
-    for (let index = 10; index < plength; index++) {
-      characters += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    console.log("New characters=>", characters);
-    return setCharacters(characters);
-  };
   return (
     <>
       <form
@@ -80,7 +68,6 @@ const index = () => {
                   id="name"
                   placeholder=":"
                   {...register("username")}
-                  value={characters}
                 />
 
                 <button
