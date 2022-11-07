@@ -7,8 +7,6 @@ import * as NextImage from "next/image";
 import { Provider } from "react-redux";
 import { store } from "../redux/store";
 
-import { RouterContext } from "next/dist/shared/lib/router-context"; 
-
 const OriginalNextImage = NextImage.default;
 
 Object.defineProperty(NextImage, "default", {

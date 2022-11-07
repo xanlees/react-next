@@ -31,7 +31,7 @@
     "react-icons": "^4.4.0",
     "react-number-format": "^5.0.1",
     "react-redux": "^7.2.9",
-
+    "react-table": "^7.8.0",
     "storybook": "^6.5.12",
     "yup": "^0.32.11"
   },
@@ -39,7 +39,6 @@
     "@storybook/addon-actions": "^6.5.12",
     "@storybook/addon-essentials": "^6.4.22",
     "@storybook/addon-links": "^6.5.12",
-    "@storybook/addon-queryparams": "^6.0.0",
     "@storybook/react": "^6.1.21",
     "eslint": "8.23.0",
     "eslint-config-next": "12.2.5",
