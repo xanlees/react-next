@@ -12,6 +12,7 @@ import { useRef } from "react";
 // Set formate phone number
 var phoneRegEx =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+
 const index = ({ method, url }) => {
   const [showPassword, setShowPassword] = useState(false);
   // form validation rules
@@ -40,12 +41,14 @@ const index = ({ method, url }) => {
     handleSubmit,
     formState: { errors },
   } = useForm(formOptions);
-  const form = useRef(null);
+  const initialState = {
+    is_staff: "true",
+  };
+  const form = useRef(initialState);
   const execRequest = (values, event) => {
     event.preventDefault();
     const formData = new FormData(form.current);
     const result = postAPI(method, url, formData);
-    console.log(result);
   };
   return (
     <>
@@ -94,6 +97,7 @@ const index = ({ method, url }) => {
                   id="fullname"
                   placeholder=":"
                   {...register("fullname")}
+                  value="Pern"
                 />
               </div>
             </div>
@@ -132,6 +136,7 @@ const index = ({ method, url }) => {
                   id="commission"
                   placeholder=": "
                   {...register("commission")}
+                  value="12"
                 />
               </div>
             </div>
@@ -151,6 +156,7 @@ const index = ({ method, url }) => {
                   name="deposit_amount"
                   placeholder=": "
                   {...register("deposit_amount")}
+                  value="13"
                 />
               </div>
             </div>
@@ -172,6 +178,7 @@ const index = ({ method, url }) => {
                   className={`w-full border-0 focus:outline-none  form-control text-base font-normal text-gray-700 bg-white bg-clip-padding rounded-tr-lg rounded-tl-lg transition ease-in-out m-00 ${
                     errors.password ? "is-invalid" : ""
                   }`}
+                  value="12341234"
                 />
               </div>
             </div>
@@ -194,6 +201,7 @@ const index = ({ method, url }) => {
                   className={`w-full border-0 focus:outline-none  form-control text-base font-normal text-gray-700 bg-white bg-clip-padding rounded-tr-lg rounded-tl-lg transition ease-in-out m-0 ${
                     errors.password_repeat ? "is-invalid" : ""
                   }`}
+                  value="12341234"
                 />
               </div>
             </div>
@@ -222,9 +230,8 @@ const index = ({ method, url }) => {
             <option value={true}>Active</option>
             <option value={false}>Inactive</option>
           </select>
-          <select {...register("is_staff", { required: true })}>
+          <select hidden {...register("is_staff", { required: true })}>
             <option value={true}>Agent</option>
-            <option value={false}>User</option>
           </select>
           <div className="flex items-center justify-center">
             <input
