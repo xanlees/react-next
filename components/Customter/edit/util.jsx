@@ -15,14 +15,13 @@ export default async function getAPI(id) {
   };
 }
 
-export default async function putAPI(method, url, formdata, res) {
-    try {
-        const response = await getAxios()[method](url, formdata);
-        return response;
-      } catch {
-        return {
-          status: 400,
-        };
-  
+export async function putAPI(method, url, formdata, res) {
+  try {
+    const response = await getAxios()[method](url, formdata);
+    return response;
+  } catch {
+    return {
+      status: 400,
+    };
   }
 }
