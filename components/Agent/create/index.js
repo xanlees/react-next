@@ -7,13 +7,13 @@ import { BsTelephone, BsPercent } from "react-icons/bs";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-import postAPI from "./util";
+import postAPI from './util'
 
 // Set formate phone number
 var phoneRegEx =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
-const index = ({ url }) => {
+const index = ({method,  url }) => {
   const [showPassword, setShowPassword] = useState(false);
   // form validation rules
   const validationSchema = Yup.object().shape({
@@ -42,7 +42,7 @@ const index = ({ url }) => {
   } = useForm(formOptions);
 
   const onSubmit = (data) => {
-    const sent = postAPI(url, data);
+    const sent = postAPI(method, url, data);
     console.log("result_data", data);
     console.log("url", url);
   };
