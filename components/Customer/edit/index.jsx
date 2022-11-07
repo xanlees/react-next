@@ -7,7 +7,7 @@ import * as yup from "yup";
 
 const schema = yup.object({}).required();
 
-export default function index({customer, url}) {
+export default function index({ customer, url }) {
   const [enabled, setEnabled] = useState(true);
 
   const formOptions = { resolver: yupResolver(schema) };
@@ -24,13 +24,10 @@ export default function index({customer, url}) {
     control,
   } = useForm(formOptions);
 
-  
-
   const onSubmit = (data) => {
-    console.log('outer url', url)
+    console.log("outer url", url);
     const result = patchAPI(url, data);
-  }
-
+  };
 
   return (
     <>
@@ -62,26 +59,26 @@ export default function index({customer, url}) {
           {...register("deposit[0].deposit_amount")}
         />
         <label className="text-gray-600 font-medium">Status</label>
-        <div><label className="inline-flex relative items-center mr-5 cursor-pointer">
-          <input
-            type="checkbox"
-            className="sr-only peer"
-            checked={enabled}
-            {...register("is_active")}
-            readOnly
-          />
-          <div
-            onClick={() => {
-              setEnabled(!enabled);
-            }}
-            className="w-11 h-6 bg-gray-200 rounded-full peer  peer-focus:ring-green-300  peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"
-          ></div>
-          <span className="ml-2 text-sm font-medium text-gray-900">
-            {enabled ? "Active" : "Inactive"}
-          </span>
-        </label></div>
-        
-        
+        <div>
+          <label className="inline-flex relative items-center mr-5 cursor-pointer">
+            <input
+              type="checkbox"
+              className="sr-only peer"
+              checked={enabled}
+              {...register("is_active")}
+              readOnly
+            />
+            <div
+              onClick={() => {
+                setEnabled(!enabled);
+              }}
+              className="w-11 h-6 bg-gray-200 rounded-full peer  peer-focus:ring-green-300  peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"
+            ></div>
+            <span className="ml-2 text-sm font-medium text-gray-900">
+              {enabled ? "Active" : "Inactive"}
+            </span>
+          </label>
+        </div>
 
         <input
           className="mt-4 w-full bg-blue-400 hover:bg-blue-600 text-blue-100 border py-3 px-6 font-semibold text-md rounded"
