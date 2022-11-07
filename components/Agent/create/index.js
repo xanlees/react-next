@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { BsPersonCircle } from "react-icons/bs";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { AiOutlineUser } from "react-icons/ai";
@@ -12,9 +12,11 @@ const index = () => {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm();
-  const onSubmit = (data) => console.log(data);
-  console.log(errors);
+  const onSubmit = (data) => console.log("data", data);
+  const password = useRef({});
+  password.current = watch("password", "");
   return (
     <>
       <form action="" onSubmit={handleSubmit(onSubmit)}>
@@ -34,10 +36,13 @@ const index = () => {
 
                   <input
                     type="text"
+                    name="username"
                     className="w-full border-0 focus:outline-none  form-control text-base font-normal text-gray-700 bg-white bg-clip-padding rounded-tr-lg rounded-tl-lg transition ease-in-out m-0"
                     id="name"
                     placeholder=":"
-                    {...register("username")}
+                    {...register("username", {
+                      required: "Username couldn't valid ",
+                    })}
                   />
                   <button className=" text-white bg-green-500 rounded-lg h-9 w-28">
                     Generate
@@ -45,6 +50,7 @@ const index = () => {
                 </div>
               </div>
             </div>
+            <p className="text-red-500">{errors.username?.message}</p>
             {/* Input Fullname */}
             <div className="flex my-8 mx-4 md:mx-2 border-b-2 border-sky-600 hover:border-sky-700 w-96 rounded-tr-lg rounded-tl-lg">
               <div className="w-96">
@@ -58,11 +64,24 @@ const index = () => {
                     className="w-full border-0 focus:outline-none  form-control text-base font-normal text-gray-700 bg-white bg-clip-padding rounded-tr-lg rounded-tl-lg transition ease-in-out m-0"
                     id="fullname"
                     placeholder=":"
-                    {...register("fullname")}
+                    {...register("fullname", {
+                      required: "Fullname is Required...",
+                      minLength: {
+                        value: 3,
+                        message:
+                          "Fullname must be atleast 3 characters long...",
+                      },
+                      maxLength: {
+                        value: 30,
+                        message:
+                          "Fullname must be atmost 30 characters long...",
+                      },
+                    })}
                   />
                 </div>
               </div>
             </div>
+            <p className="text-red-500">{errors.fullname?.message}</p>
             {/* Input Phone Number */}
             <div className="flex my-8 mx-4 md:mx-2 border-b-2 border-sky-600 hover:border-sky-700 w-96 rounded-tr-lg rounded-tl-lg">
               <div className="w-96">
@@ -85,6 +104,7 @@ const index = () => {
                 </div>
               </div>
             </div>
+            <p className="text-red-500">{errors.commission?.message}</p>
             {/* Input  Commission */}
             <div className="flex my-8 mx-4 md:mx-2 border-b-2 border-sky-600 hover:border-sky-700 w-96 rounded-tr-lg rounded-tl-lg">
               <div className="w-96">
@@ -103,6 +123,33 @@ const index = () => {
                 </div>
               </div>
             </div>
+            <p className="text-red-500">{errors.username?.message}</p>
+            {/* Input Password */}
+            {/* <div className="flex my-8 mx-4 md:mx-2 border-b-2 border-sky-600 hover:border-sky-700 w-96 rounded-tr-lg rounded-tl-lg">
+              <div className="w-96">
+                <label htmlFor="password" className="mb-10">
+                  Password
+                </label>
+                <div className="flex">
+                  <RiLockPasswordLine className=" text-sky-400 mt-2 text-2xl mr-2" />
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    className="w-full border-0 focus:outline-none  form-control text-base font-normal text-gray-700 bg-white bg-clip-padding rounded-tr-lg rounded-tl-lg transition ease-in-out m-0"
+                    id="password"
+                    placeholder=":  ******** "
+                    {...register("password", {
+                      required: "Password is Required...",
+                      pattern: {
+                        value:
+                          /^(?=.*[0-9])(?=.*[!@#$%^&*.,])[a-zA-Z0-9!@#$%^&*.,]{6,16}$/,
+                        message:
+                          "Password Must Contain Atleast 6 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character",
+                      },
+                    })}
+                  />
+                </div>
+              </div>
+            </div> */}
             {/* Input Password */}
             <div className="flex my-8 mx-4 md:mx-2 border-b-2 border-sky-600 hover:border-sky-700 w-96 rounded-tr-lg rounded-tl-lg">
               <div className="w-96">
@@ -116,11 +163,16 @@ const index = () => {
                     className="w-full border-0 focus:outline-none  form-control text-base font-normal text-gray-700 bg-white bg-clip-padding rounded-tr-lg rounded-tl-lg transition ease-in-out m-0"
                     id="password"
                     placeholder=":  ******** "
-                    {...register("password")}
+                    ref={register({
+                      validate: (value) =>
+                        value === password.current ||
+                        "The passwords do not match",
+                    })}
                   />
                 </div>
               </div>
             </div>
+            <p>{errors.password?.message}</p>
             {/* Input Confirm Password */}
             <div className="flex my-8 mx-4 md:mx-2 border-b-2 border-sky-600 hover:border-sky-700 w-96 rounded-tr-lg rounded-tl-lg">
               <div className="w-96">
@@ -158,12 +210,10 @@ const index = () => {
               </div>
             </div>
             <div className="flex items-center justify-center">
-              <button
+              <input
                 type="submit"
                 className="bg-transparent hover:bg-sky-500 text-sky-700 font-semibold hover:text-white py-2 px-4 border border-sky-500 hover:border-transparent rounded"
-              >
-                Save
-              </button>
+              />
             </div>
           </div>
         </div>
