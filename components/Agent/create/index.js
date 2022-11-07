@@ -7,13 +7,14 @@ import { BsTelephone, BsPercent } from "react-icons/bs";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-import postAPI from './util'
+import postAPI from "./util";
+import { useRef } from "react";
 
 // Set formate phone number
 var phoneRegEx =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
-const index = ({method,  url }) => {
+const index = ({ method, url }) => {
   const [showPassword, setShowPassword] = useState(false);
   // form validation rules
   const validationSchema = Yup.object().shape({
@@ -25,6 +26,7 @@ const index = ({method,  url }) => {
       .matches(phoneRegEx, "Phone number couldn't valid")
       .min(4, "Password must be at least 7 numbers"),
     commission: Yup.string().required("Commission couldn't valid"),
+    deposit: Yup.string().required("Deposit couldn't valid"),
     password: Yup.string()
       .required("Password is required")
       .min(8, "Password must be at least 8 characters"),
@@ -41,15 +43,30 @@ const index = ({method,  url }) => {
     formState: { errors },
   } = useForm(formOptions);
 
-  const onSubmit = (data) => {
-    const sent = postAPI(method, url, data);
-    console.log("result_data", data);
-    console.log("url", url);
+  const form = useRef(null);
+
+  const execRequest = (values, event) => {
+    event.preventDefault();
+
+    const formData = new FormData(form.current);
+
+    const result = postAPI(method, url, formData);
+    console.log(result);
   };
+
+  // const onSubmit = (data) => {
+  //   const sent = postAPI(method, url, data);
+  //   console.log("ffffffffff", sent);
+  //   // console.log("result_data", data);
+  //   // console.log("url", url);
+  // };
   return (
     <>
       <form
-        onSubmit={handleSubmit(onSubmit)}
+        action={url}
+        ref={form}
+        method={method}
+        onSubmit={handleSubmit(execRequest)}
         className=" flex justify-center items-center bg-white"
       >
         <div className="w-full my-2 md:w-4/5 lg:w-1/4">
@@ -71,7 +88,7 @@ const index = ({method,  url }) => {
                   id="name"
                   placeholder=":"
                   {...register("username")}
-                  value="Robert"
+                  // value="Robertetttt"
                 />
               </div>
             </div>
@@ -131,7 +148,27 @@ const index = ({method,  url }) => {
                   id="commission"
                   placeholder=": "
                   {...register("commission")}
-                  value="10"
+                  // value="1000"
+                />
+              </div>
+            </div>
+          </div>
+          {/* Input  Commission */}
+          <div className="flex my-8 mx-4 md:mx-2 border-b-2 border-sky-600 hover:border-sky-700 w-96 rounded-tr-lg rounded-tl-lg">
+            <div className="w-96">
+              <label htmlFor="deposit" className="mb-10">
+                Deposit
+              </label>
+              <div className="flex">
+                <BsPercent className=" text-sky-400 mt-2 text-2xl mr-2" />
+                <input
+                  type="number"
+                  className="w-full border-0 focus:outline-none  form-control text-base font-normal text-gray-700 bg-white bg-clip-padding rounded-tr-lg rounded-tl-lg transition ease-in-out m-0"
+                  id="deposit"
+                  name="deposit"
+                  placeholder=": "
+                  {...register("deposit")}
+                  // value="1000"
                 />
               </div>
             </div>
@@ -201,6 +238,14 @@ const index = ({method,  url }) => {
               </div>
             </div>
           </div>
+          <select {...register("is_active", { required: true })}>
+            <option value={true}>Active</option>
+            <option value={false}>Inactive</option>
+          </select>
+          <select {...register("is_staff", { required: true })}>
+            <option value={true}>Agent</option>
+            <option value={false}>User</option>
+          </select>
           <div className="flex items-center justify-center">
             <input
               type="submit"
