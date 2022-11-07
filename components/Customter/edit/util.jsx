@@ -15,7 +15,7 @@ export default async function getAPI(id) {
   };
 }
 
-export default async function putAPI(method, url, formdata, res) {
+export async function putAPI(method, url, formdata, res) {
     try {
         const response = await getAxios()[method](url, formdata);
         return response;
