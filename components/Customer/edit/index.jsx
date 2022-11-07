@@ -9,7 +9,6 @@ const schema = yup.object({}).required();
 
 export default function index({customer, url}) {
   const [enabled, setEnabled] = useState(true);
-  
 
   const formOptions = { resolver: yupResolver(schema) };
 
@@ -22,7 +21,7 @@ export default function index({customer, url}) {
     register,
     formState: { errors },
     handleSubmit,
-    control
+    control,
   } = useForm(formOptions);
 
   
@@ -44,7 +43,6 @@ export default function index({customer, url}) {
           className="border-solid border-gray-300 border py-2 px-4 w-full rounded text-gray-700"
           disabled
           {...register("username")}
-          
         />
 
         <label className="text-gray-600 font-medium">Fullname</label>
@@ -56,15 +54,12 @@ export default function index({customer, url}) {
         <input
           className="border-solid border-gray-300 border py-2 px-4 w-full rounded text-gray-700"
           {...register("deposit[0].phone_number")}
-
         />
         <label className="text-gray-600 font-medium">Balance</label>
         <input
           className="border-solid border-gray-300 border py-2 px-4 w-full rounded text-gray-700"
           disabled
           {...register("deposit[0].deposit_amount")}
-      
-          
         />
         <label className="text-gray-600 font-medium">Status</label>
         <div><label className="inline-flex relative items-center mr-5 cursor-pointer">
