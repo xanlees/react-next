@@ -9,11 +9,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import postAPI from "./util";
 import { useRef } from "react";
-
 // Set formate phone number
 var phoneRegEx =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
-
 const index = ({ method, url }) => {
   const [showPassword, setShowPassword] = useState(false);
   // form validation rules
@@ -26,7 +24,7 @@ const index = ({ method, url }) => {
       .matches(phoneRegEx, "Phone number couldn't valid")
       .min(4, "Password must be at least 7 numbers"),
     commission: Yup.string().required("Commission couldn't valid"),
-    deposit: Yup.string().required("Deposit couldn't valid"),
+    deposit_amount: Yup.string().required("Deposit couldn't valid"),
     password: Yup.string()
       .required("Password is required")
       .min(8, "Password must be at least 8 characters"),
@@ -42,24 +40,13 @@ const index = ({ method, url }) => {
     handleSubmit,
     formState: { errors },
   } = useForm(formOptions);
-
   const form = useRef(null);
-
   const execRequest = (values, event) => {
     event.preventDefault();
-
     const formData = new FormData(form.current);
-
     const result = postAPI(method, url, formData);
     console.log(result);
   };
-
-  // const onSubmit = (data) => {
-  //   const sent = postAPI(method, url, data);
-  //   console.log("ffffffffff", sent);
-  //   // console.log("result_data", data);
-  //   // console.log("url", url);
-  // };
   return (
     <>
       <form
@@ -88,7 +75,6 @@ const index = ({ method, url }) => {
                   id="name"
                   placeholder=":"
                   {...register("username")}
-                  // value="Robertetttt"
                 />
               </div>
             </div>
@@ -108,7 +94,6 @@ const index = ({ method, url }) => {
                   id="fullname"
                   placeholder=":"
                   {...register("fullname")}
-                  value="JohnWick"
                 />
               </div>
             </div>
@@ -128,7 +113,6 @@ const index = ({ method, url }) => {
                   id="phone_number"
                   placeholder=": 20 x0000000"
                   {...register("phone_number")}
-                  value="2098989898"
                 />
               </div>
             </div>
@@ -148,15 +132,14 @@ const index = ({ method, url }) => {
                   id="commission"
                   placeholder=": "
                   {...register("commission")}
-                  // value="1000"
                 />
               </div>
             </div>
           </div>
-          {/* Input  Commission */}
+          {/* Input deposit "*/}
           <div className="flex my-8 mx-4 md:mx-2 border-b-2 border-sky-600 hover:border-sky-700 w-96 rounded-tr-lg rounded-tl-lg">
             <div className="w-96">
-              <label htmlFor="deposit" className="mb-10">
+              <label htmlFor="deposit_amount" className="mb-10">
                 Deposit
               </label>
               <div className="flex">
@@ -164,11 +147,10 @@ const index = ({ method, url }) => {
                 <input
                   type="number"
                   className="w-full border-0 focus:outline-none  form-control text-base font-normal text-gray-700 bg-white bg-clip-padding rounded-tr-lg rounded-tl-lg transition ease-in-out m-0"
-                  id="deposit"
-                  name="deposit"
+                  id="deposit_amount"
+                  name="deposit_amount"
                   placeholder=": "
-                  {...register("deposit")}
-                  // value="1000"
+                  {...register("deposit_amount")}
                 />
               </div>
             </div>
@@ -190,7 +172,6 @@ const index = ({ method, url }) => {
                   className={`w-full border-0 focus:outline-none  form-control text-base font-normal text-gray-700 bg-white bg-clip-padding rounded-tr-lg rounded-tl-lg transition ease-in-out m-00 ${
                     errors.password ? "is-invalid" : ""
                   }`}
-                  value="12345678"
                 />
               </div>
             </div>
@@ -213,7 +194,6 @@ const index = ({ method, url }) => {
                   className={`w-full border-0 focus:outline-none  form-control text-base font-normal text-gray-700 bg-white bg-clip-padding rounded-tr-lg rounded-tl-lg transition ease-in-out m-0 ${
                     errors.password_repeat ? "is-invalid" : ""
                   }`}
-                  value="12345678"
                 />
               </div>
             </div>
@@ -257,5 +237,4 @@ const index = ({ method, url }) => {
     </>
   );
 };
-
 export default index;
