@@ -2,7 +2,7 @@ import { getAxios } from "../../../utils/get-axios";
 
 export default async function postAPI(method, url, formdata) {
   let register_agent_url = url.register_agent_url;
-  console.log('register_agent_url', register_agent_url);
+  console.log("register_agent_url", register_agent_url);
   let commission_url = url.commission_url;
 
   const response_registeragent = await getAxios()[method](
