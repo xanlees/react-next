@@ -8,7 +8,7 @@ export const Story = (args) => <Customer {...args}  />;
 // Here we export the default component that
 // will be used by Storybook to show it inside the sidebar
 export default {
-  title: 'Customer/stepu',
+  title: 'Customer/step',
   component: Customer,
   argTypes: {
 
