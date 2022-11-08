@@ -1,5 +1,6 @@
 import React from "react";
 import { useStepper } from "headless-stepper";
+import Account from "./account";
 
 const BasicTailwind = () => {
   const steps = React.useMemo(
@@ -50,6 +51,7 @@ const BasicTailwind = () => {
                   {steps[index].label}
                 </span>
               </a>
+              {/* <Account /> */}
             </li>
           ))}
         </ol>
@@ -69,10 +71,10 @@ const BasicTailwind = () => {
           />
         </div>
       </nav>
-      <p>state: </p>
+      {/* <p>state: </p>
       <pre style={{ backgroundColor: "#f2f2f2" }}>
         {JSON.stringify(state, null, 2)}
-      </pre>
+      </pre> */}
       <div className="">
         <button
           className="bg-blue-400  hover:bg-blue-700 mx-1 text-white font-bold py-2 px-4 rounded"

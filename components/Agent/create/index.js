@@ -41,10 +41,8 @@ const index = ({ method, url }) => {
     handleSubmit,
     formState: { errors },
   } = useForm(formOptions);
-  const initialState = {
-    is_staff: "true",
-  };
-  const form = useRef(initialState);
+
+  const form = useRef();
   const execRequest = (values, event) => {
     event.preventDefault();
     const formData = new FormData(form.current);
