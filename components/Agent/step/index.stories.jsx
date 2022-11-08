@@ -1,11 +1,11 @@
-import Agent from ".";
+import Step from ".";
 
-export const Story = (args) => <Agent method="post" {...args} />;
+export const Story = (args) => <Step method="post" {...args} />;
 Story.args = {};
 
 export default {
-  title: "Agent/create",
-  component: Agent,
+  title: "Agent/Step",
+  component: Step,
   argTypes: {
     url: {
       defaultValue: {
