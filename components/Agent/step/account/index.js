@@ -4,20 +4,24 @@ import { AiOutlineUser } from "react-icons/ai";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import postAPI from "./util";
 var phoneRegEx =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
-const Account = () => {
+const Account = (url, data) => {
   const validationSchema = yup.object().shape({
+    // username: yup.string().required("Username couldn't valid"),
+    // fullname: yup
+    //   .string()
+    //   .required("Fullname couldn't valid")
+    //   .min(4, "Fullname must be atleast 3 characters long..."),
+    // phone_number: yup
+    //   .string()
+    //   .matches(phoneRegEx, "Phone number couldn't valid")
+    //   .min(4, "Password must be at least 7 numbers"),
     username: yup.string().required("Username couldn't valid"),
-    fullname: yup
-      .string()
-      .required("Fullname couldn't valid")
-      .min(4, "Fullname must be atleast 3 characters long..."),
-    phone_number: yup
-      .string()
-      .matches(phoneRegEx, "Phone number couldn't valid")
-      .min(4, "Password must be at least 7 numbers"),
+    password: yup.string().required("Username couldn't valid"),
+    // password: yup.string().required("password couldn't valid"),
   });
   // get functions to build form with useForm() hook
   const formOptions = { resolver: yupResolver(validationSchema) };
@@ -27,10 +31,17 @@ const Account = () => {
     formState: { errors },
   } = useForm(formOptions);
 
+  const onSubmit = (data) => {
+    console.log(data);
+    console.log("outer url", url);
+    const result = postAPI(url, data);
+    console.log(result);
+  };
+
   return (
     <>
       <form
-        onSubmit={handleSubmit(register)}
+        onSubmit={handleSubmit(onSubmit)}
         className="p-4 w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700"
       >
         <div className="space-y-6">
@@ -86,6 +97,56 @@ const Account = () => {
           <p className="text-red-500">{errors.fullname?.message}</p>
           {/* Input Phone number */}
           <div className="">
+            <div className=" ml-2">password</div>
+            <div className="flex my-2 md:mx-2 border-b-2 border-sky-600 hover:border-sky-700  w-80 rounded-tr-lg rounded-tl-lg">
+              <label
+                htmlFor="phone_number"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              >
+                <AiOutlineUser className=" text-sky-400 mt-2 text-3xl mr-2" />
+              </label>
+              <input
+                {...register("password")}
+                type="phone_number"
+                name="phone_number"
+                id="phone_number"
+                placeholder="••••••••"
+                className="w-full border-0 focus:outline-none  form-control text-base font-normal text-gray-700 bg-white bg-clip-padding rounded-tr-lg rounded-tl-lg transition ease-in-out m-0"
+              />
+            </div>
+          </div>
+          <p className="text-red-500">{errors.password?.message}</p>
+          <select {...register("is_active")}>
+            <option value={true}>Active</option>
+            <option value={false}>Inactive</option>
+          </select>
+          <select hidden {...register("is_staff")}>
+            <option value={true}>Agent</option>
+          </select>
+          {/* Input password
+           */}
+          {/* <div className="">
+            <div className=" ml-2">Phone Number</div>
+            <div className="flex my-2 md:mx-2 border-b-2 border-sky-600 hover:border-sky-700  w-80 rounded-tr-lg rounded-tl-lg">
+              <label
+                htmlFor="phone_number"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              >
+                <AiOutlineUser className=" text-sky-400 mt-2 text-3xl mr-2" />
+              </label>
+              <input
+                {...register("password")}
+                type="phone_number"
+                name="phone_number"
+                id="phone_number"
+                placeholder="••••••••"
+                className="w-full border-0 focus:outline-none  form-control text-base font-normal text-gray-700 bg-white bg-clip-padding rounded-tr-lg rounded-tl-lg transition ease-in-out m-0"
+              />
+            </div>
+          </div>
+          <p className="text-red-500">{errors.fullname?.message}</p> */}
+          {/* Input Phone number */}
+          {/* <div className="">
             <div className=" ml-2">Phone Number</div>
             <div className="flex my-2 md:mx-2 border-b-2 border-sky-600 hover:border-sky-700  w-80 rounded-tr-lg rounded-tl-lg">
               <label
@@ -104,7 +165,7 @@ const Account = () => {
               />
             </div>
           </div>
-          <p className="text-red-500">{errors.phone_number?.message}</p>
+          <p className="text-red-500">{errors.phone_number?.message}</p> */}
         </div>
         <button type="submit">save</button>
       </form>
