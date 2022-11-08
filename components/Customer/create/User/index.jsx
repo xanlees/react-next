@@ -43,7 +43,7 @@ export default function index(props) {
     
     const user_id = result.data.user.id
     console.log('user_id', user_id);
-    () => setUser(user_id)
+    setUser(user_id);
   };
 
   return (

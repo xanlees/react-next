@@ -12,8 +12,8 @@ const schema = yup
 
 export default function index(props) {
   console.log("deposit", props)
-  const url = props?.url;
-  const user_id = props?.user_id
+  const url = props?.deposit_url;
+  const user_id = props?.user
 
   const formOptions = { resolver: yupResolver(schema) };
 

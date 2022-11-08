@@ -29,6 +29,7 @@ const BasicTailwind = (props) => {
 
   return (
     <>
+      <p>user id: {user}</p>
       <nav className="my-4 w-100 grid grid-cols-6 relative" {...stepperProps}>
         <ol className="col-span-full flex flex-row z-1">
           {stepsProps?.map((step, index) => (

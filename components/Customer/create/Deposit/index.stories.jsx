@@ -10,7 +10,7 @@ export default {
   title: 'Customer/Deposit/create',
   component: Deposit,
   argTypes: {
-    url: {
+    deposit_url: {
       defaultValue: "http://localhost:8000/api/v1/deposit",
     },
     user_id: {
