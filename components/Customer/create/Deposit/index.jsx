@@ -7,24 +7,17 @@ import * as yup from "yup";
 
 const schema = yup
   .object({
-    password: yup
-      .string()
-      .required("Password is required")
-      .min(8, "Password must be at least 8 characters"),
-    confirm_password: yup
-      .string()
-      .required("Confirm Password is required")
-      .oneOf([yup.ref("password")], "Confirm Passwords must match"),
   })
   .required();
 
 export default function index(props) {
   const url = props?.url;
+  const user_id = props?.user_id
 
   const formOptions = { resolver: yupResolver(schema) };
 
   formOptions.defaultValues = {
-    is_active: true,
+    user: user_id,
   };
 
   const {
@@ -39,8 +32,8 @@ export default function index(props) {
     console.log(data);
     const result = await postAPI(url, data);
     
-    const user_id = result.data.user.id
-    console.log('user_id', user_id);
+    console.log(result)
+
   };
 
   return (
@@ -49,24 +42,24 @@ export default function index(props) {
         className="max-w-xl m-auto py-10 mt-10 px-12 border"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <label className="text-gray-600 font-medium">Username</label>
+        <label className="text-gray-600 font-medium">Fullname</label>
         <input
           className="border-solid border-gray-300 border py-2 px-4 w-full rounded text-gray-700"
-          {...register("username")}
+          {...register("fullname")}
         />
         
-        <label className="text-gray-600 font-medium">Password</label>
+        <label className="text-gray-600 font-medium">Phone Number</label>
         <input
-          type="password"
+          type="number"
           className="border-solid border-gray-300 border py-2 px-4 w-full rounded text-gray-700"
-          {...register("password")}
+          {...register("phone_number")}
         />
         <p className="text-red-500"> {errors.password?.message}</p>
-        <label className="text-gray-600 font-medium">Confirm Password</label>
+        <label className="text-gray-600 font-medium">Balance</label>
         <input
-          type="password"
+          type="number"
           className="border-solid border-gray-300 border py-2 px-4 w-full rounded text-gray-700"
-          {...register("confirm_password")}
+          {...register("deposit_amount")}
         />
         <p className="text-red-500"> {errors.confirm_password?.message}</p>
 
