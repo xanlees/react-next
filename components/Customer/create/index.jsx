@@ -2,8 +2,9 @@ import React from "react";
 import { useStepper } from "headless-stepper";
 import User from "./User";
 import Deposit from "./Deposit";
+import { useState } from "react";
 
-const BasicTailwind = () => {
+const BasicTailwind = (props) => {
   const steps = React.useMemo(
     () => [
       {
@@ -14,6 +15,7 @@ const BasicTailwind = () => {
     ],
     []
   );
+  const [user, setUser] = useState('');
   // useStepper
   const { state, nextStep, prevStep, progressProps, stepsProps, stepperProps } =
     useStepper({
@@ -33,7 +35,7 @@ const BasicTailwind = () => {
             <li className="text-center flex-[1_0_auto]" key={index}>
               <a
                 className="group flex flex-col items-center cursor-pointer focus:outline-0"
-                {...step}
+                // {...step}
               >
                 <span
                   className={`flex items-center justify-center bg-white text-black w-8 h-8 border border-full rounded-full group-focus:ring-2 group-focus:ring-offset-2 transition-colors ease-in-out ${
@@ -71,17 +73,13 @@ const BasicTailwind = () => {
           />
         </div>
       </nav>
-      <p>state: </p>
-      <pre style={{ backgroundColor: "#f2f2f2" }}>
-        {JSON.stringify(state, null, 2)}
-      </pre>
       {(() => {
         switch (state.currentStep) {
           case 0:
-            return <User />;
+            return <User setUser={setUser} {...props} />;
           case 1:
-            return <Deposit />;
-          default:
+            return <Deposit user={user} {...props}/>;
+          default: 
             return null;
         }
       })()}

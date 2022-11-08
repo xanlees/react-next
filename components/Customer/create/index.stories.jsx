@@ -11,12 +11,11 @@ export default {
   title: 'Customer/create',
   component: Customer,
   argTypes: {
-    id: { defaultValue: "3", control: 'number'},
-    url: {
-      defaultValue: {
-        customer_url: "http://localhost:8000/api/v1/user",
-        deposit_url: "http://localhost:8000/api/v1/deposit",
-      },
+    register_url: {
+      defaultValue: "http://localhost:8000/api/v1/user/register",
+    },
+    deposit_url: {
+      defaultValue:  "http://localhost:8000/api/v1/deposit",
     }
   },
 };

@@ -10,7 +10,7 @@ export default {
   title: 'Customer/User/create',
   component: User,
   argTypes: {
-    url: {
+    register_url: {
       defaultValue: "http://localhost:8000/api/v1/user/register",
     }
   },

@@ -11,6 +11,7 @@ const schema = yup
   .required();
 
 export default function index(props) {
+  console.log("deposit", props)
   const url = props?.url;
   const user_id = props?.user_id
 

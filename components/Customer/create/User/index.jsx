@@ -19,7 +19,9 @@ const schema = yup
   .required();
 
 export default function index(props) {
-  const url = props?.url;
+  console.log('User', props)
+  const url = props?.register_url;
+  const setUser = props?.setUser;
 
   const formOptions = { resolver: yupResolver(schema) };
 
@@ -41,6 +43,7 @@ export default function index(props) {
     
     const user_id = result.data.user.id
     console.log('user_id', user_id);
+    () => setUser(user_id)
   };
 
   return (
@@ -73,6 +76,7 @@ export default function index(props) {
         <input
           className="mt-4 w-full bg-blue-400 hover:bg-blue-600 text-blue-100 border py-3 px-6 font-semibold text-md rounded"
           type="submit"
+   
         />
       </form>
     </>
